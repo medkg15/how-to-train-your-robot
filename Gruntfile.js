@@ -82,5 +82,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('development', ['less:development','requirejs:development']);
-  grunt.registerTask('production', ['requirejs:prod', 'less:production']);
+  grunt.registerTask('production', ['requirejs:production', 'less:production']);
 };
