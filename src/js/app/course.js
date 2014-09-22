@@ -6,6 +6,8 @@
 define([], function(){
 
 	return function Course(){
+
+		this.array = [];
 	
 	};
 
