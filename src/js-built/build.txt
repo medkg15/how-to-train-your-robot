@@ -1,0 +1,10 @@
+
+common.js
+----------------
+common.js
+F:/Github/how-to-train-your-robot/src/vendor/jquery/dist/jquery.min.js
+F:/Github/how-to-train-your-robot/src/vendor/bootstrap/dist/js/bootstrap.min.js
+
+app/main.js
+----------------
+app/main.js
