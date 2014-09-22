@@ -43,13 +43,11 @@
 	
 	</div>
 
-
-
     </div><!-- /.container -->
 <script src="/vendor/requirejs/require.js"></script>
 <script>
 	requirejs.config({
-		baseUrl: "/js",
+		baseUrl:  "<?php echo (strpos($_SERVER["HTTP_HOST"], 'amazonaws.com') !== false) ? '/js-built' : '/js'; ?>",
 	});
 	require(['common'], function(common){
 		require(['app/main']);
