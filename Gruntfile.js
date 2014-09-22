@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 					},
 					{
 						name: 'app/main',
+						include: [ 'app/map', 'app/player' ],
 						exclude: ['common']
 					}
 				]
@@ -34,6 +35,7 @@ module.exports = function(grunt) {
 					},
 					{
 						name: 'app/main',
+						include: [ 'app/map', 'app/player' ],
 						exclude: ['common']
 					}
 				]
@@ -79,5 +81,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('development', ['less:development','requirejs:development']);
   grunt.registerTask('production', ['requirejs:prod', 'less:production']);
 };

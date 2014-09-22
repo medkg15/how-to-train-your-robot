@@ -2,9 +2,11 @@
 common.js
 ----------------
 common.js
-F:/Github/how-to-train-your-robot/src/vendor/jquery/dist/jquery.min.js
-F:/Github/how-to-train-your-robot/src/vendor/bootstrap/dist/js/bootstrap.min.js
+f:/Github/how-to-train-your-robot/src/vendor/jquery/dist/jquery.min.js
+f:/Github/how-to-train-your-robot/src/vendor/bootstrap/dist/js/bootstrap.min.js
 
 app/main.js
 ----------------
+app/map.js
 app/main.js
+app/player.js

@@ -10,6 +10,24 @@
 	<div class="row">
 	
 		<div class="col-md-8">
+		
+			<div id="map" class="well">
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+			</div>
+		
 		</div>
 		
 		<div class="col-md-4">
