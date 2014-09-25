@@ -25,6 +25,90 @@
 					<div class="col-md-1 glyphicon glyphicon-remove"></div>
 					<div class="col-md-1 glyphicon glyphicon-remove"></div>
 				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-user"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 "></div>
+					<div class="col-md-1 glyphicon glyphicon-star-empty"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+					<div class="col-md-1 glyphicon glyphicon-remove"></div>
+				</div>
 			</div>
 		
 		</div>
