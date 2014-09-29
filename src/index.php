@@ -11,104 +11,7 @@
 		<div class="col-md-8">
 		
 			<div id="map" class="well">
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-user"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 "></div>
-					<div class="col-md-1 glyphicon glyphicon-star-empty"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-					<div class="col-md-1 glyphicon glyphicon-remove"></div>
-				</div>
+				
 			</div>
 		
 		</div>
@@ -125,6 +28,10 @@
 		</div>
 	
 	</div>
+	
+	<div id="inventory">
+	
+	</div>
 
     </div><!-- /.container -->
 <script src="/vendor/requirejs/require.js"></script>
@@ -133,7 +40,11 @@
 		baseUrl:  "<?php echo (strpos($_SERVER["HTTP_HOST"], 'amazonaws.com') !== false) ? '/js-built' : '/js'; ?>",
 	});
 	require(['common'], function(common){
-		require(['app/main']);
+		require(['app/main'], function(HowToTrainYourRobot){
+		
+			var application = new HowToTrainYourRobot();
+		
+		});
 	});
 </script>
 </body>

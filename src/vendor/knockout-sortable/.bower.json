@@ -1,0 +1,26 @@
+{
+  "name": "knockout-sortable",
+  "version": "0.9.0",
+  "main": "./build/knockout-sortable.min.js",
+  "ignore": [
+    "examples",
+    "ext",
+    "reports",
+    "spec",
+    "src",
+    "Gruntfile.js",
+    "package.json",
+    ".gitignore"
+  ],
+  "homepage": "https://github.com/rniemeyer/knockout-sortable",
+  "_release": "0.9.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.0",
+    "commit": "4e5567c03bf9737c0bd4fddd13343d177176b477"
+  },
+  "_source": "git://github.com/rniemeyer/knockout-sortable.git",
+  "_target": "~0.9.0",
+  "_originalSource": "knockout-sortable",
+  "_direct": true
+}
