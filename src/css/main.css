@@ -5,6 +5,12 @@
   text-align: center;
   height: 50px;
 }
+#inventory .well {
+  cursor: pointer;
+}
+#program .instruction {
+  cursor: move;
+}
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;

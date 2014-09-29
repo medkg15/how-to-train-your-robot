@@ -14,8 +14,7 @@ module.exports = function(grunt) {
 						include: ['jquery', 'bootstrap']
 					},
 					{
-						name: 'app/main',
-						include: [ 'app/map', 'app/player' ],
+						name: 'app/gameViewModel',
 						exclude: ['common']
 					}
 				]
@@ -28,14 +27,13 @@ module.exports = function(grunt) {
 				appDir: 'src/js',
 				dir: 'src/js-built',
 				optimize: 'uglify',
-				modules: [
+				modules: [ 
 					{
 						name: 'common',
 						include: ['jquery', 'bootstrap']
 					},
 					{
-						name: 'app/main',
-						include: [ 'app/map', 'app/player' ],
+						name: 'app/gameViewModel',
 						exclude: ['common']
 					}
 				]
