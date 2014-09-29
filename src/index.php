@@ -114,7 +114,7 @@
 	});
 	require(['common'], function(common){
 		require(
-			['jquery', 'knockout', 'app/gameViewModel', 'knockout-sortable'], 
+			['jquery', 'knockout', 'app/gameViewModel'], 
 			function($, ko, GameViewModel){
 				
 				var viewModel = new GameViewModel();

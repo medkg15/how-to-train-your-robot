@@ -1,5 +1,5 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions'],
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'knockout-sortable'],
     function (ko, _, levels, instructions) {
 
         "use strict";
