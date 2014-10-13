@@ -2,6 +2,7 @@
 <html>
 <head>
 <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/vendor/bootstrap-jstree-theme/dist/themes/bootstrap/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="container">
@@ -24,83 +25,13 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-	
-	<div data-bind="if: currentView() === 'welcome'">
-	
-		<h1>Welcome!</h1>
-		
-		<p>Please select a level:</p>
-	
-		<ul data-bind="foreach: levels">
-			<li><a href="#" data-bind="text: name, click: $parent.selectLevel"></a></li>
-		</ul>
-	
-	</div>
 
+    <?php include "welcome-page.php"; ?>
 	
-	<div data-bind="if: currentView() === 'build-program'">
-
-		<div class="row">
-		
-			<div class="col-md-8" data-bind="with: currentLevel">
-			
-				<div id="map" class="well" data-bind="foreach: { data: map, as: 'row'}">
-                
-				
-					<div class="row" data-bind="foreach: { data:row, as: 'column' }">
-                    										
-						<div class="col-md-1 glyphicon glyphicon-remove" data-bind="visible: column.definition === 'x'"></div>
-						<div class="col-md-1" data-bind="visible: $root.dontShowRobot($data)"></div>
-					
-						<div class="col-md-1  glyphicon glyphicon-certificate" data-bind="visible: column.definition === 'e'"></div>
-						<div class="col-md-1 glyphicon glyphicon-arrow-up" data-bind="visible: $root.showRobot($data, 'up')"></div>
-						<div class="col-md-1 glyphicon glyphicon-arrow-right" data-bind="visible: $root.showRobot($data, 'right')"></div>
-						<div class="col-md-1 glyphicon glyphicon-arrow-down" data-bind="visible: $root.showRobot($data, 'down')"></div>
-						<div class="col-md-1 glyphicon glyphicon-arrow-left" data-bind="visible: $root.showRobot($data, 'left')"></div>
-					
-					</div>
-					 
-				</div>
-			
-			</div>
-			
-			<div class="col-md-4" id="program">
-                <h2>Your Program:
-                <div  data-bind="sortable: program">
-                
-                    <div>
-                    
-                        <a class="btn btn-primary instruction" data-bind="text: name"></a>
-                    
-                    </div>
-                </div>
-            
-                <a href="#" class="btn btn-success" data-bind="click: execute">Go</a>
-                <a href="#" data-bind="click: clearProgram" class="btn btn-danger">Clear</a>
-            
-			</div>
-            
-		
-		</div>
-		
-		<div id="inventory">
-		<h2>Build Your Program</h2>
-		<div class="row" data-bind="foreach: instructionInventory">
-			<div class="col-md-2 well" data-bind="click: $root.addInstruction">
-				<strong data-bind="text: name"></strong><br/>
-				<span data-bind="if: quantity === 'unlimited'">&infin; Remaining</span>
-				<span data-bind="if: quantity !== 'unlimited'"><span data-bind="text: quantity"></span> Remaining</span>
-			</div>
-			
-		</div>
-			
-		
-		</div>
+    <?php include "program-page.php"; ?>
 	
-	</div>
-
 	<label>
-	<input type="checkbox" data-bind="checked: showDebug"/> Show Debug
+	<input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
 	</label>
 	<div data-bind="if: showDebug"> 
 		<pre data-bind="text: debug"></pre>
@@ -114,8 +45,8 @@
 	});
 	require(['common'], function(common){
 		require(
-			['jquery', 'knockout', 'app/gameViewModel'], 
-			function($, ko, GameViewModel){
+			['jquery', 'knockout', 'app/gameViewModel', 'jstree'],
+			function($, ko, GameViewModel, jstree){
 				
 				var viewModel = new GameViewModel();
 			

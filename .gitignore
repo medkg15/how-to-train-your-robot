@@ -171,3 +171,4 @@ logfiles
 
 node_modules
 js-built
+.idea

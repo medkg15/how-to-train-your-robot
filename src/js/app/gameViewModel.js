@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'knockout-sortable'],
-    function (ko, _, levels, instructions) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree'],
+    function (ko, _, levels, instructions, programTree, inventoryTree) {
 
         "use strict";
         
@@ -84,7 +84,29 @@ define(
                     };
 
                 });
+            });
 
+            self.treeAvailableInstructions = ko.computed(function(){
+
+                return _.map(self.instructionInventory(), function(instruction){
+                    return {
+                        text: instruction.name, // node text
+                        //icon: "string", // string for custom
+                        state: {
+                            opened: false,
+                            disabled: false,
+                            selected: false
+                        },
+                        children: [],  // array of strings or objects
+                        li_attr: {},  // attributes for the generated LI node
+                        a_attr: {},  // attributes for the generated A node
+                        type: instruction.definition.type,
+                        instructionId: instruction.id,
+                        data: {
+                            instruction_id: instruction.id
+                        }
+                    }
+                });
             });
 
             self.addInstruction = function (instruction) {
@@ -97,76 +119,91 @@ define(
             };
             
             self.execute = function (instruction) {
+                // reset everything
                 self.currentPosition(self.currentLevel().startPosition);
                 self.currentHeading(self.currentLevel().defaultHeading);
-                
-                var index = 0;
+
+                // grab a copy of the program to execute
+                var program = self.programInstructions();
+
+                // our default scope in the program itself.  we may add additional ones as we go...
+                var scopes = [ { instructions: program, index: 0 } ];
+
                 var win = false;
                 var doContinue = true;
                 
                 var callback;
                 callback = function (){
-                
-                    if (index >= self.program().length)
+
+                    // if we're done with this scope, move up to the next one.
+                    // keep moving up until we're at the end of the root program scope.
+                    while (scopes[0].index >= scopes[0].instructions.length && scopes.length > 1)
                     {
-                        if(win)
-                        {
+                        scopes.shift();
+                    }
+
+                    // are we at the end of the program?
+                    if (scopes[0].index >= scopes[0].instructions.length && scopes.length === 1)
+                    {
+                        if (win) {
                             alert('Good job!  You got the ball!');
                         }
-                        else
-                        {
+                        else {
                             alert('The program didn\'t work!');
                         }
+                        doContinue = false;
                     }
+
                     
-                    var instruction = self.program()[index++];
+                    var instruction = scopes[0].instructions[scopes[0].index];
                     
-                    var targetCell;
+                    var nextCell;
                     
                     switch(self.currentHeading())
                     {
                         case 'up': 
-                            targetCell = { 
+                            nextCell = {
                                 column: self.currentPosition().column,
                                 row: self.currentPosition().row - 1
                             };
                             break;
                         case 'down': 
-                            targetCell = { 
+                            nextCell = {
                                 column: self.currentPosition().column,
                                 row: self.currentPosition().row + 1
                             };
                             break;
                         case 'left': 
-                            targetCell = { 
+                            nextCell = {
                                 column: self.currentPosition().column - 1,
                                 row: self.currentPosition().row
                             };
                             break;
                         case 'right':
-                            targetCell = { 
+                            nextCell = {
                                 column: self.currentPosition().column + 1,
                                 row: self.currentPosition().row
                             };
                             break;
                     }
                     
-                    if (instruction.id === 'step-forward')
+                    if (instruction.instruction_id === 'step-forward')
                     {
                         
-                        if (self.currentLevel().map[targetCell.row][targetCell.column].definition === ' ')
+                        if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ')
                         {
-                            self.currentPosition(targetCell);
+                            self.currentPosition(nextCell);
                         }
                         else
                         {
                             doContinue = false;
                             alert('Your robot can\'t move there!');
                         }
+                        scopes[0].index++;
                     }
-                    else if (instruction.id === 'pick-up-ball')
+                    else if (instruction.instruction_id === 'pick-up-ball')
                     {
-                        if (self.currentLevel().map[targetCell.row][targetCell.column].definition === 'e')
+                        if (self.currentLevel().map[nextCell.row][nextCell.column].definition === 'e')
                         {
                             win = true;
                         }
@@ -175,41 +212,60 @@ define(
                             doContinue = false;
                             alert('No ball here!');
                         }
+                        scopes[0].index++;
                     }
-                    else if (instruction.id === 'turn-left')
+                    else if (instruction.instruction_id === 'turn-left')
                     {
                         switch(self.currentHeading())
                         {
                             case 'up': 
-                                self.currentHeading('left')
+                                self.currentHeading('left');
                                 break;
                             case 'down': 
-                                self.currentHeading('right')
+                                self.currentHeading('right');
                                 break;
                             case 'left': 
-                                self.currentHeading('down')
+                                self.currentHeading('down');
                                 break;
                             case 'right':
-                                self.currentHeading('up')
+                                self.currentHeading('up');
                                 break;
                         }
+                        scopes[0].index++;
                     }
-                    else if (instruction.id === 'turn-right')
+                    else if (instruction.instruction_id === 'turn-right')
                     {
                         switch(self.currentHeading())
                         {
                             case 'up': 
-                                self.currentHeading('right')
+                                self.currentHeading('right');
                                 break;
                             case 'down': 
-                                self.currentHeading('left')
+                                self.currentHeading('left');
                                 break;
                             case 'left': 
-                                self.currentHeading('up')
+                                self.currentHeading('up');
                                 break;
                             case 'right':
-                                self.currentHeading('down')
+                                self.currentHeading('down');
                                 break;
+                        }
+                        scopes[0].index++;
+                    }
+                    else if(instruction.instruction_id === 'repeat')
+                    {
+                        if(typeof scopes[0].countRemaining === 'undefined') {
+                            scopes[0].countRemaining = instruction.count;
+                        }
+
+                        if(scopes[0].countRemaining > 0) {
+                            scopes[0].countRemaining--;
+                            scopes.unshift({instructions: instruction.body, index: 0});
+                        }
+                        else
+                        {
+                            scopes[0].countRemaining = undefined;
+                            scopes[0].index++;
                         }
                     }
                     
@@ -225,6 +281,22 @@ define(
             };
 
             self.program = ko.observableArray();
+
+            // these are the simplified program elements
+            self.programInstructions = ko.computed(function(){
+
+                var conversion = function(element){
+                    var data = element.data;
+                    data.body = _.map(element.children, conversion);
+                    return data;
+                };
+
+                return _.map(self.program(), conversion);
+            });
+
+            self.hasNoProgram = ko.computed(function(){
+                return self.program().length === 0;
+            });
             
             self.showDebug = ko.observable(false);
             self.debug = ko.computed(function () {
