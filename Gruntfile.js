@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				modules: [
 					{
 						name: 'common',
-						include: ['jquery', 'bootstrap', 'underscore', 'knockout',]
+						include: ['jquery', 'bootstrap', 'underscore', 'knockout','jstree']
 					},
 					{
 						name: 'app/gameViewModel',
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 				modules: [ 
 					{
 						name: 'common',
-						include: ['jquery', 'bootstrap', 'underscore', 'knockout',]
+						include: ['jquery', 'bootstrap', 'underscore', 'knockout','jstree']
 					},
 					{
 						name: 'app/gameViewModel',
