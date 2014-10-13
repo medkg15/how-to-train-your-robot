@@ -15,8 +15,9 @@
             <div data-bind="programTree: program" class="jstree-bootstrap">
             </div>
 
-            <a href="#" class="btn btn-success" data-bind="click: execute">Go</a>
-            <a href="#" data-bind="click: clearProgram" class="btn btn-danger">Clear</a>
+            <button class="btn btn-success" data-bind="click: execute, disable: isExecuting">Go</button>
+            <button data-bind="click: clearProgram, disable: isExecuting" class="btn btn-danger">Clear</button>
+            <button data-bind="click: pause, enable: isExecuting, text: isPaused() ? 'Unpause' : 'Pause'" class="btn btn-info">Pause</button>
 
         </div>
 
