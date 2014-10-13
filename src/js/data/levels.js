@@ -65,7 +65,89 @@ define([], function(){
 				[' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' ',],
 				[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
 			]
-		}
+		},
+        {
+            "id": "level-3",
+            "name": "Over and over again.",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 2,
+                "row": 2
+            },
+            "instructions": [
+                {
+                    "id": "repeat",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-ball",
+                    "quantity": 1
+                }
+            ],
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ','x','x','x','x','x','x','x','x',' ',' ',' ',],
+                [' ','x',' ',' ',' ',' ',' ','e','x',' ',' ',' ',],
+                [' ','x','x','x','x','x','x','x','x',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+            ]
+        },
+        {
+            "id": "level-4",
+            "name": "Conditional loop - not finished.",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 1,
+                "row": 2
+            },
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-ball",
+                    "quantity": 1
+                },
+            ],
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                ['x','x','x','x','x','x','x','x','x','x','x','x',],
+                ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ','e','x',],
+                ['x','x','x','x','x','x','x','x','x','x','x','x',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+            ]
+        }
 	];
 });
 
