@@ -128,6 +128,11 @@ define(
                 // grab a copy of the program to execute
                 var program = self.programInstructions();
 
+                if(program.length === 0)
+                {
+                    return;
+                }
+
                 // our default scope in the program itself.  we may add additional ones as we go...
                 var scopes = [ { instructions: program, index: 0 } ];
 
