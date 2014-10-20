@@ -4,6 +4,13 @@
 .space #map .wall { background: url('/images/space-wall.jpg') no-repeat center center; }
 .space #map .goal { background: url('/images/ball.png') no-repeat center center; }
 
+.space .persona {}
+.wild-west {
+    background: url('/images/bgdesert.jpg') repeat;
+}
+.wild-west #map .wall { background: url('/images/obstCountryGreenVertical.png') no-repeat center center; }
+.wild-west #map .goal { background: url('/images/ball.png') no-repeat center center; }
+
 #map .robot-up { background: url('/images/robot-up.png') no-repeat center center;  }
 #map .robot-left { background: url('/images/robot-left.png') no-repeat center center;  }
 #map .robot-down { background: url('/images/robot-down.png') no-repeat center center;  }

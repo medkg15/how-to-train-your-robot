@@ -6,6 +6,9 @@ define([], function(){
             "number": 1,
             "environment": "space",
             "defaultHeading": "up",
+            "introText": "",
+            "exitText": "",
+            "helpText": "",
             "startPosition": {
                 "column": 5,
                 "row": 5,
