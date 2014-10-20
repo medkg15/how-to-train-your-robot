@@ -1,11 +1,12 @@
 create table game_session (
-  id int primary key,
+  id int primary key auto_increment,
   start datetime not null,
-  end datetime null
+  end datetime null,
+  session_id varchar(100) not null
 );
 
 create table level_attempt(
-  id int primary key,
+  id int primary key auto_increment,
   program text not null,
   number int,
   start datetime not null,
@@ -13,7 +14,7 @@ create table level_attempt(
 );
 
 create table session_level(
-  id int primary key,
+  id int primary key auto_increment,
   session_id int not null,
   level_id varchar(100) not null,
   start datetime not null,
