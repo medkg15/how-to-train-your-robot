@@ -46,6 +46,7 @@ define(
 
             self.changeView = function(view){
                 self.currentView(view);
+                self.bodyClass('space');
             };
             
             self.showRobot = function (position, heading) {
@@ -76,6 +77,7 @@ define(
                 self.currentHeading(level.defaultHeading);
                 self.levelStartDate(new Date());
                 self.program([]);
+                self.bodyClass(level.environment);
             };
 
             self.returnHome = function () {
