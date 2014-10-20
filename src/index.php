@@ -6,7 +6,7 @@
     <link href="/vendor/bootstrap-jstree-theme/dist/themes/bootstrap/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="container">
+<div class="container" data-bind="css: bodyClass">
 
 	<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -17,6 +17,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+          <li><a href="#" data-bind="click: function(){ changeView('about'); }">About</a></li>
+          <li><a href="#" data-bind="click: function(){ changeView('high-scores'); }">High Scores</a></li>
       </ul>
     
       <ul class="nav navbar-nav navbar-right">
@@ -28,8 +30,10 @@
 </nav>
 
     <?php include "welcome-page.php"; ?>
-	
     <?php include "program-page.php"; ?>
+    <?php include "about.php"; ?>
+    <?php include "high-scores.php"; ?>
+    <?php include "robot-story.php"; ?>
 	
 	<label>
 	<input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug

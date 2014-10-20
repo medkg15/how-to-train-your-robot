@@ -1,0 +1,25 @@
+.space {
+    background: url('/images/space-background.jpg') repeat;
+}
+body {
+    background: url('/images/bg1.gif') repeat;
+}
+
+.home-sidebar img {
+    margin: 0 0 30px 0;
+}
+
+.home-sidebar button {
+    margin: 20px 0;
+    text-transform: uppercase;
+    border: 2px solid #fffd81;
+    color: #fff;
+    background: #fffd81; /* Old browsers */
+    background: -moz-linear-gradient(top, #fffd81 0%, #918300 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fffd81), color-stop(100%, #918300)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fffd81 0%, #918300 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fffd81 0%, #918300 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fffd81 0%, #918300 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fffd81 0%, #918300 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffd81', endColorstr='#918300', GradientType=0); /* IE6-9 */
+}

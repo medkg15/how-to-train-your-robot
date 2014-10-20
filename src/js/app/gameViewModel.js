@@ -31,12 +31,17 @@ define(
             self.currentHeading = ko.observable();
             self.gameId = ko.observable();
             self.levelStartDate = ko.observable();
+            self.bodyClass = ko.observable('space');
 
             self.startGame = function(){
                 services.startGame(function(response){
                     self.gameId(response.id);
-                    self.selectLevel(levels[0]);
+                    self.changeView('robot-story');
                 });
+            };
+
+            self.startFirstLevel = function(){
+                self.selectLevel(levelViewModels[0]);
             };
 
             self.changeView = function(view){
