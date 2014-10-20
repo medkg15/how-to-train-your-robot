@@ -3,6 +3,7 @@ define([], function(){
 		{
 			"id": "level-1",
 			"name": "Step Forward!",
+            "number": 1,
             "defaultHeading": "up",
             "startPosition": {
                 "column": 5,
@@ -32,6 +33,7 @@ define([], function(){
 		{
 			"id": "level-2",
 			"name": "And Turn!",
+            "number": 2,
             "defaultHeading": "up",
             "startPosition": {
                 "column": 4,
@@ -69,6 +71,7 @@ define([], function(){
         {
             "id": "level-3",
             "name": "Over and over again.",
+            "number": 3,
             "defaultHeading": "right",
             "startPosition": {
                 "column": 2,
@@ -110,6 +113,7 @@ define([], function(){
         {
             "id": "level-4",
             "name": "Conditional loop - not finished.",
+            "number": 4,
             "defaultHeading": "right",
             "startPosition": {
                 "column": 1,

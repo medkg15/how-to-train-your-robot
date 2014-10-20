@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree'],
-    function (ko, _, levels, instructions, programTree, inventoryTree) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services) {
 
         "use strict";
         
@@ -20,6 +20,8 @@ define(
         };
 
         return function GameViewModel() {
+
+            var levelViewModels = fixLevels(levels);
             var nextIteration = null;
             var self = this;
             self.score = ko.observable(0);
@@ -27,6 +29,19 @@ define(
             self.currentLevel = ko.observable();
             self.currentPosition = ko.observable();
             self.currentHeading = ko.observable();
+            self.gameId = ko.observable();
+            self.levelStartDate = ko.observable();
+
+            self.startGame = function(){
+                services.startGame(function(response){
+                    self.gameId(response.id);
+                    self.selectLevel(levels[0]);
+                });
+            };
+
+            self.changeView = function(view){
+                self.currentView(view);
+            };
             
             self.showRobot = function (position, heading) {
                 var currentPosition = self.currentPosition();
@@ -42,8 +57,10 @@ define(
                     || position.columnIndex !== currentPosition.column
                     || position.rowIndex !== currentPosition.row);
             };
-            
-            self.levels = fixLevels(levels);                   
+
+
+
+            self.levels = levelViewModels;
             
             self.instructions = instructions;
 
@@ -52,6 +69,8 @@ define(
                 self.currentView('build-program');
                 self.currentPosition(level.startPosition);
                 self.currentHeading(level.defaultHeading);
+                self.levelStartDate(new Date());
+                self.program([]);
             };
 
             self.returnHome = function () {
@@ -158,7 +177,22 @@ define(
                     if (scopes[0].index >= scopes[0].instructions.length && scopes.length === 1)
                     {
                         if (win) {
+
                             alert('Good job!  You got the ball!');
+
+                            services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
+
+                                var level = self.currentLevel();
+
+                                if (levelViewModels[levelViewModels.length-1] === level) {
+                                    alert('Game over! You win.');
+                                }
+                                else {
+                                    self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
+                                }
+
+                            });
+
                         }
                         else {
                             alert('The program didn\'t work!');

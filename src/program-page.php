@@ -1,5 +1,7 @@
 <div data-bind="if: currentView() === 'build-program'">
 
+    <h1>Level <span data-bind="text: currentLevel().number"></span>  <span class="small" data-bind="text: currentLevel().name"></span></h1>
+
     <div class="row">
 
         <div class="col-md-8" data-bind="with: currentLevel">

@@ -1,19 +1,20 @@
 <?php
 
-require_once('includes/connection.php');
-
-session_start();
-
-$session_id = session_id();
-
-$statement = $mysqli->prepare('insert into game_session
-(start, session_id)
-values
-(?,?);');
-
-if(!$statement)
+if($_SERVER["REQUEST_METHOD"] !== 'POST')
 {
-    die('Failed to prepare statement.');
+    http_response_code(405);
+    exit;
 }
 
-$_SESSION["id"] = 5;
+require_once('includes/data_access.php');
+
+$session_id = uniqid();
+
+$data_access = new DataAccess();
+$insert_id = $data_access->create_session($session_id);
+
+header('Content-Type: application/json');
+echo json_encode(array(
+    'id' => $insert_id,
+    'session_id' => $session_id
+));

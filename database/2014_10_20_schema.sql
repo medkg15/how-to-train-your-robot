@@ -7,6 +7,7 @@ create table game_session (
 
 create table level_attempt(
   id int primary key auto_increment,
+  level_id int not null,
   program text not null,
   number int,
   start datetime not null,
@@ -23,3 +24,6 @@ create table session_level(
   foreign key (session_id) references game_session (id),
   foreign key (success_attempt_id) references level_attempt (id)
 );
+
+alter table level_attempt
+    add foreign key (level_id) references session_level (id);
