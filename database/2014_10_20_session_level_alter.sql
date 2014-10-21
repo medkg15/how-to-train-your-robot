@@ -1,0 +1,1 @@
+ALTER TABLE session_level ADD failed_attempt_id INT(11);

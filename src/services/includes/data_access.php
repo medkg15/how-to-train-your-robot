@@ -6,6 +6,7 @@ class DataAccess
 {
     private $mysqli;
 
+    //This is the function construct and it initializes the connection to the database
     public function __construct()
     {
         $this->mysqli = new mysqli("ec2-54-68-234-52.us-west-2.compute.amazonaws.com", "capstone", PASSWORD, "capstone");
@@ -15,6 +16,7 @@ class DataAccess
         }
     }
 
+    //Creates the level session in the database.
     public function create_level($session_id, $level_id, $start, $end)
     {
         $statement = $this->mysqli->prepare('insert into session_level
@@ -40,6 +42,7 @@ values
         return $session_level_id;
     }
 
+    //This function creates a unique game session id for each user.
     public function create_session($session_id)
     {
         $statement = $this->mysqli->prepare('insert into game_session
@@ -91,10 +94,17 @@ values
         return $attempt_id;
     }
 
-    public function set_success_attempt($attempt_id, $session_level_id)
+    //Updated database with level success or failure.
+    public function set_attempt($attempt_id, $session_level_id, $Success)
     {
-        $statement = $this->mysqli->prepare('update session_level set success_attempt_id = ? where id = ?;');
-
+        if ($Success)
+        {
+            $statement = $this->mysqli->prepare('update session_level set success_attempt_id = ? where id = ?;');
+        }
+        else
+        {
+            $statement = $this->mysqli->prepare('update session_level set failed_attempt_id = ? where id = ?;');
+        }
         if(!$statement)
         {
             die(sprintf('%s Failed to prepare statement.', __METHOD__));

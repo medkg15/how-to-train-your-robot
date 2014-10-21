@@ -22,7 +22,7 @@ $session_level_id = $data_access->create_level($session_id, $level_id, $start, $
 
 $attempt_id = $data_access->create_level_attempt($session_level_id, $program, $start, $end);
 
-$data_access->set_success_attempt($attempt_id, $session_level_id);
+$data_access->set_attempt($attempt_id, $session_level_id, true);
 
 header('Content-Type: application/json');
 echo json_encode(array(
