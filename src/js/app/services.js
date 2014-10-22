@@ -35,6 +35,28 @@ define(['jquery'], function ($) {
                 .fail(function(response){
                     console.log(response);
                 });
+        },
+
+        failLevel: function (sessionId, levelId, program, start, end, cb) {
+            $.ajax({
+                url:'/services/failed-attempt.php',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({
+                    session_id: sessionId,
+                    level_id: levelId, // right now this is the string id.. might change.
+                    program: program,
+                    start: start,
+                    end: end
+                }),
+                type: 'POST'
+            })
+                .done(function (responseJSON) {
+                    cb(responseJSON);
+                })
+                .fail(function(response){
+                    console.log(response);
+                });
         }
     };
 

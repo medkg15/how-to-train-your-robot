@@ -9,7 +9,11 @@ class DataAccess
     //This is the function construct and it initializes the connection to the database
     public function __construct()
     {
+        //Production database (Project database)
         $this->mysqli = new mysqli("ec2-54-68-234-52.us-west-2.compute.amazonaws.com", "capstone", PASSWORD, "capstone");
+
+        //Local test database (Local machine)
+        //$this->mysqli = new mysqli("localhost", "root", PASSWORD, "capstone");
 
         if ($this->mysqli->connect_errno) {
             die(sprintf("Failed to connect to MySQL: (%s) %s", $this->mysqli->connect_errno, $this->mysqli->connect_error));
@@ -54,7 +58,11 @@ values
             die(sprintf('%s Failed to prepare statement.', __METHOD__));
         }
 
-        if (!$statement->bind_param('ss', date('Y-m-d H:i:s'), $session_id)) {
+        //print_r("The Statement: " + $statement);
+        //print_r("The Session ID: " + $session_id);
+        //exit;
+        $date = date('Y-m-d H:i:s');
+        if (!$statement->bind_param('ss', $date, $session_id)) {
             die(sprintf('%s Bind param failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
         }
 
@@ -103,7 +111,8 @@ values
         }
         else
         {
-            $statement = $this->mysqli->prepare('update session_level set failed_attempt_id = ? where id = ?;');
+            //No Update is required for the failed attempt
+            //$statement = $this->mysqli->prepare('update session_level set failed_attempt_id = ? where id = ?;');
         }
         if(!$statement)
         {

@@ -10,6 +10,10 @@ require_once('includes/data_access.php');
 
 $session_id = uniqid();
 
+//Antony:  testing Session id
+//print_r($session_id);
+//exit;
+
 $data_access = new DataAccess();
 $insert_id = $data_access->create_session($session_id);
 

@@ -203,6 +203,13 @@ define(
                         }
                         else {
                             alert('The program didn\'t work!');
+
+                            services.failLevel(self.gameId, self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
+
+                                var level = self.currentLevel();
+
+
+                            });
                         }
                         doContinue = false;
                     }
