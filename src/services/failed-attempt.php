@@ -6,6 +6,7 @@
  * Time: 9:23 PM
  */
 
+printf("Getting to failed-attempt");
 
 if($_SERVER["REQUEST_METHOD"] !== 'POST')
 {
@@ -16,12 +17,14 @@ if($_SERVER["REQUEST_METHOD"] !== 'POST')
 require_once('includes/data_access.php');
 
 $json = json_decode(file_get_contents('php://input'));
-
+printf("Session id is %u",$json->session_id);
 $session_id = $json->session_id;
 $level_id = $json->level_id;
 $program = json_encode($json->program); // convert the program itself back into a json string for storage.
 $start = $json->start;
 $end = $json->end;
+
+printf("The failed-attempt session information is: session_id=%u, level_id=%u,", $session_id, $level_id);
 
 $data_access = new DataAccess();
 

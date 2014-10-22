@@ -36,7 +36,6 @@ define(['jquery'], function ($) {
                     console.log(response);
                 });
         },
-
         failLevel: function (sessionId, levelId, program, start, end, cb) {
             $.ajax({
                 url:'/services/failed-attempt.php',

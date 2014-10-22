@@ -204,7 +204,8 @@ define(
                         else {
                             alert('The program didn\'t work!');
 
-                            services.failLevel(self.gameId, self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
+                            //Antony:  This is a failed attempt - Recording it - 10/22/2014
+                            services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
 
                                 var level = self.currentLevel();
 
@@ -270,6 +271,14 @@ define(
                             else {
                                 doContinue = false;
                                 alert('No ball here!');
+
+                                //Antony:  This is a failed attempt - Recording it - 10/22/2014
+                                services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
+
+                                    var level = self.currentLevel();
+
+
+                                });
                             }
                             scopes[0].index++;
                         }
