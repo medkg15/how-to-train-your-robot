@@ -47,4 +47,6 @@
 
     </div>
 
+    <?php include "condition-modal.php"; ?>
+
 </div>

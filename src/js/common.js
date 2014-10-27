@@ -5,6 +5,7 @@ requirejs.config({
         , "underscore": "../vendor/underscore/underscore-min"
         , "knockout": "../vendor/knockout/dist/knockout"
         , "jstree": "../vendor/jstree/dist/jstree"
+        , "jsurl": "../vendor/jsul/url.min"
 	}
 	, shim: {
 		"bootstrap": ['jquery']

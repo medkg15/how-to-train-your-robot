@@ -1,4 +1,4 @@
-define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove'], function(ko, jstree, $, _, arraymove){
+define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstrap'], function(ko, jstree, $, _, arraymove, bootstrap){
 
     ko.bindingHandlers.programTree = {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -61,35 +61,59 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove'], function
                 },
                 contextmenu: {
                     items: function(node, callback) {
-                        if (node.data.instruction_id !== 'repeat')
+
+                        if (node.data.instruction_id === 'repeat')
+                        {
+                            callback({
+                                count: {
+                                    label: "Repeat Count",
+                                    action: function(){
+
+                                        var count = NaN;
+                                        while(isNaN(count))
+                                        {
+                                            var val = prompt("How many repetitions?");
+                                            if(val === null)
+                                            {
+                                                break;
+                                            }
+                                            count = parseInt(val);
+                                        }
+
+                                        if(!isNaN(count))
+                                        {
+                                            node.data.count = count;
+                                            $element.jstree('rename_node', node, 'Repeat ' + count + ' times');
+                                            updateObservable();
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        else if (node.data.instruction_id === 'repeat-while')
+                        {
+                            callback({
+                                condition: {
+                                    label: "Repeat While ...",
+                                    action: function(){
+
+                                        var $modal = $('#condition-modal');
+                                        $modal.modal('show');
+                                        $modal.on('click', 'button', function(e){
+                                            var val = $modal.find('input[name=condition]:checked').val();
+                                            node.data.condition = val;
+                                            $element.jstree('rename_node', node, 'Repeat While ' + val);
+                                            updateObservable();
+                                            $modal.off('click', 'button');
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                        else
                         {
                             return false;
                         }
-                        callback({
-                            count: {
-                                label: "Repeat Count",
-                                action: function(){
-
-                                    var count = NaN;
-                                    while(isNaN(count))
-                                    {
-                                        var val = prompt("How many repetitions?");
-                                        if(val === null)
-                                        {
-                                            break;
-                                        }
-                                        count = parseInt(val);
-                                    }
-
-                                    if(!isNaN(count))
-                                    {
-                                        node.data.count = count;
-                                        $element.jstree('rename_node', node, 'Repeat ' + count + ' times');
-                                        updateObservable();
-                                    }
-                                }
-                            }
-                        });
                     }
                 }
             });

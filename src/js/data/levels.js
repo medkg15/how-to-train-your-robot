@@ -11,8 +11,9 @@ define([], function(){
             "helpText": "",
             "startPosition": {
                 "column": 5,
-                "row": 5,
+                "row": 5
             },
+            "jumpCode": 1,
 			"instructions": [
 				{
 					"id": "step-forward",
@@ -42,8 +43,9 @@ define([], function(){
             "defaultHeading": "up",
             "startPosition": {
                 "column": 4,
-                "row": 5,
+                "row": 5
             },
+            "jumpCode": 2,
 			"instructions": [
 				{
 					"id": "step-forward",
@@ -83,6 +85,7 @@ define([], function(){
                 "column": 2,
                 "row": 2
             },
+            "jumpCode": 3,
             "instructions": [
                 {
                     "id": "repeat",
@@ -126,6 +129,7 @@ define([], function(){
                 "column": 1,
                 "row": 2
             },
+            "jumpCode": 4,
             "instructions": [
                 {
                     "id": "repeat-while",
@@ -146,7 +150,7 @@ define([], function(){
                 {
                     "id": "pick-up-ball",
                     "quantity": 1
-                },
+                }
             ],
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],

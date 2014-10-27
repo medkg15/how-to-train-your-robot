@@ -32,6 +32,7 @@ define(
             self.gameId = ko.observable();
             self.levelStartDate = ko.observable();
             self.bodyClass = ko.observable('space');
+            self.jumpCode = ko.observable();
 
             self.startGame = function(){
                 services.startGame(function(response){
@@ -64,7 +65,18 @@ define(
                     || position.rowIndex !== currentPosition.row);
             };
 
+            self.levelJump = function() {
 
+                services.startGame(function(response){
+                    self.gameId(response.id);
+
+                    var level = _.find(levelViewModels, function(level){
+                        return level.jumpCode == self.jumpCode();
+                    });
+
+                    self.selectLevel(level);
+                });
+            };
 
             self.levels = levelViewModels;
             

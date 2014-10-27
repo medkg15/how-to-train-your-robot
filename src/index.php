@@ -19,6 +19,7 @@
       <ul class="nav navbar-nav">
           <li><a href="#" data-bind="click: function(){ changeView('about'); }">About</a></li>
           <li><a href="#" data-bind="click: function(){ changeView('high-scores'); }">High Scores</a></li>
+          <li><a href="#" data-bind="click: function(){ changeView('jump'); }">Level Jump</a></li>
       </ul>
     
       <ul class="nav navbar-nav navbar-right">
@@ -34,6 +35,7 @@
     <?php include "about.php"; ?>
     <?php include "high-scores.php"; ?>
     <?php include "robot-story.php"; ?>
+    <?php include "jump.php"; ?>
 	
 	<label>
 	<input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
