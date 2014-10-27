@@ -91,8 +91,8 @@ define(
                 self.levelStartDate(new Date());
                 self.program([]);
                 self.bodyClass(level.environment);
-                $('#story-modal').modal('show');
                 self.storyModal(level.intro);
+                $('#story-modal').modal('show');
             };
 
             self.returnHome = function () {
@@ -201,9 +201,11 @@ define(
                         if (win) {
 
                             var $storyModal = $('#story-modal');
-                            $storyModal.modal('show');
                             self.storyModal(self.currentLevel().exit);
+                            $storyModal.modal('show');
                             $storyModal.on('click', 'button', function(e){
+                                $storyModal.off('click', 'button');
+                                $('#story-modal').modal('hide');
                                 services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
 
                                     var level = self.currentLevel();
@@ -215,7 +217,6 @@ define(
                                         self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
                                     }
                                 });
-                                $storyModal.off('click', 'button');
                             });
                         }
                         else {
