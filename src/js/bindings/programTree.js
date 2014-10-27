@@ -24,6 +24,18 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                     data.node.text = 'Repeat 1 time';
                     data.node.data.count = 1;
                 }
+                if (data.node.text ==='Repeat While') {
+                    data.node.text = 'Repeat While ...';
+                    var $modal = $('#condition-modal');
+                    $modal.modal('show');
+                    $modal.on('click', 'button', function(e){
+                        var val = $modal.find('input[name=condition]:checked').val();
+                        data.node.data.condition = val;
+                        $element.jstree('rename_node', data.node, 'Repeat While ' + val);
+                        updateObservable();
+                        $modal.off('click', 'button');
+                    });
+                }
 
                 // overwrite the view model with the new tree structure.
                 updateObservable();

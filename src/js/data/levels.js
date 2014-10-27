@@ -39,7 +39,7 @@ define([], function(){
 			"id": "level-2",
 			"name": "And Turn!",
             "number": 2,
-            "environment": "space",
+            "environment": "wild-west",
             "defaultHeading": "up",
             "startPosition": {
                 "column": 4,
@@ -121,13 +121,13 @@ define([], function(){
         },
         {
             "id": "level-4",
-            "name": "Conditional loop - not finished.",
+            "name": "Keep on moving!",
             "number": 4,
-            "environment": "space",
+            "environment": "wild-west",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 1,
-                "row": 2
+                "row": 6
             },
             "jumpCode": 4,
             "instructions": [
@@ -154,13 +154,57 @@ define([], function(){
             ],
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
                 ['x','x','x','x','x','x','x','x','x','x','x','x',],
                 ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ','e','x',],
                 ['x','x','x','x','x','x','x','x','x','x','x','x',],
+            ]
+        },
+        {
+            "id": "level-5",
+            "name": "'Round the bend.",
+            "number": 5,
+            "environment": "space",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 1,
+                "row": 6
+            },
+            "jumpCode": 5,
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-ball",
+                    "quantity": 1
+                }
+            ],
+            "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
-                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
-                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
-                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ','x','x','x','x','x','x','x',],
+                [' ',' ',' ',' ',' ','x','e',' ',' ',' ',' ','x',],
+                [' ',' ',' ',' ',' ','x','x','x','x','x',' ','x',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' ','x',],
+                ['x','x','x','x','x','x','x','x','x','x',' ','x',],
+                ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',],
+                ['x','x','x','x','x','x','x','x','x','x','x','x',],
             ]
         }
 	];

@@ -12,7 +12,7 @@
                         <input type="radio" value="wall-not-front" name="condition"/> Wall Not In Front
                     </label>
                 </div>
-                <div class="radio">
+           <!--     <div class="radio">
                     <label>
                         <input type="radio" value="wall-not-right"  name="condition"/> Wall Not On Right
                     </label>
@@ -26,13 +26,13 @@
                     <label>
                         <input type="radio" value="wall-not-behind" name="condition"/> Wall Not Behind
                     </label>
-                </div>
+                </div>-->
                 <div class="radio">
                     <label>
                         <input type="radio" value="ball-not-front"  name="condition"/> Ball Not In Front
                     </label>
                 </div>
-                <div class="radio">
+                <!--<div class="radio">
                     <label>
                         <input type="radio" value="ball-not-right" name="condition"/> Ball Not On Right
                     </label>
@@ -46,7 +46,7 @@
                     <label>
                         <input type="radio" value="ball-not-behind" name="condition" /> Ball Not Behind
                     </label>
-                </div>
+                </div>-->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>

@@ -350,12 +350,33 @@ define(
                                 scopes[0].index++;
                             }
                         }
+                        else if (instruction.instruction_id === 'repeat-while') {
+                            if (typeof scopes[0].condition === 'undefined') {
+                                scopes[0].condition = instruction.condition;
+                            }
+
+                            // check if we've satisfied the condition
+
+                            var frontCellDefinition = self.currentLevel().map[nextCell.row][nextCell.column].definition;
+
+                            if((scopes[0].condition === 'wall-not-front' && frontCellDefinition !== 'x')
+                                || (scopes[0].condition === 'ball-not-front' && frontCellDefinition !== 'e'))
+                            {
+                                scopes[0].countRemaining--;
+                                scopes.unshift({instructions: instruction.body, index: 0});
+                            }
+                            else {
+                                // we're done, move to the next instruction.
+                                scopes[0].condition = undefined;
+                                scopes[0].index++;
+                            }
+                        }
                     }
                     
                     if (doContinue)
                     {
                         nextIteration = callback;
-                        setTimeout(callback, 1000);
+                        setTimeout(callback, 250);
                     }
                     else
                     {
