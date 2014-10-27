@@ -215,6 +215,7 @@ define(
                                         self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
                                     }
                                 });
+                                $storyModal.off('click', 'button');
                             });
                         }
                         else {
