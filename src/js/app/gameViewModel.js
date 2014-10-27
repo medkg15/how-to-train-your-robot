@@ -205,7 +205,6 @@ define(
                             $storyModal.modal('show');
                             $storyModal.on('click', 'button', function(e){
                                 $storyModal.off('click', 'button');
-                                $('#story-modal').modal('hide');
                                 services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
 
                                     var level = self.currentLevel();
