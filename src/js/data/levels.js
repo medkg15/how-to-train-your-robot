@@ -13,6 +13,8 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
@@ -45,6 +47,8 @@ define([], function(){
                 "column": 4,
                 "row": 5
             },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
             "jumpCode": 2,
 			"instructions": [
 				{
@@ -85,6 +89,8 @@ define([], function(){
                 "column": 2,
                 "row": 2
             },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
             "jumpCode": 3,
             "instructions": [
                 {
@@ -129,6 +135,8 @@ define([], function(){
                 "column": 1,
                 "row": 6
             },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
             "jumpCode": 4,
             "instructions": [
                 {
@@ -173,6 +181,8 @@ define([], function(){
                 "column": 1,
                 "row": 6
             },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
             "jumpCode": 5,
             "instructions": [
                 {

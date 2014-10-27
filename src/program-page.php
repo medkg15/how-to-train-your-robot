@@ -47,6 +47,7 @@
 
     </div>
 
-    <?php include "condition-modal.php"; ?>
+    <?php include "condition-modal.php";
+    include "story-modal.php"; ?>
 
 </div>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="condition-modal">
+<div class="modal fade" id="story-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,16 +7,7 @@
                 <h4 class="modal-title">Repeat While ...</h4>
             </div>
             <div class="modal-body">
-                <div class="radio">
-                    <label>
-                        <input type="radio" value="wall-not-front" name="condition"/> Wall Not In Front
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" value="ball-not-front"  name="condition"/> Ball Not In Front
-                    </label>
-                </div>
+                <div data-bind="html: storyModal"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>

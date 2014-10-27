@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap) {
 
         "use strict";
         
@@ -33,6 +33,7 @@ define(
             self.levelStartDate = ko.observable();
             self.bodyClass = ko.observable('space');
             self.jumpCode = ko.observable();
+            self.storyModal = ko.observable();
 
             self.startGame = function(){
                 services.startGame(function(response){
@@ -90,6 +91,8 @@ define(
                 self.levelStartDate(new Date());
                 self.program([]);
                 self.bodyClass(level.environment);
+                $('#story-modal').modal('show');
+                self.storyModal(level.intro);
             };
 
             self.returnHome = function () {
@@ -197,21 +200,22 @@ define(
                     {
                         if (win) {
 
-                            alert('Good job!  You got the ball!');
+                            var $storyModal = $('#story-modal');
+                            $storyModal.modal('show');
+                            self.storyModal(self.currentLevel().exit);
+                            $storyModal.on('click', 'button', function(e){
+                                services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
 
-                            services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
+                                    var level = self.currentLevel();
 
-                                var level = self.currentLevel();
-
-                                if (levelViewModels[levelViewModels.length-1] === level) {
-                                    alert('Game over! You win.');
-                                }
-                                else {
-                                    self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
-                                }
-
+                                    if (levelViewModels[levelViewModels.length-1] === level) {
+                                        alert('Game over! You win.');
+                                    }
+                                    else {
+                                        self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
+                                    }
+                                });
                             });
-
                         }
                         else {
                             alert('The program didn\'t work!');
