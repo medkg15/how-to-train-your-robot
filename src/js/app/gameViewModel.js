@@ -37,6 +37,7 @@ define(
             self.levelAttempts = ko.observable(0);
             self.buildingFunction = ko.observable(false);
             self.instructionSet = ko.observableArray();
+            self.customFunctionCount = 0;
 
             self.startGame = function(){
                 services.startGame(function(response){
@@ -99,6 +100,7 @@ define(
                 $('#story-modal').modal('show');
                 self.levelAttempts(0);
                 self.instructionSet(level.instructions);
+                self.customFunctionCount = 0;
             };
 
             self.returnHome = function () {
@@ -393,8 +395,17 @@ define(
                                 scopes[0].index++;
                             }
                         }
-                        else if (instruction.instruction_id === 'custom-function') {
-                            scopes.unshift({instructions: instruction.body, index: 0});
+                        else if (instruction.instruction_id.indexOf('custom-function-') === 0) {
+
+                            if (typeof scopes[0].runningFunction === 'undefined') {
+                                scopes[0].runningFunction = true;
+                                scopes.unshift({instructions: instruction.definition.body, index: 0});
+                            }
+                            else
+                            {
+                                scopes[0].index++;
+                                scopes[0].runningFunction = undefined;
+                            }
                         }
                     }
                     
@@ -428,6 +439,9 @@ define(
             var instructionConversion = function(element){
                 var data = element.data;
                 data.body = _.map(element.children, instructionConversion);
+                data.definition = _.find(self.instructions, function(def){
+                    return def.id === element.data.instruction_id;
+                });
                 return data;
             };
 
@@ -458,15 +472,22 @@ define(
             self.functionName = ko.observable();
 
             self.saveFunction = function(){
+                self.customFunctionCount++;
+
+                var definition = {
+                    "id": "custom-function-" + self.customFunctionCount,
+                    "name": self.functionName(),
+                    "description": "User defined custom function",
+                    "type": "baseInstruction",
+                    "points": 50,
+                    "body": self.functionInstructions()
+                };
+
+                self.instructions.push(definition);
+
                 self.instructionSet.push({
-                    id: "custom-function",
-                    definition: _.find(instructions, function(inst){
-                        return inst.id === 'custom-function';
-                    }),
-                    name: self.functionName(),
-                    description: 'Custom Function',
-                    quantity: "unlimited",
-                    body: self.functionInstructions()
+                    id: "custom-function-" + self.customFunctionCount,
+                    quantity: "unlimited"
                 });
                 self.buildingFunction(false);
                 self.functionTree.removeAll();
