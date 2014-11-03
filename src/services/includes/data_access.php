@@ -131,5 +131,27 @@ values
 
         $statement->close();
     }
+
+    //This function gets the high scores (Antony)
+    public function get_highscores()
+    {
+        try
+        {
+            $query_input = 'SELECT * FROM capstone.highscore_listing';
+            $result = $this->mysqli->query($query_input);//mysql_query($query) or die ("no query");
+
+            $result_array = array();
+            while ($row = $result->fetch_assoc()) {
+                $result_array[] = $row;
+            }
+
+            return $result_array;
+        }
+        catch (Exception $e)
+        {
+            echo 'Caught an exception: ', $e->getMessage(), "\n";
+        }
+
+    }
 }
 
