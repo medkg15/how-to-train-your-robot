@@ -437,9 +437,6 @@ define(
                 return _.map(self.program(), instructionConversion);
             });
 
-            self.hasNoProgram = ko.computed(function(){
-                return self.program().length === 0;
-            });
             
             self.showDebug = ko.observable(false);
             self.debug = ko.computed(function () {
@@ -479,6 +476,14 @@ define(
             // these are the simplified program elements
             self.functionInstructions = ko.computed(function(){
                 return _.map(self.functionTree(), instructionConversion);
+            });
+
+            self.hasNoProgram = ko.computed(function(){
+                return self.program().length === 0;
+            });
+
+            self.emptyFunction = ko.computed(function(){
+                return self.functionTree().length === 0;
             });
         };
     }

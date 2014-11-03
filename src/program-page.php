@@ -58,19 +58,18 @@
         </div>
 
     </div>
-    <div class="well">
+    <div class="well" id="function" data-bind="css: { 'empty': emptyFunction }">
 
         <button data-bind="click: createFunction, visible: !buildingFunction()" class="btn btn-success">Create Function</button>
 
         <div data-bind="if: buildingFunction">
-            <p>Drag your function's instructions here!</p>
             <div class="form-group">
                 <label>Name:</label>
-                <input type="text" data-bind="value:functionName"/>
+                <input type="text" data-bind="value:functionName" class="form-control"/>
             </div>
             <div data-bind="programTree: functionTree" class="jstree-bootstrap">
             </div>
-            <button data-bind="click: saveFunction">Save</button>
+            <button data-bind="click: saveFunction" class="btn btn-primary">Save</button>
         </div>
 
 

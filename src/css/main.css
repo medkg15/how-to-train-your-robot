@@ -35,6 +35,19 @@
   background-image: linear-gradient(45deg, rgba(255, 0, 0, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 0, 0, 0.15) 50%, rgba(255, 0, 0, 0.15) 75%, transparent 75%, transparent);
   background-size: 40px 40px;
 }
+#function.empty .jstree {
+  border: 1px dashed #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-image: linear-gradient(45deg, rgba(200, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(200, 255, 255, 0.15) 50%, rgba(200, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+#function.empty .jstree:before {
+  content: "Drag your function's instructions here!";
+}
+#function .jstree {
+  min-height: 100px;
+  margin: 20px 0;
+}
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
