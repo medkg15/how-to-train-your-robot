@@ -26,17 +26,17 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                 }
                 if (data.node.text ==='Repeat While') {
                     data.node.text = 'Repeat While ...';
-                    var $modal = $('#condition-modal');
-                    $modal.modal('show');
-                    $modal.on('click', 'button', function(e){
-                        var val = $modal.find('input[name=condition]:checked').val();
-                        data.node.data.condition = val;
-                        $element.jstree('rename_node', data.node, 'Repeat While ' + val);
-                        updateObservable();
-                        $modal.off('click', 'button');
-                    });
                 }
-
+                var $modal = $('#condition-modal');
+                $modal.modal('show');
+                $modal.on('click', 'button', function(e){
+                    var val = $modal.find('input[name=condition]:checked').val();
+                    // because we're in a callback, we need to go get the current node object instead of the one we had from the event.
+                    $element.jstree(true).get_node(data.node.id).data.condition = val;
+                    $element.jstree('rename_node', data.node, 'Repeat While ' + val);
+                    updateObservable();
+                    $modal.off('click', 'button');
+                });
                 // overwrite the view model with the new tree structure.
                 updateObservable();
 
