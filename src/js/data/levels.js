@@ -13,8 +13,8 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>This is the story intro text!</p>",
-            "exit": "<p>This is the story exit text!</p>",
+            "intro": "<p>In this level you will be introduced to the COMPUTER INSTRUCTIONS concept. Drag the instructions from the instructions box at the bottom to the programming List box on the right side to help Robo find the 1st part of his spaceship.</p>",
+            "exit": "<p>Computer instructions allowed you to give Robo a set of instructions to perform and find the first part of his spaceship.</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
