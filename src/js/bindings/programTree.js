@@ -40,11 +40,10 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                 // overwrite the view model with the new tree structure.
                 updateObservable();
 
-            }).on('move_node.jstree', function(e, data){
+            }).on('move_node.jstree delete_node.jstree', function(e, data){
 
                 // overwrite the view model with the new tree structure.
                 updateObservable();
-
             }).jstree({
                 plugins : [ "wholerow", "dnd", "types", "contextmenu" ],
                 core: {

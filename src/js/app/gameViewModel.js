@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/trashTree'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, trashTree) {
 
         "use strict";
         
@@ -34,11 +34,13 @@ define(
             self.bodyClass = ko.observable('space');
             self.jumpCode = ko.observable();
             self.storyModal = ko.observable();
+            self.levelAttempts = ko.observable(0);
 
             self.startGame = function(){
                 services.startGame(function(response){
                     self.gameId(response.id);
                     self.changeView('robot-story');
+                    self.score(0);
                 });
             };
 
@@ -93,6 +95,7 @@ define(
                 self.bodyClass(level.environment);
                 self.storyModal(level.intro);
                 $('#story-modal').modal('show');
+                self.levelAttempts(0);
             };
 
             self.returnHome = function () {
@@ -145,7 +148,8 @@ define(
                         type: instruction.definition.type,
                         instructionId: instruction.id,
                         data: {
-                            instruction_id: instruction.id
+                            instruction_id: instruction.id,
+
                         }
                     }
                 });
@@ -161,6 +165,7 @@ define(
             };
             
             self.execute = function (instruction) {
+                self.levelAttempts(self.levelAttempts() + 1);
                 self.isExecuting(true);
                 // reset everything
                 self.currentPosition(self.currentLevel().startPosition);
@@ -200,6 +205,10 @@ define(
                     {
                         if (win) {
 
+                            var scoreCalculator = new ScoreCalculator();
+                            var score = scoreCalculator.calculate(program, self.levelAttempts());
+                            self.score(self.score() + score);
+
                             var $storyModal = $('#story-modal');
                             self.storyModal(self.currentLevel().exit);
                             $storyModal.modal('show');
@@ -213,6 +222,7 @@ define(
                                         alert('Game over! You win.');
                                     }
                                     else {
+
                                         self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
                                     }
                                 });
@@ -220,6 +230,9 @@ define(
                         }
                         else {
                             alert('The program didn\'t work!');
+
+                            self.currentPosition(self.currentLevel().startPosition);
+                            self.currentHeading(self.currentLevel().defaultHeading);
 
                             //Antony:  This is a failed attempt - Recording it - 10/22/2014
                             services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
@@ -428,6 +441,10 @@ define(
                 delete copy.debug;
                 return JSON.stringify(copy, null, 2);
             });
+
+            self.removeInstruction = function(instruction){
+                self.program.remove(instruction);
+            };
         };
     }
 );
