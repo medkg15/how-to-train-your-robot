@@ -35,6 +35,8 @@ define(
             self.jumpCode = ko.observable();
             self.storyModal = ko.observable();
             self.levelAttempts = ko.observable(0);
+            self.buildingFunction = ko.observable(false);
+            self.instructionSet = ko.observableArray();
 
             self.startGame = function(){
                 services.startGame(function(response){
@@ -96,6 +98,7 @@ define(
                 self.storyModal(level.intro);
                 $('#story-modal').modal('show');
                 self.levelAttempts(0);
+                self.instructionSet(level.instructions);
             };
 
             self.returnHome = function () {
@@ -106,6 +109,7 @@ define(
                 self.currentHeading(null);
             };
 
+
             self.instructionInventory = ko.computed(function () {
 
                 var level = self.currentLevel();
@@ -114,7 +118,7 @@ define(
                     return [];
                 }
 
-                return _.map(level.instructions, function (instruction) {
+                return _.map(self.instructionSet(), function (instruction) {
 
                     var definition = _.find(self.instructions, function (def) {
                         return def.id === instruction.id;
@@ -248,7 +252,7 @@ define(
                     
                     var instruction = scopes[0].instructions[scopes[0].index];
 
-                    if(!instruction)
+                    if (!instruction)
                     {
                         doContinue = false;
                     }
@@ -389,6 +393,9 @@ define(
                                 scopes[0].index++;
                             }
                         }
+                        else if (instruction.instruction_id === 'custom-function') {
+                            scopes.unshift({instructions: instruction.body, index: 0});
+                        }
                     }
                     
                     if (doContinue)
@@ -418,16 +425,16 @@ define(
 
             self.program = ko.observableArray();
 
+            var instructionConversion = function(element){
+                var data = element.data;
+                data.body = _.map(element.children, instructionConversion);
+                return data;
+            };
+
             // these are the simplified program elements
             self.programInstructions = ko.computed(function(){
 
-                var conversion = function(element){
-                    var data = element.data;
-                    data.body = _.map(element.children, conversion);
-                    return data;
-                };
-
-                return _.map(self.program(), conversion);
+                return _.map(self.program(), instructionConversion);
             });
 
             self.hasNoProgram = ko.computed(function(){
@@ -445,6 +452,34 @@ define(
             self.removeInstruction = function(instruction){
                 self.program.remove(instruction);
             };
+
+            self.createFunction = function(){
+                self.buildingFunction(true);
+            };
+
+            self.functionTree = ko.observableArray();
+            self.functionName = ko.observable();
+
+            self.saveFunction = function(){
+                self.instructionSet.push({
+                    id: "custom-function",
+                    definition: _.find(instructions, function(inst){
+                        return inst.id === 'custom-function';
+                    }),
+                    name: self.functionName(),
+                    description: 'Custom Function',
+                    quantity: "unlimited",
+                    body: self.functionInstructions()
+                });
+                self.buildingFunction(false);
+                self.functionTree.removeAll();
+                self.functionName(null);
+            };
+
+            // these are the simplified program elements
+            self.functionInstructions = ko.computed(function(){
+                return _.map(self.functionTree(), instructionConversion);
+            });
         };
     }
 );

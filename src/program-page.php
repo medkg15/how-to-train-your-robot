@@ -57,6 +57,22 @@
         <div class="jstree-bootstrap" data-bind="inventoryTree: treeAvailableInstructions">
         </div>
 
+    </div>
+    <div class="well">
+
+        <button data-bind="click: createFunction, visible: !buildingFunction()" class="btn btn-success">Create Function</button>
+
+        <div data-bind="if: buildingFunction">
+            <p>Drag your function's instructions here!</p>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" data-bind="value:functionName"/>
+            </div>
+            <div data-bind="programTree: functionTree" class="jstree-bootstrap">
+            </div>
+            <button data-bind="click: saveFunction">Save</button>
+        </div>
+
 
     </div>
 

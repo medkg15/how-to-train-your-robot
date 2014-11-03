@@ -42,6 +42,13 @@ define([], function(){
             "description": "Repeat one or more instructions until the condition becomes false.",
             "type": "parameterizedContainer",
             "points": 100
+        },
+        {
+            "id": "custom-function",
+            "name": "Custom Function",
+            "description": "User defined custom function prototype.",
+            "type": "baseInstruction",
+            "points": 50
         }
 	];
 
