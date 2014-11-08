@@ -47,16 +47,114 @@ class DataAccess
      */
     public function create_level_attempt($session_level_id, $program, $start, $end)
     {
+        //encoding the program
+        $program_encoded = json_encode($program);
+
+
+
         DB::insert('level_attempt', array(
             'level_id' => $session_level_id,
-            'program' => $program,
+            'program' => $program_encoded,
             'number' => 1,
             'start' => $start,
             'end' => $end
         ));
 
+        $attempt_id = DB::insertId();
+        create_instructions($program,$attempt_id);
+
         return DB::insertId();
     }
+
+
+    /**
+     * This function saves all of the instructions as well as the child instructions for a given instruction
+     *
+     * @param $program - The json object that has the entire instruction set that the user used in a level
+     * @param $attempt_id - number The level attempt identifier.
+     */
+    private function create_instructions($program, $attempt_id)
+    {
+        foreach ($program as $obj)
+        {
+            printf($obj->instruction_id);
+            if (strpos($obj->instruction_id, 'custom-function'))
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->id,
+                        'attempt_id' => $attempt_id,
+                        'function_name' => $obj->name
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->name,
+                            'attempt_id' => $attempt_id,
+                            'function_name' => $obj->name,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else if (strpos($obj->instruction_id, 'repeat'))
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->id,
+                        'attempt_id' => $attempt_id
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->instruction_id,
+                            'attempt_id' => $attempt_id,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else if (strpos($obj->instruction_id, 'repeat-while'))
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->instruction_id,
+                        'attempt_id' => $attempt_id,
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->instruction_id,
+                            'attempt_id' => $attempt_id,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->name,
+                        'attempt_id' => $attempt_id
+                    )
+                );
+            }
+        }
+
+    }
+
 
     /**
      * Record that a user has successfully completed a level with the given attempt.
