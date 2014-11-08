@@ -73,7 +73,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                 contextmenu: {
                     items: function(node, callback) {
 
-                        if (node.data.instruction_id === 'repeat')
+                        if (node.data.definition.id === 'repeat')
                         {
                             callback({
                                 count: {
@@ -101,7 +101,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                                 }
                             });
                         }
-                        else if (node.data.instruction_id === 'repeat-while')
+                        else if (node.data.definition.id === 'repeat-while')
                         {
                             callback({
                                 condition: {

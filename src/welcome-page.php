@@ -1,4 +1,4 @@
-<div data-bind="if: currentView() === 'welcome'">
+<div data-bind="if: currentView() === 'home'">
 
 
     <div class="row">

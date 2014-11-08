@@ -10,19 +10,17 @@ require_once('includes/data_access.php');
 
 $json = json_decode(file_get_contents('php://input'));
 
-$session_id = $json->session_id;
-$level_id = $json->level_id;
+$level_session_id = $json->level_id;
 $program = json_encode($json->program); // convert the program itself back into a json string for storage.
-$start = $json->start;
-$end = $json->end;
+$attempt_start = $json->attempt_start;
+$attempt_end = $json->attempt_end;
+$score = $json->score;
 
 $data_access = new DataAccess();
 
-$session_level_id = $data_access->create_level($session_id, $level_id, $start, $end);
+$attempt_id = $data_access->create_level_attempt($session_level_id, $program, $attempt_start, $attempt_end);
 
-$attempt_id = $data_access->create_level_attempt($session_level_id, $program, $start, $end);
-
-$data_access->set_attempt($attempt_id, $session_level_id, true);
+$data_access->complete_level($attempt_id, $session_level_id, $score);
 
 header('Content-Type: application/json');
 echo json_encode(array(

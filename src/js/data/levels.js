@@ -1,11 +1,11 @@
-define([], function(){
+define(["app/direction"], function(direction){
 	return [
 		{
 			"id": "level-1",
 			"name": "Step Forward!",
             "number": 1,
             "environment": "space",
-            "defaultHeading": "up",
+            "defaultHeading": direction.up,
             "introText": "",
             "exitText": "",
             "helpText": "",
@@ -13,9 +13,10 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
+            "storageConfiguration": { rightHand: null, leftHand: null },
             "intro": "<p>This is the story intro text!</p>",
             "exit": "<p>This is the story exit text!</p>",
-            "jumpCode": 1,
+            "jumpCode": '1',
 			"instructions": [
 				{
 					"id": "step-forward",
@@ -42,14 +43,15 @@ define([], function(){
 			"name": "And Turn!",
             "number": 2,
             "environment": "wild-west",
-            "defaultHeading": "up",
+            "defaultHeading": direction.up,
             "startPosition": {
                 "column": 4,
                 "row": 5
             },
+            "storageConfiguration": { rightHand: null, leftHand: null },
             "intro": "<p>This is the story intro text!</p>",
             "exit": "<p>This is the story exit text!</p>",
-            "jumpCode": 2,
+            "jumpCode": '2',
 			"instructions": [
 				{
 					"id": "step-forward",
@@ -84,14 +86,15 @@ define([], function(){
             "name": "Over and over again.",
             "number": 3,
             "environment": "space",
-            "defaultHeading": "right",
+            "defaultHeading": direction.right,
             "startPosition": {
                 "column": 2,
                 "row": 2
             },
+            "storageConfiguration": { rightHand: null, leftHand: null },
             "intro": "<p>This is the story intro text!</p>",
             "exit": "<p>This is the story exit text!</p>",
-            "jumpCode": 3,
+            "jumpCode": '3',
             "instructions": [
                 {
                     "id": "repeat",
@@ -130,14 +133,15 @@ define([], function(){
             "name": "Keep on moving!",
             "number": 4,
             "environment": "wild-west",
-            "defaultHeading": "right",
+            "defaultHeading": direction.right,
             "startPosition": {
                 "column": 1,
                 "row": 6
             },
+            "storageConfiguration": { rightHand: null, leftHand: null },
             "intro": "<p>This is the story intro text!</p>",
             "exit": "<p>This is the story exit text!</p>",
-            "jumpCode": 4,
+            "jumpCode": '4',
             "instructions": [
                 {
                     "id": "repeat-while",
@@ -176,14 +180,15 @@ define([], function(){
             "name": "'Round the bend.",
             "number": 5,
             "environment": "space",
-            "defaultHeading": "right",
+            "defaultHeading": direction.right,
             "startPosition": {
                 "column": 1,
                 "row": 6
             },
+            "storageConfiguration": { rightHand: null, leftHand: null },
             "intro": "<p>This is the story intro text!</p>",
             "exit": "<p>This is the story exit text!</p>",
-            "jumpCode": 5,
+            "jumpCode": '5',
             "instructions": [
                 {
                     "id": "repeat-while",

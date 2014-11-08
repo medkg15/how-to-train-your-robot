@@ -8,6 +8,11 @@ define(['knockout', 'jstree', 'jquery', 'underscore'], function(ko, jstree, $, _
             var valueUnwrapped = ko.unwrap(value);
 
             $(element)
+                .on('move_node.jstree', function(e, data){
+
+                    data.new_instance.delete_node(data.node);
+                    data.old_instance.delete_node(data.original);
+                })
                 .jstree({
                 plugins : [ "dnd", "types" ],
                 core: {
@@ -16,7 +21,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore'], function(ko, jstree, $, _
                         'responsive': true
                     },
                     check_callback: function (operation, node, node_parent, node_position, more) {
-                        return false; // update this to tell us which operations are allowed and which are not.
+                        return false;//return operation = "move_node" && node.data.is_program;
                     }
                 },
                 dnd: {

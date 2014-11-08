@@ -1,4 +1,4 @@
-<div data-bind="if: currentView() === 'robot-story'">
+<div data-bind="if: currentView() === 'game-intro'">
     <div class="well">
         <div class="row">
             <div class="col-md-8">
@@ -24,6 +24,6 @@
         </div>
 
 
-        <button data-bind="click: startFirstLevel" class="btn btn-lg btn-primary btn-block">Start Game</button>
+        <button data-bind="click: startGame" class="btn btn-lg btn-primary btn-block">Start Game</button>
     </div>
 </div>
