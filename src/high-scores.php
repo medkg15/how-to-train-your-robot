@@ -6,7 +6,7 @@
         <thead>
         <tr>
             <th></th>
-            <th>Level ID</th>
+            <th>Level</th>
             <th>Score</th>
             <th>Date</th>
         </tr>
