@@ -81,27 +81,27 @@ class DataAccess
             if (strpos($obj->instruction_id, 'custom-function') !== false)
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->id,
+                        'instruction_name' => $obj->instruction_id,
                         'attempt_id' => $attempt_id,
-                        'function_name' => $obj->name
+                        'function_name' => $obj->definition->name
                     )
                 );
 
                 $parent_id = DB::insertId();
 
                 //Adding children instructions with the parent id
-                foreach ($obj->body as $ins)
+                foreach ($obj->definition->body as $ins)
                 {
                     DB::insert('instructions', array(
-                            'instruction_name' => $ins->name,
+                            'instruction_name' => $ins->definition->name,
                             'attempt_id' => $attempt_id,
-                            'function_name' => $obj->name,
+                            'function_name' => $obj->definition->name,
                             'parent_id' => $parent_id
                         )
                     );
                 }
             }
-            else if (strpos($obj->instruction_id, 'repeat') !== false)
+            else if ($obj->instruction_id == 'repeat')
             {
                 DB::insert('instructions', array(
                         'instruction_name' => $obj->instruction_id,
@@ -122,11 +122,12 @@ class DataAccess
                     );
                 }
             }
-            else if (strpos($obj->instruction_id, 'repeat-while') !== false)
+            else if ($obj->instruction_id == 'repeat-while')
             {
                 DB::insert('instructions', array(
                         'instruction_name' => $obj->instruction_id,
                         'attempt_id' => $attempt_id,
+                        'condition_name' => $obj->condition
                     )
                 );
 

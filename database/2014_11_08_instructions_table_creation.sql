@@ -5,6 +5,7 @@ CREATE TABLE instructions
     attempt_id int(11) NOT NULL,
     parent_id int(11),
     function_name varchar(255),
+    condition_name varchar(255),
     PRIMARY KEY (`id`),
     KEY `attempt_id` (`attempt_id`),
 	CONSTRAINT `instruction_fk_attempt_id` FOREIGN KEY (`attempt_id`) REFERENCES `level_attempt` (`id`), 
