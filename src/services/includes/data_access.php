@@ -61,7 +61,7 @@ class DataAccess
         ));
 
         $attempt_id = DB::insertId();
-        create_instructions($program,$attempt_id);
+        $this->create_instructions($program,$attempt_id);
 
         return DB::insertId();
     }
@@ -78,7 +78,7 @@ class DataAccess
         foreach ($program as $obj)
         {
             printf($obj->instruction_id);
-            if (strpos($obj->instruction_id, 'custom-function'))
+            if (strpos($obj->instruction_id, 'custom-function') !== false)
             {
                 DB::insert('instructions', array(
                         'instruction_name' => $obj->id,
@@ -101,10 +101,10 @@ class DataAccess
                     );
                 }
             }
-            else if (strpos($obj->instruction_id, 'repeat'))
+            else if (strpos($obj->instruction_id, 'repeat') !== false)
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->id,
+                        'instruction_name' => $obj->instruction_id,
                         'attempt_id' => $attempt_id
                     )
                 );
@@ -122,7 +122,7 @@ class DataAccess
                     );
                 }
             }
-            else if (strpos($obj->instruction_id, 'repeat-while'))
+            else if (strpos($obj->instruction_id, 'repeat-while') !== false)
             {
                 DB::insert('instructions', array(
                         'instruction_name' => $obj->instruction_id,
@@ -146,7 +146,7 @@ class DataAccess
             else
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->name,
+                        'instruction_name' => $obj->instruction_id,
                         'attempt_id' => $attempt_id
                     )
                 );
