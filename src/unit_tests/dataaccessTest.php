@@ -24,7 +24,7 @@ class dataaccessTest extends PHPUnit_Framework_TestCase {
 
         $data_access = new DataAccess();
 
-        $attempt_id = $data_access->create_level_attempt(1, $program, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
+        $attempt_id = $data_access->create_level_attempt(3, $program, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
         $this->assertNotNull($attempt_id);
     }
 
