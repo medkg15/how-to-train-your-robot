@@ -32,6 +32,16 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
                         return node.data && node.data.elementID ? true : false; // why the heck is jstree checking for a boolean type instead of fasley values?
                     }
                 },
+                types: {
+                    baseInstruction: {
+                        valid_children: [],
+                        max_children: 0
+                    },
+                    parameterizedContainer: {
+                        valid_children: [ 'baseInstruction' ],
+                        max_children: -1
+                    }
+                },
                 dnd: {
                     is_draggable: function(nodes){
                         return _.every(nodes, function(node){
