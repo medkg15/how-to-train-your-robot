@@ -24,7 +24,7 @@
                 <div id="program" data-bind="css: { 'empty': hasNoProgram }">
                     <h2>Your Program:</h2>
                     <button
-                        data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0"
+                        data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0 && !canAdvance()"
                         class="btn btn-danger">Clear Program
                     </button>
 
@@ -34,26 +34,20 @@
                     </div>
 
                     <button class="btn btn-success"
-                            data-bind="click: execute, disable: isExecuting, enable: programInstructions().length > 0">
+                            data-bind="click: execute, disable: isExecuting() || canAdvance(), enable: programInstructions().length > 0">
                         Run Program
                     </button>
-                    <button class="btn btn-success" data-bind="click: executeOnce, enable: programInstructions().length > 0">Run One Instruction</button>
+                    <button class="btn btn-success" data-bind="click: executeOnce, enable: programInstructions().length > 0, disable: canAdvance() || hasError()">Run One Instruction</button>
                     <button
                         data-bind="click: stop, visible: isExecuting"
                         class="btn btn-danger">Stop
                     </button>
-                    <button data-bind="click: pause, visible: isExecuting, text: isPaused() ? 'Unpause' : 'Pause'"
+                    <button data-bind="click: pause, visible: isExecuting() && !hasError(), text: isPaused() ? 'Unpause' : 'Pause'"
                             class="btn btn-info">Pause
                     </button>
 
                     <div data-bind="if: levelAttempts">
                         Attempt #<span data-bind="text: levelAttempts"></span>
-                    </div>
-                </div>
-                <div id="trash">
-                    <h3>Trash:</h3>
-
-                    <div data-bind="trashTree: removeInstruction" class="jstree-bootstrap">
                     </div>
                 </div>
             </div>

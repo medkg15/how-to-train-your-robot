@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/trashTree', 'bindings/personaDialog'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, trashTree, personaDialog) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog) {
 
         "use strict";
         
@@ -42,6 +42,7 @@ define(
             self.levelSessionID = ko.observable();
             self.usedHelp = ko.observable(false);
             self.usedDebugger = ko.observable(false);
+            self.hasError = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -121,6 +122,7 @@ define(
                     self.canAdvance(false);
                     self.usedHelp(false);
                     self.usedDebugger(false);
+                    self.hasError(false);
                 });
             };
 
@@ -241,13 +243,34 @@ define(
                 nextIteration = undefined;
                 self.isPaused(false);
                 self.isExecuting(false);
+                self.hasError(false);
+
+
+                $('.current-instruction').popover('destroy').removeClass('current-instruction');
             };
 
-            var onAttemptFailed = function(message, program){
+            var onAttemptFailed = function(message, program, instruction){
+
+                self.hasError(true);
+
+                if(instruction)
+                {
+                    var element = $('#' + instruction.elementID);
+
+                    element.popover({
+                        content: message,
+                        html: true,
+                        placement: 'left',
+                        title: 'Program Error!',
+                        trigger: 'manual focus'
+                    }).popover('show');
+                }
+                else
+                {
+                    alert(message);
+                }
 
                 services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
-
-                    alert(message);
 
                     self.attemptStartTime(new Date());
 
@@ -257,13 +280,6 @@ define(
                     {
                         self.personaText(self.currentLevel().help);
                     }
-
-                    self.currentPosition(self.currentLevel().startPosition);
-                    self.currentHeading(self.currentLevel().defaultHeading);
-
-                    nextIteration = undefined;
-                    self.isPaused(false);
-                    self.isExecuting(false);
                 });
 
             };
@@ -296,6 +312,8 @@ define(
                     {
                         return;
                     }
+
+                    $('.current-instruction').removeClass('current-instruction');
 
                     // if we're done with this scope, move up to the next one.
                     // keep moving up until we're at the end of the root program scope.
@@ -348,6 +366,8 @@ define(
                     }
                     else {
 
+                        $('#' + instruction.elementID).addClass('current-instruction');
+
                         var nextCell;
 
                         switch (self.currentHeading()) {
@@ -384,7 +404,7 @@ define(
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program);
+                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
                             }
                             scopes[0].index++;
                         }
@@ -395,7 +415,7 @@ define(
                             else {
                                 doContinue = false;
 
-                                onAttemptFailed('No ball to pick up!', program);
+                                onAttemptFailed('No ball to pick up!', program, instruction);
                             }
                             scopes[0].index++;
                         }
@@ -433,7 +453,7 @@ define(
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program);
+                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
                             }
                             scopes[0].index++;
                         }
@@ -565,7 +585,9 @@ define(
                     }
                     else
                     {
-                        self.isExecuting(false);
+                        if(!self.hasError()) {
+                            self.isExecuting(false);
+                        }
                     }
                 };
                 
@@ -606,6 +628,7 @@ define(
                 data.definition = _.find(self.instructions, function(def){
                     return def.id === element.data.instruction_id;
                 });
+                data.elementID = element.li_attr.id;
                 return data;
             };
 

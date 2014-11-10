@@ -19,7 +19,6 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
                         trigger: 'manual focus'
                     }).popover('show').on('hide.bs.popover', function(){
                         data.instance.deselect_node(data.node);
-                        console.log(data);
                     });
                 })
                 .jstree({
@@ -30,7 +29,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
                         'responsive': true
                     },
                     check_callback: function (operation, node, node_parent, node_position, more) {
-                        return false; // update this to tell us which operations are allowed and which are not.
+                        return node.data.elementID;
                     }
                 },
                 dnd: {

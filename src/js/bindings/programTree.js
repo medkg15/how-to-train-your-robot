@@ -12,9 +12,11 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
 
             var updateObservable = function(){ valueAccessor()($element.jstree(true).get_json()); };
 
-            $element.on('copy_node.jstree', function(e, data){
+            $element.on('select_node.jstree', function(e, data){
+                data.instance.deselect_node(data.node);
+            })
+            .on('copy_node.jstree', function(e, data){
 
-                console.log(data);
                 // data object is not persisted when copying between trees.  copy it explictly.
                 data.node.text = data.original.data.definition.name;
                 data.node.data = data.original.data;
