@@ -17,7 +17,10 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
                         placement: 'top',
                         title: definition.name,
                         trigger: 'manual focus'
-                    }).popover('show');
+                    }).popover('show').on('hide.bs.popover', function(){
+                        data.instance.deselect_node(data.node);
+                        console.log(data);
+                    });
                 })
                 .jstree({
                 plugins : [ "dnd", "types" ],
