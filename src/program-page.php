@@ -33,6 +33,7 @@
                             data-bind="click: execute, disable: isExecuting, enable: programInstructions().length > 0">
                         Go
                     </button>
+                    <button class="btn btn-success" data-bind="click: executeOnce">Step</button>
                     <button
                         data-bind="click: clearProgram, disable: isExecuting, enable: programInstructions().length > 0"
                         class="btn btn-danger">Clear

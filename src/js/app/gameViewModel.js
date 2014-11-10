@@ -174,8 +174,7 @@ define(
                         type: instruction.definition.type,
                         instructionId: instruction.id,
                         data: {
-                            instruction_id: instruction.id,
-
+                            instruction_id: instruction.id
                         }
                     }
                 });
@@ -207,6 +206,9 @@ define(
 
                     self.currentPosition(self.currentLevel().startPosition);
                     self.currentHeading(self.currentLevel().defaultHeading);
+
+                    nextIteration = undefined;
+                    self.isPaused(false);
                 });
 
             };
@@ -441,6 +443,20 @@ define(
 
             self.isExecuting = ko.observable(false);
             self.isPaused = ko.observable(false);
+
+            self.executeOnce = function(){
+                if(nextIteration)
+                {
+                    self.isPaused(false);
+                    nextIteration();
+                    self.isPaused(true);
+                }
+                else
+                {
+                    self.execute();
+                    self.isPaused(true);
+                }
+            };
 
             self.pause = function(){
                 self.isPaused(!self.isPaused());
