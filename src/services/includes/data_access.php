@@ -1,157 +1,101 @@
 <?php
 
-require_once('password.php');
+require_once(__DIR__.'/config.php');
 
 class DataAccess
 {
-    private $mysqli;
-
-    //This is the function construct and it initializes the connection to the database
-    public function __construct()
+    /**
+     * Record a new game beginning in the database.
+     *
+     * @return number The game session identifier.
+     */
+    public function begin_game()
     {
-        //Production database (Project database)
-        $this->mysqli = new mysqli("ec2-54-68-234-52.us-west-2.compute.amazonaws.com", "capstone", PASSWORD, "capstone");
+        DB::insert('game_session', array(
+            'start' => date('Y-m-d H:i:s')
+        ));
 
-        //Local test database (Local machine)
-        //$this->mysqli = new mysqli("localhost", "root", PASSWORD, "capstone");
-
-        if ($this->mysqli->connect_errno) {
-            die(sprintf("Failed to connect to MySQL: (%s) %s", $this->mysqli->connect_errno, $this->mysqli->connect_error));
-        }
+        return DB::insertId();
     }
 
-    //Creates the level session in the database.
-    public function create_level($session_id, $level_id, $start, $end)
+    /**
+     * Record that the user with the given session has begun the given level.
+     *
+     * @param $session_id number The game session identifier.
+     * @param $level_id string The level key (e.g. "level-1")
+     * @return number The session level identifier.
+     */
+    public function begin_level($session_id, $level_id)
     {
-        $statement = $this->mysqli->prepare('insert into session_level
-(session_id, level_id, start, end)
-values
-(?, ?, ?, ?);');
+        DB::insert('session_level', array(
+            'session_id' => $session_id,
+            'level_id' => $level_id,
+            'start' => date('Y-m-d H:i:s')
+        ));
 
-        if (!$statement) {
-            die(sprintf('%s Failed to prepare statement.', __METHOD__));
-        }
-
-        if (!$statement->bind_param('ssss', $session_id, $level_id, $start, $end)) {
-            die(sprintf('%s Bind param failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        if (!$statement->execute()) {
-            die(sprintf('%s Execute failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        $session_level_id = $this->mysqli->insert_id;
-
-        $statement->close();
-        return $session_level_id;
+        return DB::insertId();
     }
 
-    //This function creates a unique game session id for each user.
-    public function create_session($session_id)
-    {
-        $statement = $this->mysqli->prepare('insert into game_session
-(start, session_id)
-values
-(?,?);');
-
-        if (!$statement) {
-            die(sprintf('%s Failed to prepare statement.', __METHOD__));
-        }
-
-        //print_r("The Statement: " + $statement);
-        //print_r("The Session ID: " + $session_id);
-        //exit;
-        $date = date('Y-m-d H:i:s');
-        if (!$statement->bind_param('ss', $date, $session_id)) {
-            die(sprintf('%s Bind param failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        if (!$statement->execute()) {
-            die(sprintf('%s Execute failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        $statement->close();
-
-        return $this->mysqli->insert_id;
-    }
-
+    /**
+     * Record that a user has made an attempt to complete a level.
+     *
+     * @param $session_level_id number The session level identifier.
+     * @param $program string A JSON representation of the program used in the attempt.
+     * @param $start string The time at which the attempt was started.
+     * @param $end string The time at which the attempt was finished.
+     * @return number The level attempt identifier.
+     */
     public function create_level_attempt($session_level_id, $program, $start, $end)
     {
+        DB::insert('level_attempt', array(
+            'level_id' => $session_level_id,
+            'program' => $program,
+            'number' => 1,
+            'start' => $start,
+            'end' => $end
+        ));
 
-        $statement = $this->mysqli->prepare('insert into level_attempt
-(level_id, program, number, start, end)
-values
-(?, ?, 1, ?, ?);');
-
-        if (!$statement) {
-            die(sprintf('%s Failed to prepare statement.', __METHOD__));
-        }
-
-        if (!$statement->bind_param('isss', $session_level_id, $program, $start, $end)) {
-            die(sprintf('%s Bind param failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        if (!$statement->execute()) {
-            die(sprintf('%s Execute failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        $attempt_id = $this->mysqli->insert_id;
-
-        $statement->close();
-
-        return $attempt_id;
+        return DB::insertId();
     }
 
-    //Updated database with level success or failure.
-    public function set_attempt($attempt_id, $session_level_id, $Success)
+    /**
+     * Record that a user has successfully completed a level with the given attempt.
+     *
+     * @param $attempt_id number The level attempt identifier.
+     * @param $session_level_id number The session level identifier.
+     * @param $score number The score attained when completing the level.
+     */
+    public function complete_level($attempt_id, $session_level_id, $score)
     {
-        if ($Success)
-        {
-            $statement = $this->mysqli->prepare('update session_level set success_attempt_id = ? where id = ?;');
-        }
-        else
-        {
-            //No Update is required for the failed attempt
-            //$statement = $this->mysqli->prepare('update session_level set failed_attempt_id = ? where id = ?;');
-        }
-        if(!$statement)
-        {
-            die(sprintf('%s Failed to prepare statement.', __METHOD__));
-        }
-
-        if(!$statement->bind_param('ii', $attempt_id, $session_level_id))
-        {
-            die(sprintf('%s Bind param failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        if(!$statement->execute())
-        {
-            die(sprintf('%s Execute failed: (%s) %s', __METHOD__, $statement->errno, $statement->error));
-        }
-
-        $statement->close();
+        DB::update('session_level', array(
+            'success_attempt_id' => $attempt_id,
+            'end' => date('Y-m-d H:i:s'),
+            'score' => $score
+        ),
+            'id=%i', $session_level_id);
     }
 
-    //This function gets the high scores (Antony)
-    public function get_highscores()
+    /**
+     * Record that a user has successfully completed the entire game.
+     *
+     * @param $session_id number The game session identifier
+     */
+    public function complete_game($session_id)
     {
-        try
-        {
-            $query_input = 'SELECT * FROM capstone.highscore_listing';
-            $result = $this->mysqli->query($query_input);//mysql_query($query) or die ("no query");
+        DB::update('game_session', array(
+                'end' => date('Y-m-d H:i:s')
+            ),
+            'id=%i', $session_id);
+    }
 
-            $result_array = array();
-            while ($row = $result->fetch_assoc()) {
-                $result_array[] = $row;
-            }
-
-            return $result_array;
-        }
-        catch (Exception $e)
-        {
-            echo 'Caught an exception: ', $e->getMessage(), "\n";
-        }
-
+    /**
+     * Retrieve the high scores.
+     *
+     * @return mixed
+     */
+    public function get_high_scores()
+    {
+        return DB::query('select * from highscore_listing');
     }
 }
 

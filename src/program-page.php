@@ -7,9 +7,15 @@
 
     <div class="row">
 
-        <div class="col-md-8" data-bind="with: currentLevel">
+        <div class="col-md-8">
 
-            <?php include "map.php"; ?>
+            <img src="/images/Persona.png" alt="Persona" id="persona" data-bind="personaDialog: storyModal"/>
+
+            <div  data-bind="with: currentLevel">
+                <?php include "map.php"; ?>
+            </div>
+
+            <button class="btn btn-block" data-bind="visible: canAdvance, click: advanceToNextLevel">Next Level</button>
 
         </div>
 

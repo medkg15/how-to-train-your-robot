@@ -1,62 +1,66 @@
 define(['jquery'], function ($) {
 
     return {
-        startGame: function (cb) {
-            $.ajax({
-                url:'/services/start-game.php',
-                contentType: 'application/json',
-                dataType: 'json',
-                type: 'POST'
-            })
-                .done(function (responseJSON) {
-                    cb(responseJSON);
-                })
-                .fail(function(response){
-                    console.log(response);
-                });
+        startGame: function (callback) {
+            $.post(
+                '/services/start-game.php',
+                JSON.stringify({}),
+                function (data) {
+                    callback(data);
+                },
+                "json");
         },
-        completeLevel: function (sessionId, levelId, program, start, end, cb) {
-            $.ajax({
-                url:'/services/complete-level.php',
-                contentType: 'application/json',
-                dataType: 'json',
-                data: JSON.stringify({
-                    session_id: sessionId,
-                    level_id: levelId, // right now this is the string id.. might change.
-                    program: program,
-                    start: start,
-                    end: end
+        startLevel: function (gameSessionID, levelID, callback) {
+            $.post(
+                '/services/start-level.php',
+                JSON.stringify({
+                    session_id: gameSessionID,
+                    level_id: levelID
                 }),
-                type: 'POST'
-            })
-                .done(function (responseJSON) {
-                    cb(responseJSON);
-                })
-                .fail(function(response){
-                    console.log(response);
-                });
+                function (data) {
+                    callback(data);
+                },
+                "json");
         },
-        failLevel: function (sessionId, levelId, program, start, end, cb) {
-            $.ajax({
-                url:'/services/failed-attempt.php',
-                contentType: 'application/json',
-                dataType: 'json',
-                data: JSON.stringify({
-                    session_id: sessionId,
-                    level_id: levelId, // right now this is the string id.. might change.
-                    program: program,
-                    start: start,
-                    end: end
+        failAttempt: function (levelSessionID, failedAttempt, callback) {
+            $.post(
+                '/services/failed-attempt.php',
+                JSON.stringify({
+                    level_id: levelSessionID,
+                    program: failedAttempt.program,
+                    start: failedAttempt.start,
+                    end: failedAttempt.end
                 }),
-                type: 'POST'
-            })
-                .done(function (responseJSON) {
-                    cb(responseJSON);
-                })
-                .fail(function(response){
-                    console.log(response);
-                });
+                function (data) {
+                    callback(data);
+                },
+                "json");
+        },
+        completeLevel: function (levelSessionID, successfulAttempt, score, callback) {
+            $.post(
+                '/services/complete-level.php',
+                JSON.stringify({
+                    level_id: levelSessionID,
+                    program: successfulAttempt.program,
+                    attempt_start: successfulAttempt.start,
+                    attempt_end: successfulAttempt.end,
+                    score: score
+                }),
+                function (data) {
+                    callback(data);
+                },
+                "json");
+        },
+        completeGame: function (gameSessionID, callback) {
+            $.post(
+                '/services/complete-game.php',
+                JSON.stringify({
+                    session_id: gameSessionID
+                }),
+                function (data) {
+                    callback(data);
+                },
+                "json");
         }
     };
-
 });

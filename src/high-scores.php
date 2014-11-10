@@ -12,22 +12,6 @@
         </tr>
         </thead>
         <tbody>
-        <?php
-        $data_access = new DataAccess();
-        $highscores_array = $data_access->get_highscores();
-
-        foreach ($highscores_array as $row)
-        {
-            echo'<tr>';
-            echo'<td><img src="pics/Robot_Character2_Blue.png" height="200"/></td>';
-            echo'<td>'.$row['level_id'].'</td>';
-            echo'<td>'.$row['highscore'].'</td>';
-            echo'<td>'.$row['end'].'</td>';
-            echo'</tr>';
-
-        }
-
-        ?>
         <tr>
             <td><img src="pics/Robot_Character2_Pink.png" height="200"/></td>
             <td>Level 2</td>

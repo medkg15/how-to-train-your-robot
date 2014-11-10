@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/trashTree'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, trashTree) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/trashTree', 'bindings/personaDialog'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, trashTree, personaDialog) {
 
         "use strict";
         
@@ -30,7 +30,7 @@ define(
             self.currentPosition = ko.observable();
             self.currentHeading = ko.observable();
             self.gameId = ko.observable();
-            self.levelStartDate = ko.observable();
+            self.attemptStartTime = ko.observable();
             self.bodyClass = ko.observable('space');
             self.jumpCode = ko.observable();
             self.storyModal = ko.observable();
@@ -38,6 +38,13 @@ define(
             self.buildingFunction = ko.observable(false);
             self.instructionSet = ko.observableArray();
             self.customFunctionCount = 0;
+            self.canAdvance = ko.observable(false);
+            self.levelSessionID = ko.observable();
+
+            self.advanceToNextLevel = function(){
+                var level = self.currentLevel();
+                self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
+            };
 
             self.startGame = function(){
                 services.startGame(function(response){
@@ -89,18 +96,24 @@ define(
             self.instructions = instructions;
 
             self.selectLevel = function (level) {
-                self.currentLevel(level);
-                self.currentView('build-program');
-                self.currentPosition(level.startPosition);
-                self.currentHeading(level.defaultHeading);
-                self.levelStartDate(new Date());
-                self.program([]);
-                self.bodyClass(level.environment);
-                self.storyModal(level.intro);
-                $('#story-modal').modal('show');
-                self.levelAttempts(0);
-                self.instructionSet(level.instructions);
-                self.customFunctionCount = 0;
+
+                services.startLevel(self.gameId(), level.id, function(response){
+
+                    self.levelSessionID(response.session_level_id);
+                    self.currentLevel(level);
+                    self.currentView('build-program');
+                    self.currentPosition(level.startPosition);
+                    self.currentHeading(level.defaultHeading);
+                    self.attemptStartTime(new Date());
+                    self.program([]);
+                    self.bodyClass(level.environment);
+                    self.storyModal(level.intro);
+                    self.levelAttempts(0);
+                    self.instructionSet(level.instructions);
+                    self.customFunctionCount = 0;
+                    self.canAdvance(false);
+
+                });
             };
 
             self.returnHome = function () {
@@ -215,23 +228,24 @@ define(
                             var score = scoreCalculator.calculate(program, self.levelAttempts());
                             self.score(self.score() + score);
 
-                            var $storyModal = $('#story-modal');
                             self.storyModal(self.currentLevel().exit);
-                            $storyModal.modal('show');
-                            $storyModal.on('click', 'button', function(e){
-                                $storyModal.off('click', 'button');
-                                services.completeLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
 
-                                    var level = self.currentLevel();
+                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date() }, self.score(), function(response){
 
-                                    if (levelViewModels[levelViewModels.length-1] === level) {
+                                var level = self.currentLevel();
+
+                                if (levelViewModels[levelViewModels.length-1] === level) {
+
+                                    services.completeGame(self.gameId(), function(){
+
                                         alert('Game over! You win.');
-                                    }
-                                    else {
 
-                                        self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
-                                    }
-                                });
+                                    });
+                                }
+                                else {
+
+                                    self.canAdvance(true);
+                                }
                             });
                         }
                         else {
@@ -240,12 +254,8 @@ define(
                             self.currentPosition(self.currentLevel().startPosition);
                             self.currentHeading(self.currentLevel().defaultHeading);
 
-                            //Antony:  This is a failed attempt - Recording it - 10/22/2014
-                            services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
-
-                                var level = self.currentLevel();
-
-
+                            services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
+                                self.attemptStartTime(new Date());
                             });
                         }
                         doContinue = false;
@@ -298,12 +308,8 @@ define(
                                 doContinue = false;
                                 alert('Your robot can\'t move there!');
 
-                                //Antony:  This is a failed attempt - Recording it - 10/22/2014
-                                services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
-
-                                    var level = self.currentLevel();
-
-
+                                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
+                                    self.attemptStartTime(new Date());
                                 });
                             }
                             scopes[0].index++;
@@ -316,12 +322,8 @@ define(
                                 doContinue = false;
                                 alert('No ball here!');
 
-                                //Antony:  This is a failed attempt - Recording it - 10/22/2014
-                                services.failLevel(self.gameId(), self.currentLevel().id, program, self.levelStartDate(), new Date(), function(response){
-
-                                    var level = self.currentLevel();
-
-
+                                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
+                                    self.attemptStartTime(new Date());
                                 });
                             }
                             scopes[0].index++;
