@@ -25,7 +25,7 @@
 .ocean #map .goal { background: url('/images/ball.png') no-repeat center center; }
 
 .beach {
-    background: url('/images/bgOcean.jpg') repeat;
+    background: url('/images/bgBeach.png') repeat;
 }
 .beach  #map .wall { background: url('/images/obsBeach.png') no-repeat center center; }
 .beach #map .goal { background: url('/images/ball.png') no-repeat center center; }
