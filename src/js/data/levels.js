@@ -83,7 +83,7 @@ define([], function(){
             "id": "level-3",
             "name": "Over and over again.",
             "number": 3,
-            "environment": "space",
+            "environment": "country-green",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 2,
@@ -130,7 +130,7 @@ define([], function(){
             "id": "level-4",
             "name": "Keep on moving!",
             "number": 4,
-            "environment": "wild-west",
+            "environment": "ocean",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 1,
@@ -177,7 +177,7 @@ define([], function(){
             "id": "level-5",
             "name": "'Round the bend.",
             "number": 5,
-            "environment": "space",
+            "environment": "beach",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 1,
@@ -224,7 +224,109 @@ define([], function(){
             "id": "level-6",
             "name": "Shuffle!",
             "number": 6,
-            "environment": "space",
+            "environment": "orange-fall",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 4,
+                "row": 4
+            },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
+            "help": "<p>Having trouble?  here's some tips:</p>",
+            "jumpCode": 6,
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-ball",
+                    "quantity": 1
+                }
+            ],
+            "map": [
+                [' ',' ',' ',' ',' ',' ','x','x','x',' ',' ',' ',],
+                [' ',' ',' ','x','x','x','x','e','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ','x','x','x','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ','x',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+            ]
+        },
+        {
+            "id": "level-7",
+            "name": "Shuffle!",
+            "number": 7,
+            "environment": "orange-fall",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 4,
+                "row": 4
+            },
+            "intro": "<p>This is the story intro text!</p>",
+            "exit": "<p>This is the story exit text!</p>",
+            "help": "<p>Having trouble?  here's some tips:</p>",
+            "jumpCode": 6,
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-ball",
+                    "quantity": 1
+                }
+            ],
+            "map": [
+                [' ',' ',' ',' ',' ',' ','x','x','x',' ',' ',' ',],
+                [' ',' ',' ','x','x','x','x','e','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ','x','x','x','x',' ',' ',' ',],
+                [' ',' ',' ','x',' ','x',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',],
+            ]
+        },
+        {
+            "id": "level-8",
+            "name": "Shuffle!",
+            "number": 8,
+            "environment": "orange-fall",
             "defaultHeading": "up",
             "startPosition": {
                 "column": 4,
