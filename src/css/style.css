@@ -13,7 +13,9 @@
 
 #map .robot-up { background: url('/images/robot-up.png') no-repeat center center;  }
 #map .robot-left { background: url('/images/robot-left.png') no-repeat center center;  }
-#map .robot-down { background: url('/images/robot-down.png') no-repeat center center;  }
+#map .robot-down {
+    background: url('/images/robot-down.png') no-repeat center;
+}
 #map .robot-right { background: url('/images/robot-right.png') no-repeat center center;  }
 
 body {

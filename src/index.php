@@ -48,8 +48,8 @@
 <script src="/vendor/requirejs/require.js"></script>
 <script>
 	requirejs.config({
-		baseUrl:  "<?php echo (strpos($_SERVER["HTTP_HOST"], 'amazonaws.com') !== false) ? '/js-built' : '/js'; ?>",
-	});
+		baseUrl:  "<?php echo (strpos($_SERVER["HTTP_HOST"], 'amazonaws.com') !== false) ? '/js-built' : '/js'; ?>"
+    });
 	require(['common'], function(common){
 		require(
 			['jquery', 'knockout', 'app/gameViewModel', 'jstree'],
