@@ -64,13 +64,15 @@ class DataAccess
      * @param $attempt_id number The level attempt identifier.
      * @param $session_level_id number The session level identifier.
      * @param $score number The score attained when completing the level.
+     * @param $used_help boolean Whether or not the user used persona help on the level.
      */
-    public function complete_level($attempt_id, $session_level_id, $score)
+    public function complete_level($attempt_id, $session_level_id, $score, $used_help)
     {
         DB::update('session_level', array(
             'success_attempt_id' => $attempt_id,
             'end' => date('Y-m-d H:i:s'),
-            'score' => $score
+            'score' => $score,
+            'used_help' => $used_help
         ),
             'id=%i', $session_level_id);
     }

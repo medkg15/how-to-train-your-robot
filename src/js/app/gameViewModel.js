@@ -40,6 +40,7 @@ define(
             self.customFunctionCount = 0;
             self.canAdvance = ko.observable(false);
             self.levelSessionID = ko.observable();
+            self.usedHelp = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -56,6 +57,7 @@ define(
 
             self.showHelp = function(){
                 self.personaText(self.currentLevel().help);
+                self.usedHelp(true);
             };
 
             self.startFirstLevel = function(){
@@ -116,6 +118,7 @@ define(
                     self.instructionSet(level.instructions);
                     self.customFunctionCount = 0;
                     self.canAdvance(false);
+                    self.usedHelp(false);
 
                 });
             };
@@ -186,6 +189,27 @@ define(
             
                 self.program.removeAll();
             };
+
+            var onAttemptFailed = function(message, program){
+
+                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
+
+                    alert(message);
+
+                    self.attemptStartTime(new Date());
+
+                    var attempts = self.levelAttempts();
+
+                    if(attempts == 3 || attempts == 6 || attempts == 10)
+                    {
+                        self.personaText(self.currentLevel().help);
+                    }
+
+                    self.currentPosition(self.currentLevel().startPosition);
+                    self.currentHeading(self.currentLevel().defaultHeading);
+                });
+
+            };
             
             self.execute = function (instruction) {
                 self.levelAttempts(self.levelAttempts() + 1);
@@ -229,12 +253,12 @@ define(
                         if (win) {
 
                             var scoreCalculator = new ScoreCalculator();
-                            var score = scoreCalculator.calculate(program, self.levelAttempts());
+                            var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
                             self.score(self.score() + score);
 
                             self.personaText(self.currentLevel().exit);
 
-                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date() }, self.score(), function(response){
+                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp() }, self.score(), function(response){
 
                                 var level = self.currentLevel();
 
@@ -253,14 +277,7 @@ define(
                             });
                         }
                         else {
-                            alert('The program didn\'t work!');
-
-                            self.currentPosition(self.currentLevel().startPosition);
-                            self.currentHeading(self.currentLevel().defaultHeading);
-
-                            services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
-                                self.attemptStartTime(new Date());
-                            });
+                            onAttemptFailed('The robot failed to complete the goal!', program);
                         }
                         doContinue = false;
                     }
@@ -310,11 +327,7 @@ define(
                             }
                             else {
                                 doContinue = false;
-                                alert('Your robot can\'t move there!');
-
-                                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
-                                    self.attemptStartTime(new Date());
-                                });
+                                onAttemptFailed('Your robot can\'t move there!', program);
                             }
                             scopes[0].index++;
                         }
@@ -324,11 +337,8 @@ define(
                             }
                             else {
                                 doContinue = false;
-                                alert('No ball here!');
 
-                                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
-                                    self.attemptStartTime(new Date());
-                                });
+                                onAttemptFailed('No ball to pick up!', program);
                             }
                             scopes[0].index++;
                         }

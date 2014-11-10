@@ -26,7 +26,7 @@ define(['data/instructions', 'underscore'], function(instructions, _){
             return sum;
         };
 
-        this.calculate = function(program, attempts){
+        this.calculate = function(program, attempts, usedHelp){
 
             var rawScore = calcScope(program);
 
@@ -44,7 +44,7 @@ define(['data/instructions', 'underscore'], function(instructions, _){
                 multiplier = 0.5;
             }
 
-            return rawScore * multiplier;
+            return rawScore * multiplier * (usedHelp ? 1 : 1.25);
         };
 
     };

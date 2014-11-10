@@ -15,12 +15,13 @@ $program = json_encode($json->program); // convert the program itself back into 
 $attempt_start = $json->attempt_start;
 $attempt_end = $json->attempt_end;
 $score = $json->score;
+$used_help = $json->used_help;
 
 $data_access = new DataAccess();
 
 $attempt_id = $data_access->create_level_attempt($level_session_id, $program, $attempt_start, $attempt_end);
 
-$data_access->complete_level($attempt_id, $level_session_id, $score);
+$data_access->complete_level($attempt_id, $level_session_id, $score, $used_help);
 
 header('Content-Type: application/json');
 echo json_encode(array(

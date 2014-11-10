@@ -1,0 +1,15 @@
+{
+    "name": "Kevin/how-to-train-your-robot",
+    "require": {
+        "sergeytsalkov/meekrodb": "~2.3"
+    },
+    "authors": [
+        {
+            "name": "Kevin Gregory",
+            "email": "medkg15@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "src/vendor"
+    }
+}
