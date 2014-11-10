@@ -49,6 +49,20 @@ define([], function(){
             "description": "User defined custom function prototype.",
             "type": "baseInstruction",
             "points": 50
+        },
+        {
+            "id": "shuffle-left",
+            "name": "Shuffle Left",
+            "description": "Move your robot to the left without turning.",
+            "type": "baseInstruction",
+            "points": 50
+        },
+        {
+            "id": "shuffle-right",
+            "name": "Shuffle Right",
+            "description": "Move your robot to the right without turning.",
+            "type": "baseInstruction",
+            "points": 50
         }
 	];
 

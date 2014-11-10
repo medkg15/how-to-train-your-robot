@@ -41,6 +41,7 @@ define(
             self.canAdvance = ko.observable(false);
             self.levelSessionID = ko.observable();
             self.usedHelp = ko.observable(false);
+            self.usedDebugger = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -119,7 +120,7 @@ define(
                     self.customFunctionCount = 0;
                     self.canAdvance(false);
                     self.usedHelp(false);
-
+                    self.usedDebugger(false);
                 });
             };
 
@@ -274,7 +275,7 @@ define(
 
                             self.personaText(self.currentLevel().exit);
 
-                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp() }, self.score(), function(response){
+                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
 
                                 var level = self.currentLevel();
 
@@ -355,6 +356,82 @@ define(
                                 doContinue = false;
 
                                 onAttemptFailed('No ball to pick up!', program);
+                            }
+                            scopes[0].index++;
+                        }
+                        else if (instruction.instruction_id === 'shuffle-right') {
+
+                            switch (self.currentHeading()) {
+                                case 'up':
+                                    nextCell = {
+                                        column: self.currentPosition().column + 1,
+                                        row: self.currentPosition().row
+                                    };
+                                    break;
+                                case 'down':
+                                    nextCell = {
+                                        column: self.currentPosition().column - 1,
+                                        row: self.currentPosition().row
+                                    };
+                                    break;
+                                case 'left':
+                                    nextCell = {
+                                        column: self.currentPosition().column,
+                                        row: self.currentPosition().row - 1
+                                    };
+                                    break;
+                                case 'right':
+                                    nextCell = {
+                                        column: self.currentPosition().column,
+                                        row: self.currentPosition().row + 1
+                                    };
+                                    break;
+                            }
+
+                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ') {
+                                self.currentPosition(nextCell);
+                            }
+                            else {
+                                doContinue = false;
+                                onAttemptFailed('Your robot can\'t move there!', program);
+                            }
+                            scopes[0].index++;
+                        }
+                        else if (instruction.instruction_id === 'shuffle-left') {
+
+                            switch (self.currentHeading()) {
+                                case 'up':
+                                    nextCell = {
+                                        column: self.currentPosition().column - 1,
+                                        row: self.currentPosition().row
+                                    };
+                                    break;
+                                case 'down':
+                                    nextCell = {
+                                        column: self.currentPosition().column + 1,
+                                        row: self.currentPosition().row
+                                    };
+                                    break;
+                                case 'left':
+                                    nextCell = {
+                                        column: self.currentPosition().column,
+                                        row: self.currentPosition().row + 1
+                                    };
+                                    break;
+                                case 'right':
+                                    nextCell = {
+                                        column: self.currentPosition().column,
+                                        row: self.currentPosition().row - 1
+                                    };
+                                    break;
+                            }
+
+                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ') {
+                                self.currentPosition(nextCell);
+                            }
+                            else {
+                                doContinue = false;
+                                onAttemptFailed('Your robot can\'t move there!', program);
                             }
                             scopes[0].index++;
                         }
@@ -459,6 +536,7 @@ define(
             self.isPaused = ko.observable(false);
 
             self.executeOnce = function(){
+                self.usedDebugger(true);
                 if(nextIteration)
                 {
                     self.isPaused(false);

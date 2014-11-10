@@ -45,7 +45,8 @@ define(['jquery'], function ($) {
                     attempt_start: successfulAttempt.start,
                     attempt_end: successfulAttempt.end,
                     score: score,
-                    used_help: successfulAttempt.usedHelp
+                    used_help: successfulAttempt.usedHelp,
+                    used_debugger: successfulAttempt.usedDebugger
                 }),
                 function (data) {
                     callback(data);
