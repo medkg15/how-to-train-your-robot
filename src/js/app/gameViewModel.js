@@ -189,6 +189,19 @@ define(
                 self.program.removeAll();
             };
 
+            // terminate the currently executing program.
+            self.stop = function(){
+
+                self.attemptStartTime(new Date());
+
+                self.currentPosition(self.currentLevel().startPosition);
+                self.currentHeading(self.currentLevel().defaultHeading);
+
+                nextIteration = undefined;
+                self.isPaused(false);
+                self.isExecuting(false);
+            };
+
             var onAttemptFailed = function(message, program){
 
                 services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
@@ -209,6 +222,7 @@ define(
 
                     nextIteration = undefined;
                     self.isPaused(false);
+                    self.isExecuting(false);
                 });
 
             };

@@ -23,6 +23,10 @@
             <div class="well">
                 <div id="program" data-bind="css: { 'empty': hasNoProgram }">
                     <h2>Your Program:</h2>
+                    <button
+                        data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0"
+                        class="btn btn-danger">Clear Program
+                    </button>
 
                     <p class="empty-message">Drag your program elements here!</p>
 
@@ -31,14 +35,14 @@
 
                     <button class="btn btn-success"
                             data-bind="click: execute, disable: isExecuting, enable: programInstructions().length > 0">
-                        Go
+                        Run Program
                     </button>
-                    <button class="btn btn-success" data-bind="click: executeOnce">Step</button>
+                    <button class="btn btn-success" data-bind="click: executeOnce, enable: programInstructions().length > 0">Run One Instruction</button>
                     <button
-                        data-bind="click: clearProgram, disable: isExecuting, enable: programInstructions().length > 0"
-                        class="btn btn-danger">Clear
+                        data-bind="click: stop, visible: isExecuting"
+                        class="btn btn-danger">Stop
                     </button>
-                    <button data-bind="click: pause, enable: isExecuting, text: isPaused() ? 'Unpause' : 'Pause'"
+                    <button data-bind="click: pause, visible: isExecuting, text: isPaused() ? 'Unpause' : 'Pause'"
                             class="btn btn-info">Pause
                     </button>
 
