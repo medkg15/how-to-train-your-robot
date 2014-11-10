@@ -100,7 +100,7 @@ define([], function(){
                 },
                 {
                     "id": "step-forward",
-                    "quantity": "unlimited"
+                    "quantity": 2
                 },
                 {
                     "id": "turn-left",

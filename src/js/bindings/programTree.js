@@ -16,6 +16,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
 
                 console.log(data);
                 // data object is not persisted when copying between trees.  copy it explictly.
+                data.node.text = data.original.data.definition.name;
                 data.node.data = data.original.data;
                 // it would seem type data is also not persisted.  yay!
                 data.node.type = data.original.original.type;

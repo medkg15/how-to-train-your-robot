@@ -141,7 +141,35 @@ define(
                     return [];
                 }
 
-                return _.map(self.instructionSet(), function (instruction) {
+                var inventory = _.map(self.instructionSet(), function (instruction) {
+
+                    var currentProgram = self.programInstructions();
+
+                    var countUsages = function(programScope){
+                        var counts = _.map(programScope, function(programInstruction){
+                            var count = 0;
+                            if(programInstruction.instruction_id === instruction.id)
+                            {
+                                count++;
+                            }
+
+                            if(programInstruction.body.length > 0){
+                                count += countUsages(programInstruction.body);
+                            }
+
+                            if(programInstruction.definition.body && programInstruction.definition.body.length > 0)
+                            {
+                                count += countUsages(programInstruction.definition.body);
+                            }
+
+                            return count;
+                        });
+
+                        return _.reduce(counts, function(memo, num){ return memo + num; }, 0);
+                    };
+
+                    var usedCount = countUsages(currentProgram);
+                    var remaining = instruction.quantity - usedCount;
 
                     var definition = _.find(self.instructions, function (def) {
                         return def.id === instruction.id;
@@ -152,21 +180,32 @@ define(
                         definition: definition,
                         name: definition.name,
                         description: definition.description,
-                        quantity: instruction.quantity === 'unlimited' ? 'unlimited' : instruction.quantity // todo calculate
+                        quantity: instruction.quantity === 'unlimited' ? 'unlimited' : remaining > 0 ? remaining : 0
                     };
 
+                });
+
+                return _.filter(inventory, function(inst){
+                    return inst;
                 });
             });
 
             self.treeAvailableInstructions = ko.computed(function(){
 
                 return _.map(self.instructionInventory(), function(instruction){
+
+                    var name = instruction.name;
+                    if(instruction.quantity != 'unlimited')
+                    {
+                        name += ' : ' + instruction.quantity + ' remaining';
+                    }
+
                     return {
-                        text: instruction.name, // node text
+                        text: name, // node text
                         //icon: "string", // string for custom
                         state: {
                             opened: false,
-                            disabled: false,
+                            disabled: instruction.quantity == 0,
                             selected: false
                         },
                         children: [],  // array of strings or objects
@@ -175,7 +214,8 @@ define(
                         type: instruction.definition.type,
                         instructionId: instruction.id,
                         data: {
-                            instruction_id: instruction.id
+                            instruction_id: instruction.id,
+                            definition: instruction.definition
                         }
                     }
                 });
