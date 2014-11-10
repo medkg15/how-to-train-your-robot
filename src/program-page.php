@@ -9,7 +9,7 @@
 
         <div class="col-md-8">
 
-            <img src="/images/Persona.png" alt="Persona" id="persona" data-bind="personaDialog: storyModal"/>
+            <img src="/images/Persona.png" alt="Persona" id="persona" data-bind="personaDialog: personaText, click: showHelp"/>
 
             <div  data-bind="with: currentLevel">
                 <?php include "map.php"; ?>
@@ -81,7 +81,6 @@
 
     </div>
 
-    <?php include "condition-modal.php";
-    include "story-modal.php"; ?>
+    <?php include "condition-modal.php"; ?>
 
 </div>

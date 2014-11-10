@@ -7,19 +7,10 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
             var value = valueAccessor();
             var valueUnwrapped = ko.unwrap(value);
 
-            if (!valueUnwrapped) {
-                return;
-            }
-
-            $(element)
-                .popover({
-                    content: valueUnwrapped,
-                    html: true,
-                    placement: 'right',
-                    title: 'Persona',
-                    trigger: 'focus'
-                })
-                .popover('show');
+            $(document).on('click', '#persona-ok', function(){
+                value(undefined);
+                $(element).popover('hide');
+            });
         },
         update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
             // This will be called once when the binding is first applied to an element,
@@ -33,18 +24,18 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
                 return;
             }
 
-            $(element);
-
             $(element)
                 .popover('destroy')
                 .popover({
-                    content: valueUnwrapped,
+                    content: valueUnwrapped + '<button id="persona-ok" class="btn btn-primary">OK</button>',
                     html: true,
                     placement: 'right',
                     title: 'Persona',
-                    trigger: 'focus'
+                    trigger: 'manual focus'
                 })
                 .popover('show');
+
+
         }
     };
 });

@@ -33,7 +33,7 @@ define(
             self.attemptStartTime = ko.observable();
             self.bodyClass = ko.observable('space');
             self.jumpCode = ko.observable();
-            self.storyModal = ko.observable();
+            self.personaText = ko.observable();
             self.levelAttempts = ko.observable(0);
             self.buildingFunction = ko.observable(false);
             self.instructionSet = ko.observableArray();
@@ -52,6 +52,10 @@ define(
                     self.changeView('robot-story');
                     self.score(0);
                 });
+            };
+
+            self.showHelp = function(){
+                self.personaText(self.currentLevel().help);
             };
 
             self.startFirstLevel = function(){
@@ -107,7 +111,7 @@ define(
                     self.attemptStartTime(new Date());
                     self.program([]);
                     self.bodyClass(level.environment);
-                    self.storyModal(level.intro);
+                    self.personaText(level.intro);
                     self.levelAttempts(0);
                     self.instructionSet(level.instructions);
                     self.customFunctionCount = 0;
@@ -228,7 +232,7 @@ define(
                             var score = scoreCalculator.calculate(program, self.levelAttempts());
                             self.score(self.score() + score);
 
-                            self.storyModal(self.currentLevel().exit);
+                            self.personaText(self.currentLevel().exit);
 
                             services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date() }, self.score(), function(response){
 
