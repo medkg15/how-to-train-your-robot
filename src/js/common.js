@@ -11,5 +11,5 @@ requirejs.config({
 		"bootstrap": ['jquery']
 		, "knockout": ['jquery']
 	}
-    , urlArgs: "v=17"
+    , urlArgs: "v=18"
 });

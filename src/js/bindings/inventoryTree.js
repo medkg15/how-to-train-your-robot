@@ -21,7 +21,9 @@ define(['knockout', 'jstree', 'jquery', 'underscore'], function(ko, jstree, $, _
                 },
                 dnd: {
                     is_draggable: function(nodes){
-                        return true;
+                        return _.every(nodes, function(node){
+                            return !node.state.disabled;
+                        });
                     },
                     always_copy: true
                 }
