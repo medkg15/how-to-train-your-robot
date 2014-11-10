@@ -29,7 +29,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
                         'responsive': true
                     },
                     check_callback: function (operation, node, node_parent, node_position, more) {
-                        return node.data.elementID;
+                        return node.data && node.data.elementID ? true : false; // why the heck is jstree checking for a boolean type instead of fasley values?
                     }
                 },
                 dnd: {
