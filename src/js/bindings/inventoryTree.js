@@ -1,4 +1,4 @@
-define(['knockout', 'jstree', 'jquery', 'underscore'], function(ko, jstree, $, _){
+define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko, jstree, $, _, bootstrap){
     ko.bindingHandlers.inventoryTree = {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
             // This will be called when the binding is first applied to an element
@@ -8,6 +8,17 @@ define(['knockout', 'jstree', 'jquery', 'underscore'], function(ko, jstree, $, _
             var valueUnwrapped = ko.unwrap(value);
 
             $(element)
+                .on('select_node.jstree', function(e, data){
+                    var definition = data.node.data.definition;
+                    var element = $('#' + data.node.li_attr.id);
+                    element.popover({
+                        content: definition.description,
+                        html: true,
+                        placement: 'top',
+                        title: definition.name,
+                        trigger: 'manual focus'
+                    }).popover('show');
+                })
                 .jstree({
                 plugins : [ "dnd", "types" ],
                 core: {
