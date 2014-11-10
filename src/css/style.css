@@ -4,7 +4,7 @@
 }
 .space #map .wall { background: url('/images/space-wall.jpg') no-repeat center center; }
 
-.space #map .goal { background: url('/images/rocket-part1.png') no-repeat center center; }
+.space #map .goal { background: url('/images/rocketP1.png') no-repeat center center; }
 
 .space .persona {}
 
@@ -12,31 +12,31 @@
     background: url('/images/bgdesert.jpg') repeat;
 }
 .wild-west #map .wall { background: url('/images/obstCountryGreenVertical.png') no-repeat center center; }
-.wild-west #map .goal { background: url('/images/rocket-part2.png') no-repeat center center; }
+.wild-west #map .goal { background: url('/images/rocketP2.png') no-repeat center center; }
 
 .country-green {
     background: url('/images/bgcountrygreen.jpg') repeat;
 }
 .country-green  #map .wall { background: url('/images/obstCountryGreen.png') no-repeat center center; }
-.country-green #map .goal { background: url('/images/rocket-part3.png') no-repeat center center; }
+.country-green #map .goal { background: url('/images/rocketP3.png') no-repeat center center; }
 
 .ocean {
     background: url('/images/bgOcean.jpg') repeat;
 }
 .ocean  #map .wall { background: url('/images/obstOcean.png') no-repeat center center; }
-.ocean #map .goal { background: url('/images/rocket-part4.png') no-repeat center center; }
+.ocean #map .goal { background: url('/images/rocketP4.png') no-repeat center center; }
 
 .beach {
     background: url('/images/bgBeach.png') repeat;
 }
 .beach  #map .wall { background: url('/images/obsBeach.png') no-repeat center center; }
-.beach #map .goal { background: url('/images/rocket-part5.png') no-repeat center center; }
+.beach #map .goal { background: url('/images/rocketP5.png') no-repeat center center; }
 
 .orange-fall {
     background: url('/images/bgOrangeFall.jpg') repeat;
 }
 .orange-fall  #map .wall { background: url('/images/obstOrangeFall.png') no-repeat center center; }
-.orange-fall #map .goal { background: url('/images/rocket-part6.png') no-repeat center center; }
+.orange-fall #map .goal { background: url('/images/rocketP6.png') no-repeat center center; }
 
 
 .dark-mountain {
@@ -44,13 +44,13 @@
 }
 .dark-mountain  #map .wall { background: url('/images/obsDarkMountain.png') no-repeat center center; }
 
-.dark-mountain #map .goal { background: url('/images/rocket-part7.png') no-repeat center center; }
+.dark-mountain #map .goal { background: url('/images/rocketP7.png') no-repeat center center; }
 
 .winter {
     background: url('/images/bdWinter.png') repeat;
 }
 .winter  #map .wall { background: url('/images/obsWinter.png') no-repeat center center; }
-.winter #map .goal { background: url('/images/rocket-part8.png') no-repeat center center; }
+.winter #map .goal { background: url('/images/rocketP8.png') no-repeat center center; }
 
 
 #map .robot-up { background: url('/images/robot-up.png') no-repeat center center;  }
