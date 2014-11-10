@@ -25,7 +25,7 @@
 .ocean #map .goal { background: url('/images/ball.png') no-repeat center center; }
 
 .beach {
-    background: url('/images/bgBeach.jpg') repeat;
+    background: url('/images/bgBeach.png') repeat;
 }
 .beach  #map .wall { background: url('/images/obsBeach.png') no-repeat center center; }
 .beach #map .goal { background: url('/images/ball.png') no-repeat center center; }
@@ -37,13 +37,13 @@
 .orange-fall #map .goal { background: url('/images/ball.png') no-repeat center center; }
 
 .dark-mountain {
-    background: url('/images/bgDarkMountain.jpg') repeat;
+    background: url('/images/bgDarkMountain.png') repeat;
 }
 .dark-mountain  #map .wall { background: url('/images/obsDarkMountain.png') no-repeat center center; }
 .dark-mountain #map .goal { background: url('/images/ball.png') no-repeat center center; }
 
 .winter {
-    background: url('/images/bdWinter.jpg') repeat;
+    background: url('/images/bdWinter.png') repeat;
 }
 .winter  #map .wall { background: url('/images/obsWinter.png') no-repeat center center; }
 .winter #map .goal { background: url('/images/ball.png') no-repeat center center; }
