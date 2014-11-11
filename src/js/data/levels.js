@@ -11,8 +11,8 @@ define([], function(){
                 "row": 5
             },
             "intro": "<p>In this level you will be introduced to the COMPUTER INSTRUCTIONS concept. Drag the instructions from the instructions box at the bottom to the programming List box on the right side to help Robo find the 1st part of his spaceship.</p>",
-            "exit": "<p>Computer instructions allowed you to give Robo a set of instructions to perform and find the first part of his spaceship.</p>",
-            "help": "<p>Having trouble?  here's some tips:</p>",
+            "exit": "<p>Using Automation you were able to write a program from the computer instruction “Step Forward” to help Robo execute and find the first part of his spaceship</p>",
+            "help": "<p>Having trouble?  here's some tips: Robo has to walk 2 steps forward then pick up the goal</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
@@ -45,9 +45,9 @@ define([], function(){
                 "column": 4,
                 "row": 5
             },
-            "intro": "<p>This is the story intro text!</p>",
-            "exit": "<p>This is the story exit text!</p>",
-            "help": "<p>Having trouble?  here's some tips:</p>",
+            "intro": "<p>In this level you will be able to apply the automation concept you learned in level 1 by using 2 Computer Instructions. You can give Robo different instructions as needed to reach the goal</p>",
+            "exit": "<p>By using different types of Computer Instructions, you were able to Automate Robo during the path to the goal</p>",
+            "help": "<p>Robo has to step forward 3 times, turn right, and step forward 2 times to reach the goal</p>",
             "jumpCode": 2,
 			"instructions": [
 				{
