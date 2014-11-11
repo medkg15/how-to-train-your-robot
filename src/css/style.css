@@ -17,7 +17,7 @@
 .country-green {
     background: url('/images/bgcountrygreen.jpg') repeat;
 }
-.country-green  #map .wall { background: url('/images/obstCountryGreen2.png') no-repeat center center; }
+.country-green  #map .wall { background: url('/images/obstCountryGreen.png') no-repeat center center; }
 .country-green #map .goal { background: url('/images/rocketP3.png') no-repeat center center; }
 
 .ocean {
