@@ -1,8 +1,8 @@
-<div data-bind="if: currentView() === 'welcome'">
+<div data-bind="if: currentView() === 'welcome'" >
 
 
-    <div class="row">
-        <div class="col-md-9">
+    <div class="row" >
+        <div class="col-md-9" >
             <img src="/images/home-robots.png" alt="Robots" style="width:100%;"/>
         </div>
         <div class="col-md-3 home-sidebar">
