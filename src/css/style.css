@@ -1,3 +1,15 @@
+.playButton {
+    background:url(/images/playButton.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:100px;
+    height:100px;
+}
+
+.playButton:active {
+    background:url(./images/greenGoButton.png) no-repeat;
+}
+}
 
 .space {
     background: url('/images/space-background.jpg') repeat;
