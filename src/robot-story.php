@@ -1,7 +1,9 @@
 <div data-bind="if: currentView() === 'robot-story'">
-    <div class="well">
+    <div class="well" >
         <div class="row">
-            <div class="col-md-8" background="/images/introductionBackground.jpg" >
+
+            <div class="col-md-8">
+
                 <h1> Welcome to Robot Training</h1>
 
                 <p>
