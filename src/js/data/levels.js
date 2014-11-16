@@ -10,9 +10,9 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>In this level you will be introduced to the “Automation” concept by using one Computer Instruction.In order for Robo to reach the 1st spaceship part, he must walk step by step following your instructions. Drag the instruction from the “Build your program box” at the bottom and drop it in “Your Program box” on the right side. After creating a whole list in your program, you can “Run Program” and wait for Robo to execute or “Run One Instruction” to execute one instruction at a time. </p>",
-            "exit": "<p> You got it good job! <br> <br> Using Automation you were able to write a program from the computer instruction “Step Forward” to help Robo execute and find the first part of his spaceship.</p>",
-            "help": "<p>Having trouble?  here's some tips: <br> <br> 1. Robo has to walk 2 steps forward then pick up the goal.<br> 2.You can clear your program and start over at any time by clicking “Clear Program” button.</p>",
+            "intro": "<p>In this level you will be introduced to the COMPUTER INSTRUCTIONS concept. Drag the instructions from the instructions box at the bottom to the programming List box on the right side to help Robo find the 1st part of his spaceship.</p>",
+            "exit": "<p>Computer instructions allowed you to give Robo a set of instructions to perform and find the first part of his spaceship.</p>",
+            "help": "<p>Having trouble?  here's some tips:</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
