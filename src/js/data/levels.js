@@ -12,7 +12,7 @@ define([], function(){
             },
             "intro": "<p>In this level you will be introduced to the “Automation” concept by using one Computer Instruction. <br> <br> In this level you will be introduced to the “Automation” concept by using one Computer Instruction.</p>",
             "exit": "<p> You got it good job! <br> <br> Using Automation you were able to write a program from the computer instruction “Step Forward” to help Robo execute and find the first part of his spaceship. </p>",
-            "help": "<p>Having trouble?  here's some tips:<br> <br> 1. Robo has to walk 2 steps forward then pick up the goal. <br> You can clear your program and start over at any time by clicking “Clear Program” button.</p>",
+            "help": "<p>Having trouble?  here's some tips:<br> <br> 1. Robo has to walk 2 steps forward then pick up the goal. <br> 2. You can clear your program and start over at any time by clicking “Clear Program” button.</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
