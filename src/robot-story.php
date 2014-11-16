@@ -6,19 +6,15 @@
 
                 <p>
                 One day Robo was discovering the world by his spaceship. <br> Unfortunately, the spaceship had exploded in the space and tear apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.
-                <p><img src="p/images/introductionBackground.jpg" width=600" height="607"/></p>
+                <img src="images/introductionBackground.jpg" width=780" height="450"/>
 
                 </p>
 
-
-
-
-
             </div>
             <div class="col-md-4">
-                <p><img src="pics/Robot_Character1_Blue.png" width="230" height="287"/></p>
+                <p><br> <br><img src="pics/Robot_Character1_Blue.png" width="230" height="287"/></p>
 
-                <p><img src="pics/Robot_Character1_Pink.png" width="250" height="290"/></p>
+                <p><br> <br><img src="pics/Robot_Character1_Pink.png" width="250" height="290"/></p>
             </div>
         </div>
 

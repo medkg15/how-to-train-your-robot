@@ -10,9 +10,10 @@
 
             <button class="btn-lg btn-block" data-bind="click: startGame">Play! </button>
 
-            <button class="btn-lg btn-block">Customize</button>
+            <button class="btn-lg btn-block">Tutorial</button>
 
-            <button class="btn-lg btn-block">Training</button>
+            <button class="btn-lg btn-block">Credits</button>
+
         </div>
     </div>
 
