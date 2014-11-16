@@ -1,7 +1,7 @@
-<div class="page-container" data-bind="if: currentView() === 'about'">
+<div class="page-container" data-bind="if: currentView() === 'tutorial'">
 
     <div class="well">
-        <h1>The Team Goals</h1>
+        <h1>The Tutorial</h1>
 
         <p>The goal of this project is to accomplish the following: <br>
            <br> 1.	Motivate young children between 8 to 10 years old to learn the fundamental concepts of computing programming such as program, automation, testing, loops, and decision making (if/then) through creating a game application.

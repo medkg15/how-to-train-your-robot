@@ -10,9 +10,9 @@
 
             <button class="btn-lg btn-block" data-bind="click: startGame">Play! </button>
 
-            <button class="btn-lg btn-block">Tutorial</button>
+            <button class="btn-lg btn-block" data-bind="click: function(){ changeView('tutorial'); }">Tutorial</button>
 
-            <button class="btn-lg btn-block">Credits</button>
+            <button class="btn-lg btn-block" data-bind="click: function(){ changeView('about'); }">Credits   </button>
 
         </div>
     </div>
