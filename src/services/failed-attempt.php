@@ -10,7 +10,8 @@ require_once('includes/data_access.php');
 $json = json_decode(file_get_contents('php://input'));
 
 $level_id = $json->level_id;
-$program = json_encode($json->program); // convert the program itself back into a json string for storage.
+//$program = json_encode($json->program); // convert the program itself back into a json string for storage.
+$program = $json->program;
 $start = $json->start;
 $end = $json->end;
 
