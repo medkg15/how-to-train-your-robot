@@ -55,6 +55,9 @@ class DataAccess
             'end' => $end
         ));
 
+        $attempt_id = DB::insertId();
+        $this->create_instructions($program,$attempt_id);
+
         return DB::insertId();
     }
 
@@ -97,9 +100,98 @@ class DataAccess
      *
      * @return mixed
      */
-    public function get_high_scores()
+    public function get_highscores()
     {
         return DB::query('select * from highscore_listing');
+    }
+
+    /**
+     * This function saves all of the instructions as well as the child instructions for a given instruction
+     *
+     * @param $program - The json object that has the entire instruction set that the user used in a level
+     * @param $attempt_id - number The level attempt identifier.
+     */
+    private function create_instructions($program, $attempt_id)
+    {
+        foreach ($program as $obj)
+        {
+            printf($obj->instruction_id);
+            if (strpos($obj->instruction_id, 'custom-function') !== false)
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->instruction_id,
+                        'attempt_id' => $attempt_id,
+                        'function_name' => $obj->definition->name
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->definition->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->definition->name,
+                            'attempt_id' => $attempt_id,
+                            'function_name' => $obj->definition->name,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else if ($obj->instruction_id == 'repeat')
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->instruction_id,
+                        'attempt_id' => $attempt_id
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->instruction_id,
+                            'attempt_id' => $attempt_id,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else if ($obj->instruction_id == 'repeat-while')
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->instruction_id,
+                        'attempt_id' => $attempt_id,
+                        'condition_name' => $obj->condition
+                    )
+                );
+
+                $parent_id = DB::insertId();
+
+                //Adding children instructions with the parent id
+                foreach ($obj->body as $ins)
+                {
+                    DB::insert('instructions', array(
+                            'instruction_name' => $ins->instruction_id,
+                            'attempt_id' => $attempt_id,
+                            'parent_id' => $parent_id
+                        )
+                    );
+                }
+            }
+            else
+            {
+                DB::insert('instructions', array(
+                        'instruction_name' => $obj->instruction_id,
+                        'attempt_id' => $attempt_id
+                    )
+                );
+            }
+        }
+
     }
 }
 

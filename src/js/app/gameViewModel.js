@@ -43,6 +43,11 @@ define(
             self.usedHelp = ko.observable(false);
             self.usedDebugger = ko.observable(false);
             self.hasError = ko.observable(false);
+            self.levelScore = ko.observable(0);
+            self.gameOver = ko.observable(false);
+            self.debuggerAvailable = ko.observable(false);
+            self.highScores = ko.observableArray();
+            self.loadingHighScores = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -67,6 +72,9 @@ define(
             };
 
             self.changeView = function(view){
+                if(view === 'high-scores'){
+                    self.loadHighScores();
+                };
                 self.currentView(view);
                 self.bodyClass('space');
             };
@@ -88,12 +96,16 @@ define(
 
             self.levelJump = function() {
 
+                var level = _.find(levelViewModels, function(level){
+                    return level.jumpCode == self.jumpCode();
+                });
+
+                if(!level) {
+                    return;
+                }
+
                 services.startGame(function(response){
                     self.gameId(response.id);
-
-                    var level = _.find(levelViewModels, function(level){
-                        return level.jumpCode == self.jumpCode();
-                    });
 
                     self.selectLevel(level);
                 });
@@ -123,6 +135,9 @@ define(
                     self.usedHelp(false);
                     self.usedDebugger(false);
                     self.hasError(false);
+                    self.levelScore(0);
+                    self.gameOver(false);
+                    self.debuggerAvailable(level.debuggerAvailable);
                 });
             };
 
@@ -327,11 +342,8 @@ define(
                     {
                         if (win) {
 
-                            var scoreCalculator = new ScoreCalculator();
+                            var scoreCalculator = new ScoreCalculator(self.currentLevel());
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
-                            self.score(self.score() + score);
-
-                            self.personaText(self.currentLevel().exit);
 
                             services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
 
@@ -339,9 +351,10 @@ define(
 
                                 if (levelViewModels[levelViewModels.length-1] === level) {
 
+                                    self.gameOver(true);
                                     services.completeGame(self.gameId(), function(){
 
-                                        alert('Game over! You win.');
+
 
                                     });
                                 }
@@ -349,6 +362,11 @@ define(
 
                                     self.canAdvance(true);
                                 }
+
+                                self.levelScore(score);
+                                self.score(self.score() + score);
+
+                                self.personaText(self.currentLevel().exit);
                             });
                         }
                         else {
@@ -693,6 +711,14 @@ define(
             self.emptyFunction = ko.computed(function(){
                 return self.functionTree().length === 0;
             });
+
+            self.loadHighScores = function(){
+                self.loadingHighScores(true);
+                services.getHighScores(function(highScores){
+                    self.loadingHighScores(false);
+                    self.highScores(highScores);
+                });
+            };
         };
     }
 );
