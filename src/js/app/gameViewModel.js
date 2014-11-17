@@ -344,6 +344,8 @@ define(
 
                             var scoreCalculator = new ScoreCalculator(self.currentLevel());
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
+                            self.levelScore(score);
+                            self.score(self.score() + score);
 
                             services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
 
@@ -354,17 +356,12 @@ define(
                                     self.gameOver(true);
                                     services.completeGame(self.gameId(), function(){
 
-
-
                                     });
                                 }
                                 else {
 
                                     self.canAdvance(true);
                                 }
-
-                                self.levelScore(score);
-                                self.score(self.score() + score);
 
                                 self.personaText(self.currentLevel().exit);
                             });
