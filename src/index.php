@@ -11,12 +11,12 @@
 	<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
   
-    <div class="navbar-header">
+    <div class="navbar-header" data-bind="visible: currentView() !== 'build-program'">
       <a class="navbar-brand" href="#" data-bind="click: returnHome">How To Train Your Robot</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" data-bind="visible: currentView() !== 'build-program'">
           <li><a href="#" data-bind="click: function(){ changeView('about'); }">About</a></li>
           <li><a href="#" data-bind="click: function(){ changeView('high-scores'); }">High Scores</a></li>
           <li><a href="#" data-bind="click: function(){ changeView('jump'); }">Level Jump</a></li>
