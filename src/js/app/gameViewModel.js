@@ -327,7 +327,7 @@ define(
                     {
                         if (win) {
 
-                            var scoreCalculator = new ScoreCalculator();
+                            var scoreCalculator = new ScoreCalculator(self.currentLevel());
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
                             self.score(self.score() + score);
 
