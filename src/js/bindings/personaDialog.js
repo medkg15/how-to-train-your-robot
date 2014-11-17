@@ -10,6 +10,11 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
             $(document).on('click', '#persona-ok', function(){
                 value(undefined);
                 $(element).popover('hide');
+
+                if(viewModel.canAdvance())
+                {
+                    viewModel.advanceToNextLevel();
+                }
             });
         },
         update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -34,8 +39,6 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
                     trigger: 'manual focus'
                 })
                 .popover('show');
-
-
         }
     };
 });

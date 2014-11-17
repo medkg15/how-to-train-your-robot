@@ -15,8 +15,6 @@
                 <?php include "map.php"; ?>
             </div>
 
-            <button class="btn btn-block" data-bind="visible: canAdvance, click: advanceToNextLevel">Next Level</button>
-
         </div>
 
         <div class="col-md-4">
