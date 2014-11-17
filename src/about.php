@@ -13,14 +13,9 @@
         <h1>Project Team</h1>
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                    gravida
-                    dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-                    luctus
-                    pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                <p>&nbsp;</p>
 
-            </div>
+          </div>
             <div class="col-md-4">
                 <img src="pics/ChadSmall.jpg" width="256" height="192" class="img-thumbnail"/><br/>
 
@@ -30,68 +25,50 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                    gravida
-                    dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-                    luctus
-                    pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                <p>&nbsp;</p>
 
-            </div>
+          </div>
             <div class="col-md-4">
-                <img src="pics/no_photo_female.jpg" width="192" height="201" class="img-thumbnail"/><br/>
+                <p><img src="pics/no_photo_female.jpg" width="192" height="201" class="img-thumbnail"/><br/>
                 Emtethal Alafghani<br/>
-                Graduate Student/IT Intern
+            Computer Information Technology Masters Candidate<br />
+            Concentration: Networking <br />
+              </p>
             </div>
-        </div>
+      </div>
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                    gravida
-                    dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-                    luctus
-                    pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                <p>&nbsp;</p>
 
-            </div>
+          </div>
             <div class="col-md-4">
                 <img src="pics/shotAJ.jpg" alt="" width="175" height="210" class="img-thumbnail"/><br/>
 
                 Antony E. Daley, Jr.<br/>
-                Graduate Student/Software Engineer
-            </div>
+                Computer Information Technology Masters Candidate<br />
+Concentration: Networking </div>
         </div>
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                    gravida
-                    dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-                    luctus
-                    pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                <p>&nbsp;</p>
 
-            </div>
+          </div>
             <div class="col-md-4">
                 <img src="pics/kevin.gif" width="200" height="200" class="img-thumbnail"/><br/>
                 Kevin Gregory<br/>
-                Graduate Student/Software Engineer
-            </div>
+                Computer Information Technology Masters Candidate<br />
+Concentration: Computer Science </div>
         </div>
         <div class="row">
             <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                    gravida
-                    dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-                    luctus
-                    pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+                <p>&nbsp;</p>
 
-            </div>
+          </div>
             <div class="col-md-4">
                 <img src="pics/marianella.gif" width="206" height="211" class="img-thumbnail"/><br/>
                 Marianella Rydzewski<br/>
-                Graduate Student/Software Engineer
-            </div>
+                Computer Information Technology Masters Candidate<br />
+Concentration: Networking </div>
         </div>
     </div>
 </div>
