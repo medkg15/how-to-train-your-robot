@@ -49,7 +49,7 @@ class DataAccess
     {
         DB::insert('level_attempt', array(
             'level_id' => $session_level_id,
-            'program' => $program,
+            'program' => json_encode($program),
             'number' => 1,
             'start' => $start,
             'end' => $end
