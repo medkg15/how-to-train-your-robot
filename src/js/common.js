@@ -6,6 +6,7 @@ requirejs.config({
         , "knockout": "../vendor/knockout/dist/knockout"
         , "jstree": "../vendor/jstree/dist/jstree"
         , "jsurl": "../vendor/jsul/url.min"
+        , "moment": "../vendor/moment/moment"
 	}
 	, shim: {
 		"bootstrap": ['jquery']

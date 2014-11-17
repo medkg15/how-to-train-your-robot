@@ -46,6 +46,8 @@ define(
             self.levelScore = ko.observable(0);
             self.gameOver = ko.observable(false);
             self.debuggerAvailable = ko.observable(false);
+            self.highScores = ko.observableArray();
+            self.loadingHighScores = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -70,6 +72,9 @@ define(
             };
 
             self.changeView = function(view){
+                if(view === 'high-scores'){
+                    self.loadHighScores();
+                };
                 self.currentView(view);
                 self.bodyClass('space');
             };
@@ -706,6 +711,14 @@ define(
             self.emptyFunction = ko.computed(function(){
                 return self.functionTree().length === 0;
             });
+
+            self.loadHighScores = function(){
+                self.loadingHighScores(true);
+                services.getHighScores(function(highScores){
+                    self.loadingHighScores(false);
+                    self.highScores(highScores);
+                });
+            };
         };
     }
 );

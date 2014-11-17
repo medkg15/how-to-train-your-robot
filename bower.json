@@ -8,6 +8,7 @@
     "underscore": "~1.7.0",
     "jquery-ui": "~1.11.1",
     "jstree": "~3.0.4",
-    "bootstrap-jstree-theme": "~0.2.1"
+    "bootstrap-jstree-theme": "~0.2.1",
+    "moment": "~2.8.3"
   }
 }

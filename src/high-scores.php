@@ -1,36 +1,27 @@
-<?php require_once('services/includes/data_access.php');?>
+<?php require_once('services/includes/data_access.php'); ?>
 <div class="page-container" data-bind="if: currentView() === 'high-scores'">
-<div class="well">
-    <h1>High Scores</h1>
-    <table class="table table-border">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Level</th>
-            <th>Score</th>
-            <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src="pics/Robot_Character2_Pink.png" height="200"/></td>
-            <td>Level 2</td>
-            <td>342</td>
-            <td>Thursday, October 16, 2014</td>
-        </tr>
-        <tr>
-            <td><img src="pics/Robot_Character2_Blue.png" height="200"/></td>
-            <td>Level 2</td>
-            <td>322</td>
-            <td>Tuesday, October 14, 2014</td>
-        </tr>
-        <tr>
-            <td><img src="pics/Robot_Character2_Pink.png" height="200"/></td>
-            <td>Level 2</td>
-            <td>251</td>
-            <td>Thursday, October 16, 2014</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="well">
+        <h1>High Scores</h1>
+        <div data-bind="if: loadingHighScores">
+            <p>Loading...</p>
+        </div>
+        <table class="table table-border" data-bind="if: !loadingHighScores()">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Level</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: highScores">
+            <tr>
+                <td><img src="pics/Robot_Character2_Pink.png" height="200"/></td>
+                <td data-bind="text: level"></td>
+                <td data-bind="text: score"></td>
+                <td data-bind="text: date"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
