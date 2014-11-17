@@ -51,7 +51,7 @@ define(['data/instructions', 'underscore'], function(instructions, _){
 
             var usedHelpMultiplier = (usedHelp ? 1 : 1.25);
 
-            return (result.sum * efficiencyMultiplier * attemptsMultiplier * usedHelpMultiplier).toFixed(0);
+            return Math.round(result.sum * efficiencyMultiplier * attemptsMultiplier * usedHelpMultiplier);
         };
 
     };
