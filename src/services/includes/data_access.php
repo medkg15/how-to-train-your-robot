@@ -56,9 +56,10 @@ class DataAccess
         ));
 
         $attempt_id = DB::insertId();
-        $this->create_instructions($program,$attempt_id);
 
-        return DB::insertId();
+        $this->create_instructions($program, $attempt_id);
+
+        return $attempt_id;
     }
 
     /**
