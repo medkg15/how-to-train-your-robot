@@ -44,6 +44,8 @@ define(
             self.usedDebugger = ko.observable(false);
             self.hasError = ko.observable(false);
             self.levelScore = ko.observable(0);
+            self.gameOver = ko.observable(false);
+            self.debuggerAvailable = ko.observable(false);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -89,12 +91,16 @@ define(
 
             self.levelJump = function() {
 
+                var level = _.find(levelViewModels, function(level){
+                    return level.jumpCode == self.jumpCode();
+                });
+
+                if(!level) {
+                    return;
+                }
+
                 services.startGame(function(response){
                     self.gameId(response.id);
-
-                    var level = _.find(levelViewModels, function(level){
-                        return level.jumpCode == self.jumpCode();
-                    });
 
                     self.selectLevel(level);
                 });
@@ -125,6 +131,8 @@ define(
                     self.usedDebugger(false);
                     self.hasError(false);
                     self.levelScore(0);
+                    self.gameOver(false);
+                    self.debuggerAvailable(level.debuggerAvailable);
                 });
             };
 
@@ -338,21 +346,22 @@ define(
 
                                 if (levelViewModels[levelViewModels.length-1] === level) {
 
+                                    self.gameOver(true);
                                     services.completeGame(self.gameId(), function(){
 
-                                        alert('Game over! You win.');
+
 
                                     });
                                 }
                                 else {
 
                                     self.canAdvance(true);
-
-                                    self.levelScore(score);
-                                    self.score(self.score() + score);
-
-                                    self.personaText(self.currentLevel().exit);
                                 }
+
+                                self.levelScore(score);
+                                self.score(self.score() + score);
+
+                                self.personaText(self.currentLevel().exit);
                             });
                         }
                         else {

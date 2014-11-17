@@ -21,6 +21,9 @@
             <div class="well">
                 <div id="program" data-bind="css: { 'empty': hasNoProgram }">
                     <h2>Your Program:</h2>
+                    <div data-bind="if: levelAttempts">
+                        Attempt #<span data-bind="text: levelAttempts"></span>
+                    </div>
                     <button
                         data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0 && !canAdvance()"
                         class="btn btn-danger">Clear Program
@@ -33,20 +36,33 @@
 
                     <button class="btn btn-success"
                             data-bind="click: execute, disable: isExecuting() || canAdvance(), enable: programInstructions().length > 0">
-                        Run Program
+                        Run
                     </button>
-                    <button class="btn btn-success" data-bind="click: executeOnce, enable: programInstructions().length > 0, disable: canAdvance() || hasError()">Run One Instruction</button>
                     <button
                         data-bind="click: stop, visible: isExecuting"
                         class="btn btn-danger">Stop
                     </button>
-                    <button data-bind="click: pause, visible: isExecuting() && !hasError(), text: isPaused() ? 'Unpause' : 'Pause'"
-                            class="btn btn-info">Pause
-                    </button>
 
-                    <div data-bind="if: levelAttempts">
-                        Attempt #<span data-bind="text: levelAttempts"></span>
+                    <div data-bind="if: debuggerAvailable">
+
+                        <h3>Debugger</h3>
+                        <p>You can use the debugger to watch the program one instruction at a time to see where your robot is having a problem.</p>
+
+                        <button class="btn btn-success"
+                                data-bind="click: executeOnce, enable: programInstructions().length > 0">
+                            Next
+                        </button>
+                        <button class="btn btn-success"
+                                data-bind="click: pause, enable: programInstructions().length > 0, visible: isExecuting">
+                            Continue
+                        </button>
+                        <button data-bind="click: stop, visible: isExecuting"
+                                class="btn btn-danger">
+                            Stop
+                        </button>
+
                     </div>
+
                 </div>
             </div>
         </div>

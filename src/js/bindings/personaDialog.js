@@ -14,6 +14,9 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
                 if(viewModel.canAdvance())
                 {
                     viewModel.advanceToNextLevel();
+                } else if(viewModel.gameOver())
+                {
+                    viewModel.changeView('high-scores');
                 }
             });
         },
@@ -31,7 +34,7 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
 
             var content = valueUnwrapped;
 
-            if (viewModel.canAdvance())
+            if (viewModel.canAdvance() || viewModel.gameOver())
             {
                 content += "<br/>" + "<p><strong>Your Score</strong>: " + viewModel.levelScore() + "</p>" ;
             }
