@@ -115,7 +115,6 @@ class DataAccess
     {
         foreach ($program as $obj)
         {
-            printf($obj->instruction_id);
             if (strpos($obj->instruction_id, 'custom-function') !== false)
             {
                 DB::insert('instructions', array(
