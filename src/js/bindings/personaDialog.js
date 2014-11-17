@@ -29,10 +29,19 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
                 return;
             }
 
+            var content = valueUnwrapped;
+
+            if (viewModel.canAdvance())
+            {
+                content += "<br/>" + "<p><strong>Your Score</strong>: " + viewModel.levelScore() + "</p>" ;
+            }
+
+            content += '<button id="persona-ok" class="btn btn-primary">OK</button>';
+
             $(element)
                 .popover('destroy')
                 .popover({
-                    content: valueUnwrapped + '<button id="persona-ok" class="btn btn-primary">OK</button>',
+                    content: content,
                     html: true,
                     placement: 'right',
                     title: 'Persona',

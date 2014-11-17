@@ -43,6 +43,7 @@ define(
             self.usedHelp = ko.observable(false);
             self.usedDebugger = ko.observable(false);
             self.hasError = ko.observable(false);
+            self.levelScore = ko.observable(0);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -123,6 +124,7 @@ define(
                     self.usedHelp(false);
                     self.usedDebugger(false);
                     self.hasError(false);
+                    self.levelScore(0);
                 });
             };
 
@@ -329,9 +331,6 @@ define(
 
                             var scoreCalculator = new ScoreCalculator(self.currentLevel());
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
-                            self.score(self.score() + score);
-
-                            self.personaText(self.currentLevel().exit);
 
                             services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
 
@@ -348,6 +347,11 @@ define(
                                 else {
 
                                     self.canAdvance(true);
+
+                                    self.levelScore(score);
+                                    self.score(self.score() + score);
+
+                                    self.personaText(self.currentLevel().exit);
                                 }
                             });
                         }
