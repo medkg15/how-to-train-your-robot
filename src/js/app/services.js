@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery', 'underscore', 'moment'], function ($, _, moment) {
 
     return {
         startGame: function (callback) {
@@ -63,6 +63,25 @@ define(['jquery'], function ($) {
                     callback(data);
                 },
                 "json");
+        },
+        getHighScores: function (callback){
+            $.get(
+                '/services/high-scores.php',
+                null,
+                function(data){
+
+                    var transformed = _.map(data, function(highScore){
+                        return {
+                            level: highScore.level_id,
+                            score: highScore.highscore,
+                            date: moment(highScore.end).format('LL')
+                        };
+                    });
+
+                    callback(transformed);
+                },
+                "json"
+            )
         }
     };
 });
