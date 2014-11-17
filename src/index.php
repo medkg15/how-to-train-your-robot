@@ -6,7 +6,18 @@
     <link href="/vendor/bootstrap-jstree-theme/dist/themes/bootstrap/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="container" data-bind="css: bodyClass">
+
+<div id="loading-view" class="container white">
+
+    <h1>Loading Robot Training...</h1>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+<div id="knockout-view" class="container" data-bind="css: bodyClass" style="display:none;">
 
 	<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -58,6 +69,9 @@
 				var viewModel = new GameViewModel();
 			
 				ko.applyBindings(viewModel);
+
+                $('#loading-view').remove();
+                $('#knockout-view').show();
 			}
 		);
 	});
