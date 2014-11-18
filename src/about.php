@@ -10,7 +10,7 @@
            <br> 4.	Leverage what has already been done in this field and develop a game-based application that will teach students (in particular elementary school students) the basics of programming.
            <br> 5.	Pilot this game-based application to a group of children and observe and record their responsiveness to the application.  Additionally, examine whether or not participants show evidence of understanding specific programming concepts (automation, repetition, sub-routines, etc.)
             </p>
-        <h1>Project Team</h1>
+        <div align="right"><h1>Project Team</h1></div>
         <div class="row" align="left">
             <div class="col-md-8">
             <div class="col-md-4">
