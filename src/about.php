@@ -11,7 +11,7 @@
            <br> 5.	Pilot this game-based application to a group of children and observe and record their responsiveness to the application.  Additionally, examine whether or not participants show evidence of understanding specific programming concepts (automation, repetition, sub-routines, etc.)
             </p>
         <h1>Project Team</h1>
-        <div class="row">
+        <div class="row" align="left">
             <div class="col-md-8">
                 <p>&nbsp;</p>
 
@@ -24,12 +24,12 @@
                 </div>
             </div>
       </div>
-        <div class="row">
+        <div class="row" align="left">
             <div class="col-md-8">
                 <p>&nbsp;</p>
 
           </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="left">
                 <p align="left"><img src="pics/no_photo_female.jpg" width="192" height="201" class="img-thumbnail"/><br/>
                 Emtethal Alafghani<br/>
             Computer Information Technology Masters Candidate<br />
@@ -42,7 +42,7 @@
                 <p>&nbsp;</p>
 
           </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/shotAJ.jpg" alt="" width="175" height="210" class="img-thumbnail"/><br/>
 
                 Antony E. Daley, Jr.<br/>
@@ -55,7 +55,7 @@ Concentration: Networking </div>
                 <p>&nbsp;</p>
 
           </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/kevin.gif" width="200" height="200" class="img-thumbnail"/><br/>
                 Kevin Gregory<br/>
                 Computer Information Technology Masters Candidate<br />
@@ -67,7 +67,7 @@ Concentration: Computer Science </div>
                 <p>&nbsp;</p>
 
           </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/marianella.gif" width="206" height="211" class="img-thumbnail"/><br/>
                 Marianella Rydzewski<br/>
                 Computer Information Technology Masters Candidate<br />
