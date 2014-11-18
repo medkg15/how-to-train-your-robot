@@ -11,10 +11,6 @@
            <br> 5.	Pilot this game-based application to a group of children and observe and record their responsiveness to the application.  Additionally, examine whether or not participants show evidence of understanding specific programming concepts (automation, repetition, sub-routines, etc.)
             </p>
         <h1>Project Team</h1>
-        <div class="row" align="left">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
           </div>
             <div class="col-md-4">
                 <div align="left"><img src="pics/ChadSmall.jpg" width="256" height="192" class="img-thumbnail"/><br/>
@@ -24,9 +20,6 @@
                 </div>
             </div>
       </div>
-        <div class="row" align="left">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
 
           </div>
             <div class="col-md-4" align="left">
@@ -37,9 +30,6 @@
               </p>
             </div>
       </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
 
           </div>
             <div class="col-md-4" align="left">
@@ -50,9 +40,6 @@
 Concentration: Networking </div>
           </div>
       </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
 
           </div>
             <div class="col-md-4" align="left">
@@ -62,10 +49,6 @@ Concentration: Networking </div>
 Concentration: Computer Science </div>
           </div>
       </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
           </div>
             <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/marianella.gif" width="206" height="211" class="img-thumbnail"/><br/>
