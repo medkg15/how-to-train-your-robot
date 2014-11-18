@@ -12,14 +12,14 @@
             </p>
         <h1>Project Team</h1>
           </div>
-
+            <div class="col-md-4">
                 <div align="left"><img src="pics/ChadSmall.jpg" width="256" height="192" class="img-thumbnail"/><br/>
 
                 Dr. Chad Williams<br/>
                 Assistant Professor of Computer Science
                 </div>
             </div>
-
+      </div>
 
           </div>
             <div class="col-md-4" align="left">
