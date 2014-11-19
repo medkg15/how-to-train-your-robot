@@ -12,23 +12,16 @@
             </p>
         <h1>Project Team</h1>
         <div class="row" align="left">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
-          </div>
             <div class="col-md-4">
                 <div align="left"><img src="pics/ChadSmall.jpg" width="256" height="192" class="img-thumbnail"/><br/>
 
                 Dr. Chad Williams<br/>
-                Assistant Professor of Computer Science
+                Assistant Professor of Computer Science/Advisor
                 </div>
             </div>
       </div>
+        <br>
         <div class="row" align="left">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
-          </div>
             <div class="col-md-4" align="left">
                 <p align="left"><img src="pics/no_photo_female.jpg" width="192" height="201" class="img-thumbnail"/><br/>
                 Emtethal Alafghani<br/>
@@ -37,11 +30,8 @@
               </p>
             </div>
       </div>
+        <br>
         <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
-          </div>
             <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/shotAJ.jpg" alt="" width="175" height="210" class="img-thumbnail"/><br/>
 
@@ -50,11 +40,8 @@
 Concentration: Networking </div>
           </div>
       </div>
+        <br>
         <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
-          </div>
             <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/kevin.gif" width="200" height="200" class="img-thumbnail"/><br/>
                 Kevin Gregory<br/>
@@ -62,11 +49,8 @@ Concentration: Networking </div>
 Concentration: Computer Science </div>
           </div>
       </div>
+        <br>
         <div class="row">
-            <div class="col-md-8">
-                <p>&nbsp;</p>
-
-          </div>
             <div class="col-md-4" align="left">
                 <div align="left"><img src="pics/marianella.gif" width="206" height="211" class="img-thumbnail"/><br/>
                 Marianella Rydzewski<br/>
