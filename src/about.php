@@ -55,7 +55,7 @@ Concentration: Computer Science </div>
                 <div align="left"><img src="pics/marianella.gif" width="206" height="211" class="img-thumbnail"/><br/>
                 Marianella Rydzewski<br/>
                 Computer Information Technology Masters Candidate<br />
-Concentration: Networking </div>
+Concentration: Computer Science </div>
           </div>
       </div>
     </div>
