@@ -5,16 +5,16 @@
                 <h1> Welcome to Robot Training</h1>
 
                 <p>
-                One day Robo was discovering the world by his spaceship. <br> Unfortunately, the spaceship had exploded in the space and tear apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.
-                <img src="images/introductionBackground.jpg" width=780" height="450"/>
+                One day Robo was discovering the world with his spaceship. <br> Unfortunately, the spaceship had exploded in the space and tear apart in many lands. <br><br> In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.
+                    <img src="images/introductionBackground.jpg" width=1100" height="600"/>
 
                 </p>
 
             </div>
             <div class="col-md-4">
-                <p><br> <br><img src="pics/Robot_Character1_Blue.png" width="230" height="287"/></p>
+                <p><br><br><br><br><br><br><br> <br><img src="pics/Robot_Character1_Blue.png" width="230" height="287"/></p>
 
-                <p><br> <br><img src="pics/Robot_Character1_Pink.png" width="250" height="290"/></p>
+                <p><br> <img src="pics/Robot_Character1_Pink.png" width="250" height="290"/></p>
             </div>
         </div>
 

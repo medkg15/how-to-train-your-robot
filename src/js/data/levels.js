@@ -10,7 +10,7 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>In this level you will be introduced to the “Automation” concept by using one Computer Instruction. <br> <br> In this level you will be introduced to the “Automation” concept by using one Computer Instruction.</p>",
+            "intro": "<p>In this level you will be introduced to the “Automation” concept by using one Computer Instruction. <br> <br> In order for Robo to reach the 1st spaceship part, he must walk step by step following your instructions.<br> Drag the instruction from the “Build Your Program” box at the bottom and drop it in your “ Your Program ” box on the right side. After creating a whole list in your program, you can “Run Program” and wait for Robo to execute or “Run One Instruction” to execute one instruction at a time. </p>",
             "exit": "<p> You got it good job! <br> <br> Using Automation you were able to write a program from the computer instruction “Step Forward” to help Robo execute and find the first part of his spaceship. </p>",
             "help": "<p>Having trouble?  here's some tips:<br> <br> 1. Robo has to walk 2 steps forward then pick up the goal. <br> 2. You can clear your program and start over at any time by clicking “Clear Program” button.</p>",
             "jumpCode": 1,
@@ -46,7 +46,7 @@ define([], function(){
                 "row": 5
             },
             "intro": "<p>In this level you will be able to apply the automation concept you learned in level 1 by using 2 Computer Instructions. You can give Robo different instructions as needed to reach the goal!</p>",
-            "exit": "<p>Fantastic! <br> <br>  By using different types of Computer Instructions, you were able to Automate Robo during the path to the goal.</p>",
+            "exit": "<p>Fantastic! <br> <br>  By using different types of Computer Instructions you were able to Automate Robo during the path to the goal.</p>",
             "help": "<p>Let me help!  here's a tip:<br>  <br> Robo has to step forward 3 times, turn right, and step forward 2 times to reach the goal.</p>",
             "jumpCode": 2,
 			"instructions": [
@@ -89,9 +89,9 @@ define([], function(){
                 "column": 2,
                 "row": 2
             },
-            "intro": "<p>In this level you will be introduced to the programming concept “Loop”! You will automate Robo to walk but use the required instruction one time only by taking advantage of the “Repeat” instruction. <br> <br>Drag the “Repeat” instruction from the instruction box and drop it into your program. Drag the instruction you need Robo to repeat in order to reach the goal. Right click on the “Repeat” instruction and give it a parameter “the number of times you need Robo to repeat the following instruction”. </p>",
-            "exit": "<p> Well Done! <br> <br>  By using the “Loop with Parameter”, you were able to repeat the instruction you needed Robo to execute many times by writing less code in your program instead of writing the same instruction over and over.  </p>",
-            "help": "<p>Having trouble?  here's a tip:<br>  <br> You can automate Robo to repeat stepping forward 4 times instead of writing the same instruction 4 times using instruction “Repeat“.</p>",
+            "intro": "<p>In this level you will be introduced to the programming concept “Loop”! You will automate Robo to walk but use the required instruction one time only by taking advantage of the “Repeat” instruction. <br> <br>Drag the “Repeat” instruction from “Build Your Program” box and drop it into “Your Program”. Drag the instruction you need Robo to repeat in order to reach the goal. Right click on the “Repeat” instruction and give it a parameter “the number of times you need Robo to repeat the following instruction”. </p>",
+            "exit": "<p> Well Done! <br> <br>  By using the “Loop with Parameter” you were able to repeat the instruction you needed Robo to execute many times by writing less code in your program instead of writing the same instruction over and over.  </p>",
+            "help": "<p>Having trouble?  here's a tip:<br>  <br> You can automate Robo to repeat stepping forward 4 times instead of writing the same instruction 4 times by using the loop instruction “Repeat“.</p>",
             "jumpCode": 3,
             "instructions": [
                 {
@@ -136,9 +136,9 @@ define([], function(){
                 "column": 1,
                 "row": 6
             },
-            "intro": "<p>In this level you will learn how to use a “Conditional Loop” in programming. You will automate Robo to repeat an instruction as long as a condition is true. Once the condition becomes false, Robo has to stop and pick up the goal.! <br> <br>   Drag the “Repeat While” instruction from the Instruction box and drop it into your program. Select which condition should be true all the time while Robo is executing the repeated instruction. Select the instruction you want Robo to repeat until the previous condition becomes false. Don’t forget to end your program by dragging the instruction “pick up goal”</p>",
-            "exit": "<p> Great! <br> <br>  By using the conditional loop you were able to instruct Robo to repeat an instruction as long as a condition is true. This way, your program had less code and was easier to write.</p>",
-            "help": "<p>Let me help!  here's a tip:<br>  <br> You can automate Robo to repeat the instruction “Step Forward” as long as the goal is not in front of him then pick up the goal. </p>",
+            "intro": "<p>In this level you will learn how to use a “Conditional Loop” in programming. You will automate Robo to repeat an instruction as long as a condition is true. Once the condition becomes false, Robo has to stop and pick up the goal.! <br> <br>   Drag the “Repeat While” instruction from “Build Your Program” box and drop it into “Your Program”. Select which condition should be true all the time while Robo is executing the repeated instruction. Select the instruction you want Robo to repeat until the previous condition becomes false and drop it inside the “Repeat While” tree.<br> Don’t forget to end your program by dragging the instruction “Pick Up Goal”.</p>",
+            "exit": "<p> Amazing work! <br> <br>  By using the conditional loop you were able to instruct Robo to repeat an instruction as long as a condition is true. This way, your program had less code and was easier to write.</p>",
+            "help": "<p>Let me help!  here's some tips:<br>  <br> 1. 1.	You can automate Robo to repeat the instruction “Step Forward” as long as the goal is not in front of him then pick up the goal. <br> 2. 2.	The instruction you want to repeat should appear in your program as if it’s inside “Repeat While”, its branch, not under it. </p>",
             "jumpCode": 4,
             "instructions": [
                 {
@@ -183,9 +183,9 @@ define([], function(){
                 "column": 1,
                 "row": 6
             },
-            "intro": "<p>In this level you will be introduced to the “Functions” concept. Choose the pre-created Function from the instructions box at the bottom and group the set of instructions you think can be combined together in the function.</p>",
-            "exit": "<p> Brilliant job! <br> <br> Functions helped you to include the repeated tasks you needed Robo to perform in one group instead of repeating the same set of instructions again and again.</p>",
-            "help": "<p>Let me help!  here's some tips: <br> <br> 1.Select the instructions in order inside the function.  <br> 2. Robot has to step forward, turn right, and step forward to reach the target. <br> 3.Use the function “Diagonal” instead of using the same single instructions every time. </p>",
+            "intro": "<p>In this level you will apply what you have learned in the previous level about “Conditional Loops”. This time you will have the opportunity to use conditional loops many times and change the condition as needed every time. </p>",
+            "exit": "<p> Brilliant job! <br> <br> By using different conditional loops in your program you were able to instruct Robo to repeat different instructions and use different conditions as needed every time. This way, although the path to the goal was long, your program had less instructions and was easier to write.</p>",
+            "help": "<p>Let me help!  here's some tips: <br> <br> 1. You can automate Robo to repeat the instruction “Step Forward” as long as the wall is not in front of him then “Turn Left”, repeat the same thing for the next steps. 2. Remember that you can change the condition if the goal is in front of Robo not the wall! <br> <br> 3. You can use one or more instruction e.g. “Turn Left” to be executed after each loop terminate, which should appear in your program under the loop tree “Repeat While” not inside it. <br> <br> 4. Finally, don't forget to pick up the goal. </p>",
             "jumpCode": 5,
             "instructions": [
                 {
@@ -222,7 +222,7 @@ define([], function(){
         },
         {
             "id": "level-6",
-            "name": "Functions with Parameterization - Shuffle!",
+            "name": "Optimization!",
             "number": 6,
             "environment": "orange-fall",
             "defaultHeading": "up",
@@ -230,9 +230,9 @@ define([], function(){
                 "column": 4,
                 "row": 4
             },
-            "intro": "<p> In this level you will be allowed to use parameters with the function you created in the previous level. Drag the Function and give it a value as needed!</p>",
-            "exit": "<p> Outstanding work! <br> <br> Functions and parameters made it easier to group the tasks you needed the robot to perform in one function and then repeat this function as much as you want. </p>",
-            "help": "<p> Having trouble?  here's some tips:<br>  <br> 1. Right click on the function and write the number of times you want the function to be repeated. <br> 2.The robot need to step forward, turn right, and step forward 3 times in the same order. <br> 3.Use the function with the parameter 3 instead of dragging the function 3 times. </p>",
+            "intro": "<p>In this level you will be introduced to the Optimization concept. Try to reduce the number of steps by replacing some instructions.</p>",
+            "exit": "<p> Awesome! <br> <br> Optimization allowed you to use a different instruction to reduce the amount of instructions needed to automate Robo to turn every time he faces an obstacle during the path to the goal. </p>",
+            "help": "<p> Having trouble?  here's a tip:<br>  <br> Use “Shuffle” to turn faster instead of “Turn” then “Step Forward”. </p>",
             "jumpCode": 6,
             "instructions": [
                 {
@@ -273,7 +273,7 @@ define([], function(){
         },
         {
             "id": "level-7",
-            "name": "Optimization!",
+            "name": "-\",
             "number": 7,
             "environment": "dark-mountain",
             "defaultHeading": "up",
