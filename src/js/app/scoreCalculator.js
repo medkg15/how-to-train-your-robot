@@ -1,9 +1,9 @@
 define(['data/instructions', 'underscore'], function(instructions, _){
 
-    return function ScoreCalculator(){
+    return function ScoreCalculator(level){
 
         var calcScope = function(scope){
-            var sum = 0;
+            var result = { count: 0, sum: 0 };
             for (var i in scope) {
 
                 if (!scope.hasOwnProperty(i)) {
@@ -17,34 +17,41 @@ define(['data/instructions', 'underscore'], function(instructions, _){
                     return inst.id === instructionID;
                 });
 
-                sum += definition.points;
+                result.sum += definition.points;
+                result.count++;
 
                 if(instruction.body && instruction.body.length > 0) {
-                    sum += calcScope(instruction.body);
+                    var innerResult = calcScope(instruction.body);
+                    result.sum += innerResult.sum;
+                    result.count += innerResult.count;
                 }
             }
-            return sum;
+            return result;
         };
 
         this.calculate = function(program, attempts, usedHelp){
 
-            var rawScore = calcScope(program);
+            var result = calcScope(program);
 
-            var multiplier;
+            var efficiencyMultiplier = level.perfectInstructionCount / result.count;
+
+            var attemptsMultiplier;
             if(attempts === 1){
-                multiplier = 1.5;
+                attemptsMultiplier = 1.5;
             }
             else if(attempts < 3){
-                multiplier = 1.0;
+                attemptsMultiplier = 1.0;
             }
             else if(attempts < 5){
-                multiplier = 0.75;
+                attemptsMultiplier = 0.75;
             }
             else {
-                multiplier = 0.5;
+                attemptsMultiplier = 0.5;
             }
 
-            return rawScore * multiplier * (usedHelp ? 1 : 1.25);
+            var usedHelpMultiplier = (usedHelp ? 1 : 1.25);
+
+            return Math.round(result.sum * efficiencyMultiplier * attemptsMultiplier * usedHelpMultiplier);
         };
 
     };

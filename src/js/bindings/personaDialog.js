@@ -10,6 +10,14 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
             $(document).on('click', '#persona-ok', function(){
                 value(undefined);
                 $(element).popover('hide');
+
+                if(viewModel.canAdvance())
+                {
+                    viewModel.advanceToNextLevel();
+                } else if(viewModel.gameOver())
+                {
+                    viewModel.changeView('high-scores');
+                }
             });
         },
         update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -24,18 +32,25 @@ define(['knockout', 'jquery', 'bootstrap'], function(ko, $, bootstrap){
                 return;
             }
 
+            var content = valueUnwrapped;
+
+            if (viewModel.canAdvance() || viewModel.gameOver())
+            {
+                content += "<br/>" + "<p><strong>Your Score</strong>: " + viewModel.levelScore() + "</p>" ;
+            }
+
+            content += '<button id="persona-ok" class="btn btn-primary">OK</button>';
+
             $(element)
                 .popover('destroy')
                 .popover({
-                    content: valueUnwrapped + '<button id="persona-ok" class="btn btn-primary">OK</button>',
+                    content: content,
                     html: true,
                     placement: 'right',
                     title: 'Persona',
                     trigger: 'manual focus'
                 })
                 .popover('show');
-
-
         }
     };
 });

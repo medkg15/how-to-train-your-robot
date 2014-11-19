@@ -11,7 +11,7 @@ require_once('includes/data_access.php');
 $json = json_decode(file_get_contents('php://input'));
 
 $level_session_id = $json->level_id;
-$program = json_encode($json->program); // convert the program itself back into a json string for storage.
+$program = $json->program;
 $attempt_start = $json->attempt_start;
 $attempt_end = $json->attempt_end;
 $score = $json->score;
