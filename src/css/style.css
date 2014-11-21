@@ -8,7 +8,7 @@
 .space .persona {}
 
 .wild-west {
-    background: url('/images/bgdesert.jpg') repeat;
+    background: url('/images/bgdesert2.jpg') repeat;
 }
 .wild-west #map .wall { background: url('/images/obstCountryGreenVertical.png') no-repeat center center; }
 .wild-west #map .goal { background: url('/images/rocketP2.png') no-repeat center center; }
@@ -26,7 +26,7 @@
 .ocean #map .goal { background: url('/images/rocketP4.png') no-repeat center center; }
 
 .beach {
-    background: url('/images/bgBeach2.png') repeat;
+    background: url('/images/bgBeach2.jpg') repeat;
 }
 .beach  #map .wall { background: url('/images/obsBeach.png') no-repeat center center; }
 .beach #map .goal { background: url('/images/rocketP5.png') no-repeat center center; }
