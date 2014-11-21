@@ -35,7 +35,8 @@ define([], function(){
 				[' ',' ',' ',' ','x','x','x',' ',' ',' ',' ',' '],
 				[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 			],
-            "debuggerAvailable": true
+            "debuggerAvailable": false,
+            "customFunctionAvailable": false
 		},
 		{
 			"id": "level-2",
@@ -80,7 +81,8 @@ define([], function(){
 				[' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' '],
 				[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 			],
-            "debuggerAvailable": true
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
 		},
 
         {
@@ -130,7 +132,8 @@ define([], function(){
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         },
         {
             "id": "level-4",
@@ -179,7 +182,8 @@ define([], function(){
                 ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ','e','x'],
                 ['x','x','x','x','x','x','x','x','x','x','x','x']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         },
         {
             "id": "level-5",
@@ -228,7 +232,8 @@ define([], function(){
                 ['x',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x'],
                 ['x','x','x','x','x','x','x','x','x','x','x','x']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         },
         {
             "id": "level-6",
@@ -281,7 +286,8 @@ define([], function(){
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         },
         {
             "id": "level-7",
@@ -334,7 +340,8 @@ define([], function(){
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         },
         {
             "id": "level-8",
@@ -387,7 +394,8 @@ define([], function(){
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
             ],
-            "debuggerAvailable": "true"
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true
         }
 	];
 });

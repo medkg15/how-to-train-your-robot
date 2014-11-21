@@ -69,7 +69,7 @@
         </div>
 
     </div>
-    <div class="well" id="function" data-bind="css: { 'empty': emptyFunction }">
+    <div class="well" id="function" data-bind="if: customFunctionAvailable, css: { 'empty': emptyFunction }">
 
         <button data-bind="click: createFunction, visible: !buildingFunction()" class="btn btn-success">Create Function</button>
 

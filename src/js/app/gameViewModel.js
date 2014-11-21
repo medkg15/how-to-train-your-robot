@@ -141,6 +141,10 @@ define(
                 });
             };
 
+            self.customFunctionAvailable = ko.computed(function(){
+                return self.currentLevel() && self.currentLevel().customFunctionAvailable;
+            });
+
             self.returnHome = function () {
                 self.currentView('welcome');
                 self.currentLevel(null);
