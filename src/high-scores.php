@@ -19,9 +19,9 @@
         foreach ($highscores_array as $row)
         {
             $date = date_create($row['end']);
-            $dateScore = date_format($date, 'l F jS Y \a\t g:ia');
+            $dateScore = date_format($date, 'l, F jS, Y \a\t g:ia');
             echo'<tr>';
-            echo'<td><img src="pics/Robot_Character2_Blue.png" height="200"/></td>';
+            echo'<td><img src="pics/Robot_Character1_Blue.png" height="60"/></td>';
             echo'<td>'.$row['level_id'].'</td>';
             echo'<td>'.$row['highscore'].'</td>';
             echo'<td>'.$dateScore.'</td>';
