@@ -23,7 +23,7 @@
   <div class="container-fluid">
   
     <div class="navbar-header">
-      <a class="navbar-brand" href="#" data-bind="visible: currentView() !== 'build-program', click: returnHome">How To Train Your Robot</a>
+      <a class="navbar-brand" href="#" data-bind="visible: currentView() !== 'build-program', click: returnHome">Robot Training</a>
         <a class="navbar-brand" href="#" data-bind="if: currentView() === 'build-program'">Level <span data-bind="text: currentLevel().number"></span> <span class="small"
                                                                                                                                                             data-bind="text: currentLevel().name"></span></a>
     </div>
