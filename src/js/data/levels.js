@@ -285,7 +285,7 @@ define([], function(){
         },
         {
             "id": "level-7",
-            "name": "-\",
+            "name": "-",
             "number": 7,
             "environment": "dark-mountain",
             "defaultHeading": "up",

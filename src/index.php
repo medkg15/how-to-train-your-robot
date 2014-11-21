@@ -22,8 +22,10 @@
 	<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
   
-    <div class="navbar-header" data-bind="visible: currentView() !== 'build-program'">
-      <a class="navbar-brand" href="#" data-bind="click: returnHome">How To Train Your Robot</a>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" data-bind="visible: currentView() !== 'build-program', click: returnHome">How To Train Your Robot</a>
+        <a class="navbar-brand" href="#" data-bind="if: currentView() === 'build-program'">Level <span data-bind="text: currentLevel().number"></span> <span class="small"
+                                                                                                                                                            data-bind="text: currentLevel().name"></span></a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,8 +65,8 @@
     });
 	require(['common'], function(common){
 		require(
-			['jquery', 'knockout', 'app/gameViewModel', 'jstree'],
-			function($, ko, GameViewModel, jstree){
+			['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap'],
+			function($, ko, GameViewModel, jstree, knockoutBootstrap){
 				
 				var viewModel = new GameViewModel();
 			

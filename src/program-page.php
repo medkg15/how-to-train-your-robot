@@ -1,10 +1,5 @@
 <div data-bind="if: currentView() === 'build-program'">
 
-
-    <h1>Level <span data-bind="text: currentLevel().number"></span> <span class="small"
-                                                                          data-bind="text: currentLevel().name"></span>
-    </h1>
-
     <div class="row">
 
         <div class="col-md-8">
@@ -45,8 +40,7 @@
 
                     <div data-bind="if: debuggerAvailable">
 
-                        <h3>Debugger</h3>
-                        <p>You can use the debugger to watch the program one instruction at a time to see where your robot is having a problem.</p>
+                        <h3 data-bind="tooltip: {title: 'You can use the debugger to watch the program one instruction at a time to see where your robot is having a problem.', placement: 'left'}">Debugger</h3>
 
                         <button class="btn btn-success"
                                 data-bind="click: executeOnce, enable: programInstructions().length > 0">
