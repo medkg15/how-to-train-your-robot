@@ -1,7 +1,7 @@
 <?php require_once('services/includes/data_access.php'); ?>
 <div class="page-container" data-bind="if: currentView() === 'high-scores'">
 <div class="well">
-    <h1>High Scores</h1>
+    <h2>High Scores</h2>
     <table class="table table-border">
         <thead>
         <tr>

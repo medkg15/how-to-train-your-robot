@@ -1,7 +1,7 @@
 <div class="page-container" data-bind="if: currentView() === 'about'">
 
     <div class="well team">
-        <h1>The Team Goals</h1>
+        <h2>The Team Goals</h2>
 
         <p>The goal of this project is to accomplish the following:</p>
         <ol>
@@ -25,7 +25,7 @@
             </li>
         </ol>
 
-        <h1>Project Team</h1>
+        <h3>Project Team</h3>
 
         <div class="row">
             <div class="col-md-6">

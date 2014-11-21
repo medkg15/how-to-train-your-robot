@@ -32,7 +32,7 @@
       <ul class="nav navbar-nav" data-bind="visible: currentView() !== 'build-program'">
           <li><a href="#" data-bind="click: function(){ changeView('about'); }">About</a></li>
           <li><a href="#" data-bind="click: function(){ changeView('high-scores'); }">High Scores</a></li>
-          <li><a href="#" data-bind="click: function(){ changeView('jump'); }">Level Jump</a></li>
+          <li><a href="#" data-bind="click: function(){ changeView('jump'); }">Choose Level</a></li>
       </ul>
     
       <ul class="nav navbar-nav navbar-right" data-bind="if: score">
