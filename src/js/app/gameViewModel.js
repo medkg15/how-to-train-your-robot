@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel) {
 
         "use strict";
         
@@ -48,6 +48,8 @@ define(
             self.debuggerAvailable = ko.observable(false);
             self.highScores = ko.observableArray();
             self.loadingHighScores = ko.observable(false);
+            self.status = new StatusViewModel();
+            self.environment = new EnvironmentViewModel(self);
 
             self.advanceToNextLevel = function(){
                 var level = self.currentLevel();
@@ -119,6 +121,7 @@ define(
 
                 services.startLevel(self.gameId(), level.id, function(response){
 
+                    nextIteration = null;
                     self.levelSessionID(response.session_level_id);
                     self.currentLevel(level);
                     self.currentView('build-program');
@@ -138,6 +141,7 @@ define(
                     self.levelScore(0);
                     self.gameOver(false);
                     self.debuggerAvailable(level.debuggerAvailable);
+                    self.status.reset();
                 });
             };
 
@@ -152,7 +156,6 @@ define(
                 self.currentPosition(null);
                 self.currentHeading(null);
             };
-
 
             self.instructionInventory = ko.computed(function () {
 
@@ -263,7 +266,7 @@ define(
                 self.isPaused(false);
                 self.isExecuting(false);
                 self.hasError(false);
-
+                self.status.reset();
 
                 $('.current-instruction').popover('destroy').removeClass('current-instruction');
             };
@@ -272,22 +275,15 @@ define(
 
                 self.hasError(true);
 
-                if(instruction)
-                {
-                    var element = $('#' + instruction.elementID);
+                var element = $('#' + instruction.elementID);
 
-                    element.popover({
-                        content: message,
-                        html: true,
-                        placement: 'left',
-                        title: 'Program Error!',
-                        trigger: 'manual focus'
-                    }).popover('show');
-                }
-                else
-                {
-                    alert(message);
-                }
+                element.popover({
+                    content: message,
+                    html: true,
+                    placement: 'left',
+                    title: 'Program Error!',
+                    trigger: 'manual focus'
+                }).popover('show');
 
                 services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
 
@@ -371,7 +367,8 @@ define(
                             });
                         }
                         else {
-                            onAttemptFailed('The robot failed to complete the goal!', program);
+                            $('#' + program[program.length - 1].elementID).addClass('current-instruction');
+                            onAttemptFailed('The robot failed to complete the goal!', program, program[program.length - 1]);
                         }
                         doContinue = false;
                     }
@@ -387,39 +384,10 @@ define(
 
                         $('#' + instruction.elementID).addClass('current-instruction');
 
-                        var nextCell;
-
-                        switch (self.currentHeading()) {
-                            case 'up':
-                                nextCell = {
-                                    column: self.currentPosition().column,
-                                    row: self.currentPosition().row - 1
-                                };
-                                break;
-                            case 'down':
-                                nextCell = {
-                                    column: self.currentPosition().column,
-                                    row: self.currentPosition().row + 1
-                                };
-                                break;
-                            case 'left':
-                                nextCell = {
-                                    column: self.currentPosition().column - 1,
-                                    row: self.currentPosition().row
-                                };
-                                break;
-                            case 'right':
-                                nextCell = {
-                                    column: self.currentPosition().column + 1,
-                                    row: self.currentPosition().row
-                                };
-                                break;
-                        }
-
                         if (instruction.instruction_id === 'step-forward') {
 
-                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ') {
-                                self.currentPosition(nextCell);
+                            if (self.environment.frontCellDefinition() === ' ') {
+                                self.currentPosition(self.environment.frontCell());
                             }
                             else {
                                 doContinue = false;
@@ -428,7 +396,7 @@ define(
                             scopes[0].index++;
                         }
                         else if (instruction.instruction_id === 'pick-up-ball') {
-                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === 'e') {
+                            if (self.environment.frontCellDefinition() === 'e') {
                                 win = true;
                             }
                             else {
@@ -440,35 +408,8 @@ define(
                         }
                         else if (instruction.instruction_id === 'shuffle-right') {
 
-                            switch (self.currentHeading()) {
-                                case 'up':
-                                    nextCell = {
-                                        column: self.currentPosition().column + 1,
-                                        row: self.currentPosition().row
-                                    };
-                                    break;
-                                case 'down':
-                                    nextCell = {
-                                        column: self.currentPosition().column - 1,
-                                        row: self.currentPosition().row
-                                    };
-                                    break;
-                                case 'left':
-                                    nextCell = {
-                                        column: self.currentPosition().column,
-                                        row: self.currentPosition().row - 1
-                                    };
-                                    break;
-                                case 'right':
-                                    nextCell = {
-                                        column: self.currentPosition().column,
-                                        row: self.currentPosition().row + 1
-                                    };
-                                    break;
-                            }
-
-                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ') {
-                                self.currentPosition(nextCell);
+                            if (self.environment.rightCellDefinition() === ' ') {
+                                self.currentPosition(self.environment.rightCell());
                             }
                             else {
                                 doContinue = false;
@@ -478,39 +419,12 @@ define(
                         }
                         else if (instruction.instruction_id === 'shuffle-left') {
 
-                            switch (self.currentHeading()) {
-                                case 'up':
-                                    nextCell = {
-                                        column: self.currentPosition().column - 1,
-                                        row: self.currentPosition().row
-                                    };
-                                    break;
-                                case 'down':
-                                    nextCell = {
-                                        column: self.currentPosition().column + 1,
-                                        row: self.currentPosition().row
-                                    };
-                                    break;
-                                case 'left':
-                                    nextCell = {
-                                        column: self.currentPosition().column,
-                                        row: self.currentPosition().row + 1
-                                    };
-                                    break;
-                                case 'right':
-                                    nextCell = {
-                                        column: self.currentPosition().column,
-                                        row: self.currentPosition().row - 1
-                                    };
-                                    break;
-                            }
-
-                            if (self.currentLevel().map[nextCell.row][nextCell.column].definition === ' ') {
-                                self.currentPosition(nextCell);
+                            if (self.environment.leftCellDefinition() === ' ') {
+                                self.currentPosition(self.environment.leftCell());
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program);
+                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
                             }
                             scopes[0].index++;
                         }
@@ -569,10 +483,8 @@ define(
 
                             // check if we've satisfied the condition
 
-                            var frontCellDefinition = self.currentLevel().map[nextCell.row][nextCell.column].definition;
-
-                            if((scopes[0].condition === 'wall-not-front' && frontCellDefinition !== 'x')
-                                || (scopes[0].condition === 'ball-not-front' && frontCellDefinition !== 'e'))
+                            if((scopes[0].condition === 'wall-not-front' && self.environment.frontCellDefinition() !== 'x')
+                                || (scopes[0].condition === 'ball-not-front' && self.environment.frontCellDefinition() !== 'e'))
                             {
                                 scopes[0].countRemaining--;
                                 scopes.unshift({instructions: instruction.body, index: 0});
@@ -595,6 +507,14 @@ define(
                                 scopes[0].runningFunction = undefined;
                             }
                         }
+
+                        // update our status object to see what's going on ...
+                        self.status.currentInstruction(instruction);
+                        self.status.direction(self.currentHeading());
+                        self.status.hasBall(win);
+                        self.status.wallInFront(self.environment.frontCellDefinition() === 'x');
+                        self.status.ballInFront(self.environment.frontCellDefinition() === 'e');
+                        self.status.countRemaining(typeof scopes[0].countRemaining === 'undefined' ? null : scopes[0].countRemaining);
                     }
                     
                     if (doContinue)
@@ -657,7 +577,6 @@ define(
                 return _.map(self.program(), instructionConversion);
             });
 
-            
             self.showDebug = ko.observable(false);
             self.debug = ko.computed(function () {
 

@@ -50,12 +50,12 @@
     <?php include "robot-story.php"; ?>
     <?php include "jump.php"; ?>
 
-    <!--<label>
+    <label>
     <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
-    </la
-    <!--<div data-bind="if: showDebug">
+    </label>
+    <div data-bind="if: showDebug">
         <pre data-bind="text: debug"></pre>
-    </div>-->
+    </div>
 	
     </div><!-- /.container -->
 <script src="/vendor/requirejs/require.js"></script>
