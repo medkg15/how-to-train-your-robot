@@ -15,14 +15,15 @@
         <div class="col-md-4">
             <div class="well">
                 <div id="program" data-bind="css: { 'empty': hasNoProgram }">
-                    <h2>Your Program:</h2>
+
+                    <button
+                        data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0 && !canAdvance()"
+                        class="btn btn-danger pull-right">Clear
+                    </button>
+                    <h3>Your Program:</h3>
                     <div data-bind="if: levelAttempts">
                         Attempt #<span data-bind="text: levelAttempts"></span>
                     </div>
-                    <button
-                        data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0 && !canAdvance()"
-                        class="btn btn-danger">Clear Program
-                    </button>
 
                     <div data-bind="programTree: program" class="jstree-bootstrap">
                     </div>
@@ -63,13 +64,13 @@
     </div>
 
     <div id="inventory" class="well">
-        <h2>Build Your Program</h2>
+        <h3 style="display:inline;" data-bind="tooltip: {title: 'Use these instructions to tell your robot what to do!', placement: 'right'}">Toolbox</h3>
 
         <div class="jstree-bootstrap" data-bind="inventoryTree: treeAvailableInstructions">
         </div>
 
     </div>
-    <div class="well" id="function" data-bind="if: customFunctionAvailable, css: { 'empty': emptyFunction }">
+    <div class="well" id="function" data-bind="visible: customFunctionAvailable, css: { 'empty': emptyFunction }">
 
         <button data-bind="click: createFunction, visible: !buildingFunction()" class="btn btn-success">Create Function</button>
 
