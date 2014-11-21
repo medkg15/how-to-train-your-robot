@@ -7,7 +7,7 @@ define([], function(){
             "environment": "space",
             "defaultHeading": "up",
             "startPosition": {
-                "column": 5,
+                "column": 8,
                 "row": 5
             },
             "intro": "<p>In this level you will be introduced to the “Automation” concept by using one Computer Instruction. <br> <br> In order for Robo to reach the 1st spaceship part, he must walk step by step following your instructions.<br> Drag the instruction from the “Build Your Program” box at the bottom and drop it in your “ Your Program ” box on the right side. After creating a whole list in your program, you can “Run Program” and wait for Robo to execute or “Run One Instruction” to execute one instruction at a time. </p>",
@@ -27,12 +27,12 @@ define([], function(){
             "perfectInstructionCount": 3,
 			"map": [
 				[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x','x','x',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x','e','x',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x',' ','x',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x',' ','x',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x',' ','x',' ',' ',' ',' ',' '],
-				[' ',' ',' ',' ','x','x','x',' ',' ',' ',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x','x','x',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x','e','x',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x',' ','x',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x',' ','x',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x',' ','x',' ',' '],
+				[' ',' ',' ',' ',' ',' ',' ','x','x','x',' ',' '],
 				[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 			],
             "debuggerAvailable": false,
