@@ -17,16 +17,12 @@
 }
 
 #program .jstree {
-  min-height: 300px;
+  min-height: 100px;
   margin: 20px 0;
 }
 
-#program .empty-message {
-  display: none;
-}
-
-#program.empty .empty-message {
-  display: block;
+#program.empty .jstree:before {
+  content: "Drag your program's instructions here!"
 }
 
 #program.empty .jstree {
@@ -58,6 +54,6 @@
   margin: 20px 0;
 }
 
-#persona { position:absolute; z-index:100; }
+#persona { position:absolute; z-index:100; cursor:help; }
 
 .jstree-bootstrap > .jstree-no-dots .jstree-node.current-instruction { background:#008000; }

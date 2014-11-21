@@ -24,8 +24,6 @@
                         class="btn btn-danger">Clear Program
                     </button>
 
-                    <p class="empty-message">Drag your program elements here!</p>
-
                     <div data-bind="programTree: program" class="jstree-bootstrap">
                     </div>
 
