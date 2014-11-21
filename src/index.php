@@ -35,7 +35,7 @@
           <li><a href="#" data-bind="click: function(){ changeView('jump'); }">Level Jump</a></li>
       </ul>
     
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" data-bind="if: score">
         <li><a href="#">Score: <span data-bind="text: score"/></a></li>
        
       </ul>
