@@ -17,7 +17,7 @@
 }
 
 #program .jstree {
-  min-height: 100px;
+  min-height: 40px;
   margin: 20px 0;
 }
 
@@ -26,6 +26,7 @@
 }
 
 #program.empty .jstree {
+  padding:10px;
   border: 1px dashed #cccccc;
   border-radius: 5px;
   background-image: linear-gradient(45deg, rgba(200, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(200, 255, 255, 0.15) 50%, rgba(200, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -50,7 +51,7 @@
 }
 
 #function .jstree {
-  min-height: 100px;
+  min-height: 40px;
   margin: 20px 0;
 }
 
@@ -61,3 +62,15 @@
 h1, h2, h3, h4, h5, h6 { margin:5px 0; }
 .well { padding:10px }
 .team .img-thumbnail { margin:0 5px 5px 0; }
+.jstree-bootstrap .jstree-anchor {
+  background: none repeat scroll 0 0 lightblue;
+  border-radius: 3px;
+  margin:2px;
+}
+.jstree-bootstrap .jstree-anchor.jstree-hovered:not(.jstree-clicked) {
+  background: none repeat scroll 0 0 lightblue;
+  border-color:#0000ff;
+}
+.jstree-bootstrap .jstree-anchor.jstree-disabled {
+  background: lightgrey;
+}

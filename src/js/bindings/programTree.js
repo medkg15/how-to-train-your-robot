@@ -48,7 +48,7 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                 // overwrite the view model with the new tree structure.
                 updateObservable();
             }).jstree({
-                plugins : [ "wholerow", "dnd", "types", "contextmenu" ],
+                plugins : [ "dnd", "types", "contextmenu" ],
                 core: {
                     themes: {
                         'name': 'proton',
