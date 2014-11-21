@@ -32,7 +32,7 @@
 .beach #map .goal { background: url('/images/rocketP5.png') no-repeat center center; }
 
 .orange-fall {
-    background: url('/images/bgOrangeFall.jpg') repeat;
+    background: url('/images/bgOrangeFall2.jpg') repeat;
 }
 .orange-fall  #map .wall { background: url('/images/obstOrangeFall.png') no-repeat center center; }
 .orange-fall #map .goal { background: url('/images/rocketP6.png') no-repeat center center; }
