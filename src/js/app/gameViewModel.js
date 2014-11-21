@@ -349,7 +349,7 @@ define(
                             var scoreCalculator = new ScoreCalculator(self.currentLevel());
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
                             self.levelScore(score);
-                            self.score(self.score() + score);
+                            self.score(self.score() + score.finalScore);
 
                             services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
 

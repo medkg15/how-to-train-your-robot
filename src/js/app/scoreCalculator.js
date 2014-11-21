@@ -2,7 +2,12 @@ define(['data/instructions', 'underscore'], function(instructions, _){
 
     return function ScoreCalculator(level){
 
-        var calcScope = function(scope){
+        /**
+         * Calculates the score associated with a particular program scope.
+         * @param scope
+         * @returns {{count: number, sum: number}}
+         */
+        var calculateScopeScore = function(scope){
             var result = { count: 0, sum: 0 };
             for (var i in scope) {
 
@@ -21,7 +26,7 @@ define(['data/instructions', 'underscore'], function(instructions, _){
                 result.count++;
 
                 if(instruction.body && instruction.body.length > 0) {
-                    var innerResult = calcScope(instruction.body);
+                    var innerResult = calculateScopeScore(instruction.body);
                     result.sum += innerResult.sum;
                     result.count += innerResult.count;
                 }
@@ -29,31 +34,43 @@ define(['data/instructions', 'underscore'], function(instructions, _){
             return result;
         };
 
+        /**
+         * Return an object detailing the user's score for a level.
+         * @param program The program used to complete the level.
+         * @param attempts The number of attempts needed to complete the level.
+         * @param usedHelp Whether or not the Persona Help was used to complete the level.
+         */
         this.calculate = function(program, attempts, usedHelp){
 
-            var result = calcScope(program);
+            var programScore = calculateScopeScore(program);
 
-            var efficiencyMultiplier = level.perfectInstructionCount / result.count;
+            var efficiencyMultiplier = level.perfectInstructionCount / programScore.count;
 
             var attemptsMultiplier;
             if(attempts === 1){
-                attemptsMultiplier = 1.5;
+                attemptsMultiplier = 2.0;
             }
             else if(attempts < 3){
-                attemptsMultiplier = 1.0;
+                attemptsMultiplier = 1.5;
             }
             else if(attempts < 5){
-                attemptsMultiplier = 0.75;
+                attemptsMultiplier = 1.25;
             }
             else {
-                attemptsMultiplier = 0.5;
+                attemptsMultiplier = 1.0;
             }
 
             var usedHelpMultiplier = (usedHelp ? 1 : 1.25);
 
-            return Math.round(result.sum * efficiencyMultiplier * attemptsMultiplier * usedHelpMultiplier);
+            var finalScore = Math.round(programScore.sum * efficiencyMultiplier * attemptsMultiplier * usedHelpMultiplier);
+
+            return {
+                programScore: programScore,
+                efficiency: efficiencyMultiplier,
+                usedHelp: usedHelp,
+                finalScore: finalScore,
+                attempts: attempts
+            };
         };
-
     };
-
 });

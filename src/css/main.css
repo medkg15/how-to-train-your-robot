@@ -6238,10 +6238,13 @@ h6 {
   border-radius: 3px;
   margin: 2px;
 }
-.jstree-bootstrap .jstree-anchor.jstree-hovered:not(.jstree-clicked) {
+.jstree-bootstrap .jstree-anchor.jstree-hovered:not(.jstree-clicked):not(.jstree-hovered) {
   background: none repeat scroll 0 0 lightblue;
   border-color: #0000ff;
 }
 .jstree-bootstrap .jstree-anchor.jstree-disabled {
+  background: lightgrey;
+}
+.jstree-bootstrap .jstree-anchor.jstree-disabled.jstree-hovered {
   background: lightgrey;
 }
