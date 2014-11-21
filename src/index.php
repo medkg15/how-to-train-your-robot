@@ -49,13 +49,13 @@
     <?php include "high-scores.php"; ?>
     <?php include "robot-story.php"; ?>
     <?php include "jump.php"; ?>
-	
-	<label>
-	<input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
-	</label>
-	<div data-bind="if: showDebug"> 
-		<pre data-bind="text: debug"></pre>
-	</div>
+
+    <!--<label>
+    <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
+    </la
+    <!--<div data-bind="if: showDebug">
+        <pre data-bind="text: debug"></pre>
+    </div>-->
 	
     </div><!-- /.container -->
 <script src="/vendor/requirejs/require.js"></script>
