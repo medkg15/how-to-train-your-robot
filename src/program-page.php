@@ -103,7 +103,8 @@
                 <li>Current Direction: <span data-bind="text: direction"></span></li>
                 <li>Wall In Front?: <span data-bind="text: wallInFront"></span></li>
                 <li>Part In Front?: <span data-bind="text: ballInFront"></span></li>
-                <li data-bind="visible: (countRemaining() !== null)">Repeat Count Remaining: <span data-bind="text: countRemaining"></span></li>
+                <li data-bind="visible: (countRemaining() !== null)">Repeat Count Remaining: <span
+                        data-bind="text: countRemaining"></span></li>
                 <li>Has Part?: <span data-bind="text: hasBall"></span></li>
             </ul>
         </div>

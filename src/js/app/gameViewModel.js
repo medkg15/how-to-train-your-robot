@@ -150,6 +150,10 @@ define(
                 return self.currentLevel() && self.currentLevel().customFunctionAvailable;
             });
 
+            self.runAvailable = ko.computed(function(){
+                return self.currentLevel() && self.currentLevel().runAvailable;
+            });
+
             self.returnHome = function () {
                 self.currentView('welcome');
                 self.currentLevel(null);

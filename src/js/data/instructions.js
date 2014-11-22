@@ -63,6 +63,21 @@ define([], function(){
             "description": "Move your robot to the right without turning.",
             "type": "baseInstruction",
             "points": 50
+        },
+        {
+            "id": "custom-function-999",
+            "name": 'Go Right Around Obstacle',
+            "description": "User defined custom function",
+            "type": "baseInstruction",
+            "points": 50,
+            "instructionBody": [
+                {
+                    "id": "turn-right"
+                },
+                {
+                    "id": "turn-left"
+                }
+            ]
         }
 	];
 
