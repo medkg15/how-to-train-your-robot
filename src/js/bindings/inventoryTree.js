@@ -60,6 +60,8 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'bootstrap'], function(ko,
             var value = valueAccessor();
             var valueUnwrapped = ko.unwrap(value);
 
+            console.log(valueUnwrapped);
+
             var tree = $(element).jstree(true);
 
             tree.settings.core.data = valueUnwrapped;

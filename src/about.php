@@ -40,12 +40,12 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p><img src="pics/no_photo_female.jpg"
+                <p><img src="pics/thumbnail.png"
                         class="img-thumbnail pull-left"/></p>
 
                 <p><strong>Emtethal Alafghani</strong><br/>
                     Computer Information Technology Masters Candidate<br/>
-                    Concentration: Networking <br/>
+                    Concentration: Networking Telecommunication Technology <br/>
                 </p>
             </div>
             <div class="col-md-6">
@@ -56,7 +56,7 @@
                 <p>
                     <strong>Antony E. Daley, Jr.</strong><br/>
                     Computer Information Technology Masters Candidate<br/>
-                    Concentration: Networking
+                    Concentration: Networking Telecommunication Technology
                 </p>
             </div>
 

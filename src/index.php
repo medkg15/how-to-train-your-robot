@@ -49,6 +49,7 @@
     <?php include "high-scores.php"; ?>
     <?php include "robot-story.php"; ?>
     <?php include "jump.php"; ?>
+    <?php include "tutorial.php"; ?>
 
     <label>
     <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug

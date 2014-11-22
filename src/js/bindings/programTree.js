@@ -12,33 +12,6 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
 
             var updateObservable = function(){ valueAccessor()($element.jstree(true).get_json()); };
 
-            var placeholders = [];
-
-            $(document).on('dnd_start.vakata', function(e){
-                var placeholder = {
-                    text: 'placeholder', // node text
-                    //icon: "string", // string for custom
-                    state: {
-                        opened: false,
-                        disabled: false,
-                        selected: false
-                    },
-                    children: [],  // array of strings or objects
-                    li_attr: {},  // attributes for the generated LI node
-                    a_attr: {},  // attributes for the generated A node
-                    type: 'placeholder',
-                    data: {}
-                };
-
-                placeholders.push(placeholder);
-
-                $element.jstree(true).create_node(null, placeholder, 'first');
-            }).on('dnd_stop.vakata', function(e){
-                for(var i = 0; i < placeholders.length; i ++) {
-                    $element.jstree(true).remove_node(placeholders[i]);
-                }
-            });
-
             $element.on('select_node.jstree', function(e, data){
                 data.instance.deselect_node(data.node);
             })
@@ -97,10 +70,6 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
                     },
                     parameterizedContainer: {
                         valid_children: [ 'baseInstruction' ],
-                        max_children: -1
-                    },
-                    placeholder: {
-                        valid_children: [ 'baseInstruction', 'parameterizedContainer' ],
                         max_children: -1
                     }
                 },
