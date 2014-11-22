@@ -6248,3 +6248,6 @@ h6 {
 .jstree-bootstrap .jstree-anchor.jstree-disabled.jstree-hovered {
   background: lightgrey;
 }
+.popover {
+  /* max-width:400px;*/
+}

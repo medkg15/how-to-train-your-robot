@@ -66,8 +66,8 @@
     });
 	require(['common'], function(common){
 		require(
-			['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap'],
-			function($, ko, GameViewModel, jstree, knockoutBootstrap){
+			['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap', 'bindings/introPersona'],
+			function($, ko, GameViewModel, jstree, knockoutBootstrap, introPersona){
 				
 				var viewModel = new GameViewModel();
 			

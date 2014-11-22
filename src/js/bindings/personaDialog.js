@@ -12,7 +12,7 @@ define(['knockout', 'jquery', 'bootstrap', 'underscore'], function(ko, $, bootst
         "<% if(attempts >= 5){%><p><span class='glyphicon glyphicon-asterisk'></span> Try completing the next level in fewer attempts!</p><%}%>" +
         "<p><strong>Your Score: <%= finalScore %></strong></p>" +
         "<% } %>" +
-        "<div><button id=\"persona-ok\" class=\"btn btn-primary\">OK</button></div>");
+        "<div><button id=\"persona-ok\" class=\"btn btn-primary btn-block\">OK</button></div>");
 
 
 
@@ -64,7 +64,7 @@ define(['knockout', 'jquery', 'bootstrap', 'underscore'], function(ko, $, bootst
                     content: text,
                     html: true,
                     placement: 'right',
-                    title: 'Persona',
+                    title: 'Eddy the Alien',
                     trigger: 'manual focus'
                 })
                 .popover('show');

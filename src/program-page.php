@@ -19,7 +19,7 @@
 
                     <button
                         data-bind="click: clearProgram, visible: !isExecuting() && programInstructions().length > 0 && !canAdvance()"
-                        class="btn btn-danger pull-right">Clear
+                        class="btn btn-danger pull-right">Start Over
                     </button>
                     <h3>Your Program:</h3>
 
