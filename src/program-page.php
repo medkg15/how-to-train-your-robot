@@ -30,7 +30,8 @@
                     <div ng-controller="ProgramCtrl">
                         <div ui-tree="programOptions">
                             <ol ui-tree-nodes ng-model="program">
-                                <li ng-repeat="instruction in program" ng-class="{current: instruction.currentlyExecuting}"
+                                <li ng-repeat="instruction in program"
+                                    ng-class="{current: instruction.currentlyExecuting}"
                                     ui-tree-node
                                     ng-include="'program_renderer.html'"></li>
                             </ol>
@@ -107,7 +108,8 @@
                                     <input type="text" class="form-control" ng-model="addFunctionName" id="groupName"
                                            placeholder="Function name">
                                 </div>
-                                <button type="submit" class="btn btn-default" ng-click="addFunction()">Add Function</button>
+                                <button type="submit" class="btn btn-default" ng-click="addFunction()">Add Function
+                                </button>
                             </form>
                         </div>
                     </li>
@@ -123,36 +125,37 @@
             </div>
 
         </div>
-        <div class="well" id="function" data-bind="visible: customFunctionAvailable, css: { 'empty': emptyFunction }">
-
-            <button data-bind="click: createFunction, visible: !buildingFunction()" class="btn btn-success">Create
-                Function
-            </button>
-
-            <div data-bind="if: buildingFunction">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" data-bind="value:functionName" class="form-control"/>
-                </div>
-                <div data-bind="programTree: functionTree" class="jstree-bootstrap">
-                </div>
-                <button data-bind="click: saveFunction" class="btn btn-primary">Save</button>
-            </div>
-
-        </div>
     </div>
 
     <div data-bind="visible: isExecuting()">
         <div data-bind="with: status" class="well">
             <h3>Robot Program Status:</h3>
-            <ul>
-                <li>Current Direction: <span data-bind="text: direction"></span></li>
-                <li>Wall In Front?: <span data-bind="text: wallInFront"></span></li>
-                <li>Part In Front?: <span data-bind="text: ballInFront"></span></li>
-                <li data-bind="visible: (countRemaining() !== null)">Repeat Count Remaining: <span
-                        data-bind="text: countRemaining"></span></li>
-                <li>Has Part?: <span data-bind="text: hasBall"></span></li>
-            </ul>
+
+            <div class="row" id="watch">
+                <div class="col-md-2">
+                    <div class="image robot-up" data-bind="visible: direction() == 'up'"></div>
+                    <div class="image robot-right" data-bind="visible: direction() == 'right'"></div>
+                    <div class="image robot-down" data-bind="visible: direction() == 'down'"></div>
+                    <div class="image robot-left" data-bind="visible: direction() == 'left'"></div>
+                    <p><strong>Currently Facing</strong>: <span data-bind="text: direction"></span></p>
+                </div>
+                <div class="col-md-2">
+                    <div class="image wall"></div>
+                    <p><strong>Wall In Front?</strong>: <span data-bind="text: wallInFront() ? 'Yes' : 'No'"></span></p>
+                </div>
+                <div class="col-md-2">
+                    <div class="image goal"></div>
+                    <p><strong>Part In Front?</strong>: <span data-bind="text: ballInFront() ? 'Yes' : 'No'"></span></p>
+                </div>
+                <div class="col-md-2" data-bind="visible: (countRemaining() !== null)">
+                    <p><strong>Repeat Count Remaining</strong>: <span
+                            data-bind="text: countRemaining"></span></p>
+                </div>
+                <div class="col-md-2">
+                    <div class="image goal"></div>
+                    <p><strong>Picked Up Part?</strong>: <span data-bind="text: hasBall() ? 'Yes' : 'No'"></span></p>
+                </div>
+            </div>
         </div>
     </div>
 
