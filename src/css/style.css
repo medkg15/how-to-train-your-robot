@@ -2,11 +2,11 @@
     background: url('/images/space-background.jpg') repeat;
 }
 
-.space .wall {
+.space #map .wall {
     background: url('/images/space-wall.jpg') no-repeat center center;
 }
 
-.space .goal, .space-goal {
+.space #map .goal {
     background: url('/images/rocketP1.png') no-repeat center center;
 }
 
@@ -17,11 +17,11 @@
     background: url('/images/bgdesert2.jpg') repeat;
 }
 
-.wild-west .wall {
+.wild-west #map .wall {
     background: url('/images/obstCountryGreenVertical.png') no-repeat center center;
 }
 
-.wild-west .goal, .wild-west-goal {
+.wild-west #map .goal {
     background: url('/images/rocketP2.png') no-repeat center center;
 }
 
@@ -29,11 +29,11 @@
     background: url('/images/bgcountrygreen2.jpg') repeat;
 }
 
-.country-green .wall {
+.country-green #map .wall {
     background: url('/images/obstCountryGreen.png') no-repeat center center;
 }
 
-.country-green .goal, .country-green-goal {
+.country-green #map .goal {
     background: url('/images/rocketP3.png') no-repeat center center;
 }
 
@@ -41,11 +41,11 @@
     background: url('/images/bgOcean.jpg') repeat;
 }
 
-.ocean .wall {
+.ocean #map .wall {
     background: url('/images/obstOcean.png') no-repeat center center;
 }
 
-.ocean .goal, .ocean-goal {
+.ocean #map .goal {
     background: url('/images/rocketP4.png') no-repeat center center;
 }
 
@@ -53,11 +53,11 @@
     background: url('/images/bgBeach2.jpg') repeat;
 }
 
-.beach .wall {
+.beach #map .wall {
     background: url('/images/obsBeach.png') no-repeat center center;
 }
 
-.beach .goal, .beach-goal {
+.beach #map .goal {
     background: url('/images/rocketP5.png') no-repeat center center;
 }
 
@@ -65,11 +65,11 @@
     background: url('/images/bgOrangeFall2.jpg') repeat;
 }
 
-.orange-fall .wall {
+.orange-fall #map .wall {
     background: url('/images/obstOrangeFall.png') no-repeat center center;
 }
 
-.orange-fall .goal, .orange-fall-goal {
+.orange-fall #map .goal {
     background: url('/images/rocketP6.png') no-repeat center center;
 }
 
@@ -77,11 +77,11 @@
     background: url('/images/bgDarkMountain.png') repeat;
 }
 
-.dark-mountain .wall {
+.dark-mountain #map .wall {
     background: url('/images/obsDarkMountain.png') no-repeat center center;
 }
 
-.dark-mountain .goal, .dark-mountain-goal {
+.dark-mountain #map .goal {
     background: url('/images/rocketP7.png') no-repeat center center;
 }
 
@@ -89,27 +89,27 @@
     background: url('/images/bdWinter.png') repeat;
 }
 
-.winter .wall {
+.winter #map .wall {
     background: url('/images/obsWinter.png') no-repeat center center;
 }
 
-.winter .goal, .winter-goal {
+.winter #map .goal {
     background: url('/images/rocketP8.png') no-repeat center center;
 }
 
-.robot-up {
+#map .robot-up {
     background: url('/images/robot-up.png') no-repeat center center;
 }
 
-.robot-left {
+#map .robot-left {
     background: url('/images/robot-left.png') no-repeat center center;
 }
 
-.robot-down {
+#map .robot-down {
     background: url('/images/robot-down.png') no-repeat center;
 }
 
-.robot-right {
+#map .robot-right {
     background: url('/images/robot-right.png') no-repeat center center;
 }
 
@@ -135,5 +135,3 @@ body {
     background: linear-gradient(to bottom, #fffd81 0%, #918300 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffd81', endColorstr='#918300', GradientType=0); /* IE6-9 */
 }
-
-#watch .image  { width:100px; height:100px; }
