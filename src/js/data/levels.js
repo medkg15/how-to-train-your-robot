@@ -437,7 +437,8 @@ define([], function(){
                 [' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": false
+            "customFunctionAvailable": false,
+            "runAvailable": true
         },
         {
             "id": "level-10",
@@ -495,7 +496,8 @@ define([], function(){
                 [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": true
+            "customFunctionAvailable": true,
+            "runAvailable": true
         },
         {
             "id": "level-11",
@@ -553,7 +555,8 @@ define([], function(){
                 [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": true
+            "customFunctionAvailable": true,
+            "runAvailable": true
         }
 	];
 });
