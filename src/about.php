@@ -5,10 +5,9 @@
 
         <p>The goal of this project is to accomplish the following:</p>
         <ol>
-            <li>Motivate children between 8 to 10 years old to learn the fundamental concepts of computing
-                programming such as program, automation, testing, loops, and decision making (if/then) through creating
-                a
-                game application.
+            <li>Motivate children between 8 to 10 years old to learn the fundamental concepts of computer
+                programming such as automation, sub-routines, loops, optimization, testing, and decision making through playing a
+                game.
             </li>
             <li>Understand the fundamental concepts that are needed for teaching a student to understand
                 programming.
@@ -17,11 +16,11 @@
                 programming.
             </li>
             <li>Leverage what has already been done in this field and develop a game-based application that will
-                teach students (in particular elementary school students) the basics of programming.
+                teach students the basics of programming.
             </li>
-            <li>Pilot this game-based application to a group of children and observe and record their responsiveness
+            <li>Pilot the game to a group of children to observe and record their responsiveness
                 to the application. Additionally, examine whether or not participants show evidence of understanding
-                specific programming concepts (automation, repetition, sub-routines, etc.)
+                the above programming concepts.
             </li>
         </ol>
 
