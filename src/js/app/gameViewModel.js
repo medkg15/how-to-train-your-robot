@@ -204,7 +204,7 @@ define(
                 self.hasError(false);
                 self.status.reset();
 
-                if(currentInstruction) {
+                if (currentInstruction) {
                     currentInstruction.currentlyExecuting = false;
                     self.program.valueHasMutated();
                 }
@@ -304,17 +304,20 @@ define(
                             });
                         }
                         else {
-                            onAttemptFailed('The robot failed to complete the goal!', program, program[program.length - 1]);
+                            currentInstruction = program[program.length - 1];
+                            onAttemptFailed('The robot failed to complete the goal!', program, currentInstruction);
                         }
                         doContinue = false;
                     }
 
-                    if(currentInstruction && doContinue) {
-                        currentInstruction.currentlyExecuting = false;
-                        self.program.valueHasMutated();
+                    if (doContinue) {
+                        if (currentInstruction) {
+                            currentInstruction.currentlyExecuting = false;
+                            self.program.valueHasMutated();
+                        }
+                        currentInstruction = scopes[0].instructions[scopes[0].index];
                     }
 
-                    currentInstruction = scopes[0].instructions[scopes[0].index];
 
                     if (!currentInstruction) {
                         doContinue = false;
