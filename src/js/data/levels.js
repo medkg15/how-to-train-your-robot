@@ -144,9 +144,9 @@ define([], function(){
                 "column": 7,
                 "row": 5
             },
-            "intro": "<p> In this level you will have a limited number of instructions. </p><p> Robo could use many paths to reach the part; however, only one path would allow him to reach the part. </p><p> You will see the remaining number near some instructions in your “Toolbox”. <br> After the number reaches 0 you can no more use those instructions. </p>",
+            "intro": "<p> In this level you will have a limited number of instructions. </p><p> Robo could use many paths to reach the part; however, only one path would allow him to do so. </p><p> You will see the remaining number near some instructions in your “Toolbox”.</p><p> After the number reaches 0 you can no more use those instructions. </p>",
             "exit": "<H4> Brilliant job! </H4><p> Although it is always a good habit to have a few instructions in your program, sometimes with real programming you might have limited number of resources (instructions) to use. </p><p> By completing this level you successfully used the other path to the part as you had few instructions if choosing the shortest path. </p>",
-            "help": "<p> 1.	Robo can only take the path to the right in order to reach the part. </p><p> 2.	Robo has to start by stepping forward 2 times. </p>",
+            "help": "<p> Let me help: </p><p> 1. Robo can only take the path to the right in order to reach the part. </p><p> 2.	Robo has to start by stepping forward 2 times. </p>",
             "jumpCode": 4,
             "instructions": [
                 {
