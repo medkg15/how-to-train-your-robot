@@ -121,14 +121,14 @@ class DataAccess
                 DB::insert('instructions', array(
                         'instruction_name' => $obj->id,
                         'attempt_id' => $attempt_id,
-                        'function_name' => $obj->definition->name
+                        'function_name' => $obj->name
                     )
                 );
 
                 $parent_id = DB::insertId();
 
                 //Adding children instructions with the parent id
-                foreach ($obj->definition->body as $ins)
+                foreach ($obj->body as $ins)
                 {
                     DB::insert('instructions', array(
                             'instruction_name' => $ins->definition->name,

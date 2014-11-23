@@ -20,7 +20,7 @@ define([], function(){
 					"quantity": "unlimited"
 				},
 				{
-					"id": "pick-up-ball",
+					"id": "pick-up-part",
 					"quantity": 1
 				}
 			],
@@ -67,7 +67,7 @@ define([], function(){
 					"quantity": "unlimited"
 				},
 				{
-					"id": "pick-up-ball",
+					"id": "pick-up-part",
 					"quantity": 1
 				}
 			],
@@ -96,8 +96,8 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>In this level you will be introduced to the “Debugger”.</p><p> You are going to play the previous level but use the “Debugger” this time. </p><p> “Debugger” helps identify coding errors in your program.</p><p> After creating a whole list in your program, instead of using “Run” and wait for Robo to execute the whole program you can use “Debugger” to watch Robo executing one instruction at a time by clicking on the “Next” button.</p>",
-            "exit": "<H4> Perfect! </H4><p> A problem in a computer program is called a bug. </p><p> The process of finding bugs (errors) when writing a computer program is called “debugging”.</p><p> To debug a program is to start with a problem, separate the source of the problem, and then fix it.</p><p> When someone says they have debugged a program or “worked the bugs out” of a program, they imply that they fixed it so that the bugs no longer exist.</p>",
+            "intro": "<p>In this level you will be introduced to the “Debugger”.</p><p> You are going to play the previous level but use the “Debugger” this time. </p><p> “Debugger” is a helpful tool that helps find coding errors if you have them in your program.</p><p> After creating a whole list in your program, instead of using “Run” and wait for Robo to execute the whole program you can use “Debugger” to watch Robo executing one instruction at a time by clicking on the “Next” button.</p>",
+            "exit": "<H4> Perfect! </H4><p> A problem in a computer program is called a bug. </p><p> The process of finding bugs (errors) when writing a computer program is called “debugging”.</p><p> Now you know how to use “Debugger” to watch your program if you find errors.</p>",
             "help": "<p> Having trouble? follow my guidelines: </p><p> 1. You have different options to reach the part in this level. </p><p> 2. The shortest path for Robo would be to step forward 2 times, turn right, and then pick up the part.</p><p> 3. Click “Next” button to execute one instruction at a time. </p>",
             "jumpCode": 3,
             "instructions": [
@@ -114,7 +114,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -144,9 +144,9 @@ define([], function(){
                 "column": 7,
                 "row": 5
             },
-            "intro": "<p>Limited! </p>",
-            "exit": "<p>Limited! </p>",
-            "help": "<p>Limited! </p>",
+            "intro": "<p> In this level you will have a limited number of instructions. </p><p> Robo could use many paths to reach the part; however, only one path would allow him to reach the part. </p><p> You will see the remaining number near some instructions in your “Toolbox”. <br> After the number reaches 0 you can no more use those instructions. </p>",
+            "exit": "<H4> Brilliant job! </H4><p> Although it is always a good habit to have a few instructions in your program, sometimes with real programming you might have limited number of resources (instructions) to use. </p><p> By completing this level you successfully used the other path to the part as you had few instructions if choosing the shortest path. </p>",
+            "help": "<p> 1.	Robo can only take the path to the right in order to reach the part. </p><p> 2.	Robo has to start by stepping forward 2 times. </p>",
             "jumpCode": 4,
             "instructions": [
                 {
@@ -162,11 +162,11 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
-            "perfectInstructionCount": 3,
+            "perfectInstructionCount": 10,
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ','x','x',' ','x','x','x',' ',' ',' '],
@@ -213,7 +213,7 @@ define([], function(){
                     "quantity": 2
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -264,7 +264,7 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -315,7 +315,7 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -366,7 +366,7 @@ define([], function(){
                     "quantity": 5
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -421,7 +421,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -475,7 +475,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 },
                 {
@@ -533,7 +533,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 },
                 {

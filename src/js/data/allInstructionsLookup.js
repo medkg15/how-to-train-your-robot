@@ -23,10 +23,10 @@ define([], function () {
             "type": "baseInstruction",
             "points": 10
         },
-        "pick-up-ball": {
-            "id": "pick-up-ball",
-            "name": "Pick up Ball",
-            "description": "Tell your robot to pick up the ball.",
+        "pick-up-part": {
+            "id": "pick-up-part",
+            "name": "Pick up Part",
+            "description": "Tell your robot to pick up the part in front of it.",
             "type": "baseInstruction",
             "points": 10
         },
@@ -35,14 +35,16 @@ define([], function () {
             "name": "Repeat",
             "description": "Repeat one or more instructions a set number of times.",
             "type": "parameterizedContainer",
-            "points": 50
+            "points": 50,
+            'count': 1
         },
         "repeat-while": {
             "id": "repeat-while",
             "name": "Repeat While",
             "description": "Repeat one or more instructions until the condition becomes false.",
             "type": "parameterizedContainer",
-            "points": 100
+            "points": 100,
+            'condition': 'Wall Not In Front'
         },
         "custom-function": {
             "id": "custom-function",
@@ -69,11 +71,17 @@ define([], function () {
             "id": "custom-function-999",
             "name": 'Go Right Around Obstacle',
             "description": "User defined custom function",
-            "type": "baseInstruction",
+            "type": "function",
             "points": 50,
-            "instructionBody": [
+            "body": [
                 "turn-right",
-                "turn-left"
+                "step-forward",
+                "turn-left",
+                "step-forward",
+                "step-forward",
+                "turn-left",
+                "step-forward",
+                "turn-right"
             ]
         }
     };

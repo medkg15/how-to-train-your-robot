@@ -58,6 +58,9 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                         }
                         var instruction = e.dest.nodesScope.$modelValue[e.dest.index];
                         $scope.inventory.splice(e.source.index, 0, helpers.copyInstruction(instruction));
+
+
+                        inventory.setInstructions($scope.inventory);
                     },
                     beforeDrag: function (sourceNodeScope) {
 

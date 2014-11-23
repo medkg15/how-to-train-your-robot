@@ -2,12 +2,20 @@ define(['underscore', 'data/allInstructionsLookup'], function(_, allInstructions
 
     var convertAngularInstruction = function(angularInstruction){
 
-        return {
+        var object = {
             "id": angularInstruction.instructionId,
             "definition": allInstructionsLookup[angularInstruction.instructionId],
             "name": angularInstruction.title,
-            "quantity": angularInstruction.quantity
+            "quantity": angularInstruction.quantity,
+            isFunction: angularInstruction.isFunction,
+            isCustomFunction: angularInstruction.isCustomFunction,
+            body: convertAngularScope(angularInstruction.body),
+            description: angularInstruction.description,
+            count: angularInstruction.count,
+            condition: angularInstruction.condition
         };
+
+        return object;
     };
 
     var convertKnockoutInstruction = function(knockoutVersion){
@@ -18,11 +26,13 @@ define(['underscore', 'data/allInstructionsLookup'], function(_, allInstructions
             body: convertKnockoutScope(knockoutVersion.body),
             allowChildren: knockoutVersion.definition.type !== 'baseInstruction',
             quantity: knockoutVersion.quantity,
-            isFunction: false,
-            isCustomFunction: false,
+            isFunction: knockoutVersion.isFunction || knockoutVersion.definition.type === 'function',
+            isCustomFunction: knockoutVersion.isCustomFunction,
             message: knockoutVersion.message,
             status: knockoutVersion.status,
-            currentlyExecuting: knockoutVersion.currentlyExecuting
+            currentlyExecuting: knockoutVersion.currentlyExecuting,
+            count: knockoutVersion.count,
+            condition: knockoutVersion.condition
         };
     };
 
