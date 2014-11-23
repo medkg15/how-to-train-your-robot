@@ -1,7 +1,13 @@
-define(['underscore'], function(_){
+define(['underscore', 'data/allInstructionsLookup'], function(_, allInstructionsLookup){
 
     var convertAngularInstruction = function(angularInstruction){
-        return angularInstruction.knockoutVersion;
+
+        return {
+            "id": angularInstruction.instructionId,
+            "definition": allInstructionsLookup[angularInstruction.instructionId],
+            "name": angularInstruction.title,
+            "quantity": angularInstruction.quantity
+        };
     };
 
     var convertKnockoutInstruction = function(knockoutVersion){
@@ -14,7 +20,6 @@ define(['underscore'], function(_){
             quantity: knockoutVersion.quantity,
             isFunction: false,
             isCustomFunction: false,
-            knockoutVersion: knockoutVersion,
             message: knockoutVersion.message,
             status: knockoutVersion.status,
             currentlyExecuting: knockoutVersion.currentlyExecuting
