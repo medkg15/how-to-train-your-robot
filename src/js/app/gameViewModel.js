@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/allInstructionsLookup', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers'],
-    function (ko, _, levels, allInstructionsLookup, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
+    ['knockout', 'underscore', 'data/levels', 'data/allInstructionsLookup', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers', 'app/directives'],
+    function (ko, _, levels, allInstructionsLookup, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers, directives) {
 
         "use strict";
 
@@ -50,6 +50,7 @@ define(
             self.status = new StatusViewModel();
             self.environment = new EnvironmentViewModel(self);
             self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
+            self.completedLevels = ko.observableArray();
 
             self.advanceToNextLevel = function () {
                 var level = self.currentLevel();
@@ -177,6 +178,8 @@ define(
                             id: instruction.id,
                             definition: definition,
                             name: definition.name,
+                            count: definition.count,
+                            condition: definition.condition,
                             quantity: instruction.quantity,
                             body: _.map(definition.body, function(inst){
                                 var definition = allInstructionsLookup[inst];
@@ -297,6 +300,7 @@ define(
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
                             self.levelScore(score);
                             self.score(self.score() + score.finalScore);
+                            self.completedLevels.push({level: self.currentLevel(), score: score.finalScore});
 
                             services.completeLevel(self.levelSessionID(), {
                                 program: program,
@@ -446,8 +450,8 @@ define(
 
                             // check if we've satisfied the condition
 
-                            if ((scopes[0].condition === 'wall-not-front' && self.environment.frontCellDefinition() !== 'x')
-                                || (scopes[0].condition === 'ball-not-front' && self.environment.frontCellDefinition() !== 'e')) {
+                            if ((scopes[0].condition === 'Wall Not In Front' && self.environment.frontCellDefinition() !== 'x')
+                                || (scopes[0].condition === 'Ball Not In Front' && self.environment.frontCellDefinition() !== 'e')) {
                                 scopes[0].countRemaining--;
                                 scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }

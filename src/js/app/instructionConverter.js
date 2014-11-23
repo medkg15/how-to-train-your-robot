@@ -10,7 +10,9 @@ define(['underscore', 'data/allInstructionsLookup'], function(_, allInstructions
             isFunction: angularInstruction.isFunction,
             isCustomFunction: angularInstruction.isCustomFunction,
             body: convertAngularScope(angularInstruction.body),
-            description: angularInstruction.description
+            description: angularInstruction.description,
+            count: angularInstruction.count,
+            condition: angularInstruction.condition
         };
 
         return object;
@@ -28,7 +30,9 @@ define(['underscore', 'data/allInstructionsLookup'], function(_, allInstructions
             isCustomFunction: knockoutVersion.isCustomFunction,
             message: knockoutVersion.message,
             status: knockoutVersion.status,
-            currentlyExecuting: knockoutVersion.currentlyExecuting
+            currentlyExecuting: knockoutVersion.currentlyExecuting,
+            count: knockoutVersion.count,
+            condition: knockoutVersion.condition
         };
     };
 

@@ -35,14 +35,16 @@ define([], function () {
             "name": "Repeat",
             "description": "Repeat one or more instructions a set number of times.",
             "type": "parameterizedContainer",
-            "points": 50
+            "points": 50,
+            'count': 1
         },
         "repeat-while": {
             "id": "repeat-while",
             "name": "Repeat While",
             "description": "Repeat one or more instructions until the condition becomes false.",
             "type": "parameterizedContainer",
-            "points": 100
+            "points": 100,
+            'condition': 'Wall Not In Front'
         },
         "custom-function": {
             "id": "custom-function",

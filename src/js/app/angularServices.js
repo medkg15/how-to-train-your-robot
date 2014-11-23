@@ -4,12 +4,8 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
         .factory('instructionOptions', [function () {
             var options = {
                 condition: [
-                    {label: 'Wall Not In Front', "conditionId": 'wall-not-in-front'},
-                    {label: 'Part Not In Front', "conditionId": 'part-not-in-front'}
-                ],
-                storage: [
-                    {label: 'Left Hand', register: 'left'},
-                    {label: 'Right Hand', register: 'right'}
+                    'Wall Not In Front',
+                    'Part Not In Front'
                 ]
             };
 
