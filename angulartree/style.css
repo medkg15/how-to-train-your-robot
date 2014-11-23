@@ -27,3 +27,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}

@@ -1,7 +1,6 @@
 angular.module('robotTraining')
-    .directive('register', function() {
+    .directive('count', function() {
         return {
-            //templateUrl: 'register.html'
+            templateUrl: 'count.html'
         };
     });
-
