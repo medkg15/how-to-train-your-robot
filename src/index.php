@@ -51,6 +51,7 @@
     <?php include "jump.php"; ?>
     <?php include "tutorial.php"; ?>
     <?php include "tree-renderers.php"; ?>
+    <?php include "end-game.php"; ?>
 
     <label>
     <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug

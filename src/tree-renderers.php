@@ -24,7 +24,7 @@
 
 <script type="text/ng-template" id="program_renderer.html">
     <div class="tree-node" ui-tree-handle ng-controller="InstructionCtrl">
-        <div class="tree-node-content"" popover-title="'Error!'" popover="instruction.message">
+        <div class="tree-node-content" popover-title="Error!" popover="{{instruction.message}}">
 
             <a ng-if="instruction.isFunction" class="btn btn-success btn-xs" data-nodrag="" ng-click="toggle(this)"><span class="glyphicon glyphicon-chevron-down" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
             {{instruction.title}}

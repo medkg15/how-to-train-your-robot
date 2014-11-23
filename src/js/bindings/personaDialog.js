@@ -34,7 +34,7 @@ define(['knockout', 'jquery', 'bootstrap', 'underscore'], function(ko, $, bootst
                     viewModel.advanceToNextLevel();
                 } else if(viewModel.gameOver())
                 {
-                    viewModel.changeView('high-scores');
+                    viewModel.changeView('end-game');
                 }
             });
         },
