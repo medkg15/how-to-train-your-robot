@@ -10,6 +10,7 @@ requirejs.config({
         , "knockout-bootstrap": "../vendor/knockout-bootstrap/build/knockout-bootstrap.min"
         , "angular": "../vendor/angular/angular"
         , "angular-ui-tree": "../vendor/angular-ui-tree/dist/angular-ui-tree"
+        ,"angular-ui": "../vendor/angular-bootstrap/ui-bootstrap-tpls"
 	}
 	, shim: {
 		"bootstrap": ['jquery']
@@ -17,7 +18,8 @@ requirejs.config({
         "angular": {
             exports: "angular"
         },
-        "angular-ui-tree": ['angular']
+        "angular-ui-tree": ['angular'],
+        "angular-ui": ['angular']
 	}
-    , urlArgs: "v=23"
+    , urlArgs: "v=24"
 });

@@ -24,7 +24,7 @@
 
 <script type="text/ng-template" id="program_renderer.html">
     <div class="tree-node" ui-tree-handle ng-controller="InstructionCtrl">
-        <div class="tree-node-content">
+        <div class="tree-node-content"">
             <a ng-if="instruction.isFunction" class="btn btn-success btn-xs" data-nodrag="" ng-click="toggle(this)"><span class="glyphicon glyphicon-chevron-down" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
             {{instruction.title}}
             <select data-nodrag ng-model="instruction.register" ng-if="instruction.register" ng-click=""
@@ -39,13 +39,13 @@
 
     <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="!instruction.allowChildren"
         data-nodrop>
-        <li ng-repeat="instruction in instruction.body" ui-tree-node
-            ng-include="'program_renderer.html'">
+        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}
+            ng-include="'program_renderer.html'" popover-title="'Error!'" popover="message">
         </li>
     </ol>
     <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="instruction.allowChildren">
-        <li ng-repeat="instruction in instruction.body" ui-tree-node
-            ng-include="'program_renderer.html'">
+        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}
+            ng-include="'program_renderer.html'" popover-title="'Error!'" popover="message">
         </li>
     </ol>
 

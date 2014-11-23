@@ -116,10 +116,10 @@ class DataAccess
     {
         foreach ($program as $obj)
         {
-            if (strpos($obj->instruction_id, 'custom-function') !== false)
+            if (strpos($obj->id, 'custom-function') !== false)
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->instruction_id,
+                        'instruction_name' => $obj->id,
                         'attempt_id' => $attempt_id,
                         'function_name' => $obj->definition->name
                     )
@@ -139,10 +139,10 @@ class DataAccess
                     );
                 }
             }
-            else if ($obj->instruction_id == 'repeat')
+            else if ($obj->id == 'repeat')
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->instruction_id,
+                        'instruction_name' => $obj->id,
                         'attempt_id' => $attempt_id
                     )
                 );
@@ -153,17 +153,17 @@ class DataAccess
                 foreach ($obj->body as $ins)
                 {
                     DB::insert('instructions', array(
-                            'instruction_name' => $ins->instruction_id,
+                            'instruction_name' => $ins->id,
                             'attempt_id' => $attempt_id,
                             'parent_id' => $parent_id
                         )
                     );
                 }
             }
-            else if ($obj->instruction_id == 'repeat-while')
+            else if ($obj->id == 'repeat-while')
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->instruction_id,
+                        'instruction_name' => $obj->id,
                         'attempt_id' => $attempt_id,
                         'condition_name' => $obj->condition
                     )
@@ -175,7 +175,7 @@ class DataAccess
                 foreach ($obj->body as $ins)
                 {
                     DB::insert('instructions', array(
-                            'instruction_name' => $ins->instruction_id,
+                            'instruction_name' => $ins->id,
                             'attempt_id' => $attempt_id,
                             'parent_id' => $parent_id
                         )
@@ -185,7 +185,7 @@ class DataAccess
             else
             {
                 DB::insert('instructions', array(
-                        'instruction_name' => $obj->instruction_id,
+                        'instruction_name' => $obj->id,
                         'attempt_id' => $attempt_id
                     )
                 );

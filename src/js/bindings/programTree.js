@@ -1,4 +1,5 @@
-define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstrap'], function(ko, jstree, $, _, arraymove, bootstrap){
+define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstrap', 'angular', 'app/angularServices', 'app/angularSetup', 'app/instructionConverter'],
+    function(ko, jstree, $, _, arraymove, bootstrap, angular, angularServices, angularSetup, instructionConverter){
 
     ko.bindingHandlers.programTree = {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -8,128 +9,19 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
             var value = valueAccessor();
             var valueUnwrapped = ko.unwrap(value);
 
-            var $element = $(element);
+            var elem = angular.element(document.querySelector('[ng-controller=ProgramCtrl]'));
 
-            var updateObservable = function(){ valueAccessor()($element.jstree(true).get_json()); };
+            //get the injector.
+            var injector = elem.injector();
 
-            $element.on('select_node.jstree', function(e, data){
-                data.instance.deselect_node(data.node);
-            })
-            .on('copy_node.jstree', function(e, data){
+            //get the service.
+            var programService = injector.get('program');
 
-                // data object is not persisted when copying between trees.  copy it explictly.
-                data.node.text = data.original.data.definition.name;
-                data.node.data = data.original.data;
-                // it would seem type data is also not persisted.  yay!
-                data.node.type = data.original.original.type;
-                if(data.node.text==='Repeat')
-                {
-                    data.node.text = 'Repeat 1 time';
-                    data.node.data.count = 1;
-                }
-                if (data.node.text ==='Repeat While') {
-                    data.node.text = 'Repeat While ...';
-                    var $modal = $('#condition-modal');
-                    $modal.modal('show');
-                    $modal.on('click', 'button', function(e){
-                        var val = $modal.find('input[name=condition]:checked').val();
-                        $element.jstree(true).get_node(data.node.id).data.condition = val;
-                        $element.jstree('rename_node', data.node, 'Repeat While ' + val);
-                        updateObservable();
-                        $modal.off('click', 'button');
-                    });
-                }
+            programService.subscribe(function(angularProgram){
 
-                // overwrite the view model with the new tree structure.
-                updateObservable();
+                var translatedInstructions = instructionConverter.angularToKnockout(angularProgram);
 
-            }).on('move_node.jstree delete_node.jstree', function(e, data){
-
-                // overwrite the view model with the new tree structure.
-                updateObservable();
-            }).jstree({
-                plugins : [ "dnd", "types", "contextmenu" ],
-                core: {
-                    themes: {
-                        'name': 'proton',
-                        'responsive': true
-                    },
-                    check_callback: function (operation, node, node_parent, node_position, more) {
-                        return true; // update this to tell us which operations are allowed and which are not.
-                    }
-                },
-                dnd: {
-                    is_draggable: function(nodes){
-                        return true;
-                    }
-                },
-                types: {
-                    baseInstruction: {
-                        valid_children: [],
-                        max_children: 0
-                    },
-                    parameterizedContainer: {
-                        valid_children: [ 'baseInstruction' ],
-                        max_children: -1
-                    }
-                },
-                contextmenu: {
-                    items: function(node, callback) {
-
-                        if (node.data.instruction_id === 'repeat')
-                        {
-                            callback({
-                                count: {
-                                    label: "Repeat Count",
-                                    action: function(){
-
-                                        var count = NaN;
-                                        while(isNaN(count))
-                                        {
-                                            var val = prompt("How many repetitions?");
-                                            if(val === null)
-                                            {
-                                                break;
-                                            }
-                                            count = parseInt(val);
-                                        }
-
-                                        if(!isNaN(count))
-                                        {
-                                            node.data.count = count;
-                                            $element.jstree('rename_node', node, 'Repeat ' + count + ' times');
-                                            updateObservable();
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                        else if (node.data.instruction_id === 'repeat-while')
-                        {
-                            callback({
-                                condition: {
-                                    label: "Repeat While ...",
-                                    action: function(){
-
-                                        var $modal = $('#condition-modal');
-                                        $modal.modal('show');
-                                        $modal.on('click', 'button', function(e){
-                                            var val = $modal.find('input[name=condition]:checked').val();
-                                            node.data.condition = val;
-                                            $element.jstree('rename_node', node, 'Repeat While ' + val);
-                                            updateObservable();
-                                            $modal.off('click', 'button');
-                                        });
-                                    }
-                                }
-                            });
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                }
+                value(translatedInstructions);
             });
         },
         update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -140,10 +32,18 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
             var value = valueAccessor();
             var valueUnwrapped = ko.unwrap(value);
 
-            var tree = $(element).jstree(true);
+            var elem = angular.element(document.querySelector('[ng-controller=ProgramCtrl]'));
 
-            tree.settings.core.data = valueUnwrapped;
-            tree.refresh();
+            //get the injector.
+            var injector = elem.injector();
+
+            //get the service.
+            var programService = injector.get('program');
+
+            programService.setProgram(instructionConverter.knockoutToAngular(valueUnwrapped), true);
+            if(!elem.scope().$$phase) {
+                elem.scope().$apply();
+            }
         }
     };
 });

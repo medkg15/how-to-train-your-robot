@@ -10,7 +10,10 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
 
                 $scope.instructionOptions = instructionOptions();
 
-                $scope.inventory = inventory();
+                $scope.inventory = inventory.instructions;
+                $scope.$on('instructionSetAvailable', function(event, instructions) {
+                    $scope.inventory = instructions;
+                });
 
                 $scope.remove = function (scope) {
                     scope.remove();
@@ -88,13 +91,15 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
 
                 $scope.tree = 'program';
 
-                $scope.program = [];
-
                 $scope.instructionOptions = instructionOptions();
 
+                $scope.program = [];
                 $scope.$watch('program', function (newVal, oldVal) {
-                    programService.program = $scope.program;
+                    programService.setProgram($scope.program);
                 }, true);
+                $scope.$on('programChanged', function(event, program) {
+                    $scope.program = program;
+                });
 
                 $scope.programOptions = {
                     /*dropped: function (e) {

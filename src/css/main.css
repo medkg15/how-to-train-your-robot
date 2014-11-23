@@ -6278,3 +6278,6 @@ h6 {
   background-color: #687074 !important;
   color: #FFF !important;
 }
+.current {
+  border: 3px solid #660000;
+}

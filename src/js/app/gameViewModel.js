@@ -3,17 +3,17 @@ define(
     function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
 
         "use strict";
-        
-        var fixLevels = function (levels){
+
+        var fixLevels = function (levels) {
             _.each(levels, function (level) {
-                level.map = _.map(level.map, function(row, rowContext){
-                    return _.map(row, function(column, columnContext){
+                level.map = _.map(level.map, function (row, rowContext) {
+                    return _.map(row, function (column, columnContext) {
                         return {
                             columnIndex: columnContext,
                             rowIndex: rowContext,
                             definition: column
                         };
-                    });                
+                    });
                 });
             });
             return levels;
@@ -52,62 +52,63 @@ define(
             self.environment = new EnvironmentViewModel(self);
             self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
 
-            self.advanceToNextLevel = function(){
+            self.advanceToNextLevel = function () {
                 var level = self.currentLevel();
                 self.selectLevel(levelViewModels[levelViewModels.indexOf(level) + 1]);
             };
 
-            self.startGame = function(){
-                services.startGame(function(response){
+            self.startGame = function () {
+                services.startGame(function (response) {
                     self.gameId(response.id);
                     self.changeView('robot-story');
                     self.score(0);
                 });
             };
 
-            self.showHelp = function(){
+            self.showHelp = function () {
                 self.personaText(self.currentLevel().help);
                 self.usedHelp(true);
             };
 
-            self.startFirstLevel = function(){
+            self.startFirstLevel = function () {
                 self.selectLevel(levelViewModels[0]);
             };
 
-            self.changeView = function(view){
-                if(view === 'high-scores'){
+            self.changeView = function (view) {
+                if (view === 'high-scores') {
                     self.loadHighScores();
-                };
+                }
+                ;
                 self.currentView(view);
                 self.bodyClass('space');
             };
-            
+
             self.showRobot = function (position, heading) {
                 var currentPosition = self.currentPosition();
-                return currentPosition 
-                    && position.columnIndex === currentPosition.column
-                    && position.rowIndex === currentPosition.row
-                    && self.currentHeading() === heading;
+                return currentPosition
+                && position.columnIndex === currentPosition.column
+                && position.rowIndex === currentPosition.row
+                && self.currentHeading() === heading;
             };
-            
+
             self.dontShowRobot = function (position) {
                 var currentPosition = self.currentPosition();
-                return position.definition === ' ' && (!currentPosition 
-                    || position.columnIndex !== currentPosition.column
-                    || position.rowIndex !== currentPosition.row);
+                return position.definition === ' ' && (!currentPosition
+                || position.columnIndex !== currentPosition.column
+                || position.rowIndex !== currentPosition.row);
             };
 
-            self.levelJump = function() {
+            self.levelJump = function () {
 
-                var level = _.find(levelViewModels, function(level){
+                var level = _.find(levelViewModels, function (level) {
                     return level.jumpCode == self.jumpCode();
                 });
 
-                if(!level) {
+                if (!level) {
                     return;
                 }
 
-                services.startGame(function(response){
+                services.startGame(function (response) {
                     self.gameId(response.id);
 
                     self.selectLevel(level);
@@ -115,12 +116,12 @@ define(
             };
 
             self.levels = levelViewModels;
-            
+
             self.instructions = instructions;
 
             self.selectLevel = function (level) {
 
-                services.startLevel(self.gameId(), level.id, function(response){
+                services.startLevel(self.gameId(), level.id, function (response) {
 
                     nextIteration = null;
                     self.levelSessionID(response.session_level_id);
@@ -146,11 +147,11 @@ define(
                 });
             };
 
-            self.customFunctionAvailable = ko.computed(function(){
+            self.customFunctionAvailable = ko.computed(function () {
                 return self.currentLevel() && self.currentLevel().customFunctionAvailable;
             });
 
-            self.runAvailable = ko.computed(function(){
+            self.runAvailable = ko.computed(function () {
                 return self.currentLevel() && self.currentLevel().runAvailable;
             });
 
@@ -172,34 +173,6 @@ define(
 
                 var inventory = _.map(self.instructionSet(), function (instruction) {
 
-                    var currentProgram = self.programInstructions();
-
-                    var countUsages = function(programScope){
-                        var counts = _.map(programScope, function(programInstruction){
-                            var count = 0;
-                            if(programInstruction.instruction_id === instruction.id)
-                            {
-                                count++;
-                            }
-
-                            if(programInstruction.body.length > 0){
-                                count += countUsages(programInstruction.body);
-                            }
-
-                            if(programInstruction.definition.body && programInstruction.definition.body.length > 0)
-                            {
-                                count += countUsages(programInstruction.definition.body);
-                            }
-
-                            return count;
-                        });
-
-                        return _.reduce(counts, function(memo, num){ return memo + num; }, 0);
-                    };
-
-                    var usedCount = countUsages(currentProgram);
-                    var remaining = instruction.quantity - usedCount;
-
                     var definition = _.find(self.instructions, function (def) {
                         return def.id === instruction.id;
                     });
@@ -209,58 +182,29 @@ define(
                         definition: definition,
                         name: definition.name,
                         description: definition.description,
-                        quantity: instruction.quantity === 'unlimited' ? 'unlimited' : remaining > 0 ? remaining : 0
+                        quantity: instruction.quantity
                     };
 
                 });
 
-                return _.filter(inventory, function(inst){
+                return _.filter(inventory, function (inst) {
                     return inst;
-                });
-            });
-
-            self.treeAvailableInstructions = ko.computed(function(){
-
-                return _.map(self.instructionInventory(), function(instruction){
-
-                    var name = instruction.name;
-                    if(instruction.quantity != 'unlimited')
-                    {
-                        name += ' : ' + instruction.quantity + ' remaining';
-                    }
-
-                    return {
-                        text: name, // node text
-                        //icon: "string", // string for custom
-                        state: {
-                            opened: false,
-                            disabled: instruction.quantity == 0,
-                            selected: false
-                        },
-                        children: [],  // array of strings or objects
-                        li_attr: {},  // attributes for the generated LI node
-                        a_attr: {},  // attributes for the generated A node
-                        type: instruction.definition.type,
-                        instructionId: instruction.id,
-                        data: {
-                            instruction_id: instruction.id,
-                            definition: instruction.definition
-                        }
-                    }
                 });
             });
 
             self.addInstruction = function (instruction) {
                 self.program.push(instruction);
             };
-            
+
             self.clearProgram = function () {
-            
+
                 self.program.removeAll();
             };
 
+            var currentInstruction = null;
+
             // terminate the currently executing program.
-            self.stop = function(){
+            self.stop = function () {
 
                 self.attemptStartTime(new Date());
 
@@ -273,37 +217,33 @@ define(
                 self.hasError(false);
                 self.status.reset();
 
-                $('.current-instruction').popover('destroy').removeClass('current-instruction');
+                currentInstruction.currentlyExecuting = false;
             };
 
-            var onAttemptFailed = function(message, program, instruction){
+            var onAttemptFailed = function (message, program, instruction) {
 
                 self.hasError(true);
 
-                var element = $('#' + instruction.elementID);
+                instruction.message = message;
+                instruction.status = 'error';
 
-                element.popover({
-                    content: message,
-                    html: true,
-                    placement: 'left',
-                    title: 'Program Error!',
-                    trigger: 'manual focus'
-                }).popover('show');
-
-                services.failAttempt(self.levelSessionID(), {program:program, start: self.attemptStartTime(), end: new Date()}, function(response){
+                services.failAttempt(self.levelSessionID(), {
+                    program: program,
+                    start: self.attemptStartTime(),
+                    end: new Date()
+                }, function (response) {
 
                     self.attemptStartTime(new Date());
 
                     var attempts = self.levelAttempts();
 
-                    if(attempts == 3 || attempts == 6 || attempts == 10)
-                    {
+                    if (attempts == 3 || attempts == 6 || attempts == 10) {
                         self.personaText(self.currentLevel().help);
                     }
                 });
 
             };
-            
+
             self.execute = function (instruction) {
                 self.levelAttempts(self.levelAttempts() + 1);
                 self.isExecuting(true);
@@ -312,39 +252,37 @@ define(
                 self.currentHeading(self.currentLevel().defaultHeading);
 
                 // grab a copy of the program to execute
-                var program = self.programInstructions();
+                var program = self.program();
 
-                if(program.length === 0)
-                {
+                if (program.length === 0) {
                     return;
                 }
 
                 // our default scope in the program itself.  we may add additional ones as we go...
-                var scopes = [ { instructions: program, index: 0 } ];
+                var scopes = [{instructions: program, index: 0}];
 
                 var win = false;
                 var doContinue = true;
-                
-                var callback;
-                callback = function (){
 
-                    if(self.isPaused())
-                    {
+                var callback;
+                callback = function () {
+
+                    if (self.isPaused()) {
                         return;
                     }
 
-                    $('.current-instruction').removeClass('current-instruction');
+                    if(currentInstruction) {
+                        currentInstruction.currentlyExecuting = false;
+                    }
 
                     // if we're done with this scope, move up to the next one.
                     // keep moving up until we're at the end of the root program scope.
-                    while (scopes[0].index >= scopes[0].instructions.length && scopes.length > 1)
-                    {
+                    while (scopes[0].index >= scopes[0].instructions.length && scopes.length > 1) {
                         scopes.shift();
                     }
 
                     // are we at the end of the program?
-                    if (scopes[0].index >= scopes[0].instructions.length && scopes.length === 1)
-                    {
+                    if (scopes[0].index >= scopes[0].instructions.length && scopes.length === 1) {
                         if (win) {
 
                             var scoreCalculator = new ScoreCalculator(self.currentLevel());
@@ -352,14 +290,20 @@ define(
                             self.levelScore(score);
                             self.score(self.score() + score.finalScore);
 
-                            services.completeLevel(self.levelSessionID(), { program: program, start: self.attemptStartTime(), end: new Date(), usedHelp: self.usedHelp(), usedDebugger: self.usedDebugger() }, self.score(), function(response){
+                            services.completeLevel(self.levelSessionID(), {
+                                program: program,
+                                start: self.attemptStartTime(),
+                                end: new Date(),
+                                usedHelp: self.usedHelp(),
+                                usedDebugger: self.usedDebugger()
+                            }, self.score(), function (response) {
 
                                 var level = self.currentLevel();
 
-                                if (levelViewModels[levelViewModels.length-1] === level) {
+                                if (levelViewModels[levelViewModels.length - 1] === level) {
 
                                     self.gameOver(true);
-                                    services.completeGame(self.gameId(), function(){
+                                    services.completeGame(self.gameId(), function () {
 
                                     });
                                 }
@@ -372,68 +316,65 @@ define(
                             });
                         }
                         else {
-                            $('#' + program[program.length - 1].elementID).addClass('current-instruction');
                             onAttemptFailed('The robot failed to complete the goal!', program, program[program.length - 1]);
                         }
                         doContinue = false;
                     }
 
-                    
-                    var instruction = scopes[0].instructions[scopes[0].index];
+                    currentInstruction = scopes[0].instructions[scopes[0].index];
 
-                    if (!instruction)
-                    {
+                    if (!currentInstruction) {
                         doContinue = false;
                     }
                     else {
 
-                        $('#' + instruction.elementID).addClass('current-instruction');
+                        currentInstruction.currentlyExecuting = true;
 
-                        if (instruction.instruction_id === 'step-forward') {
+                        if (currentInstruction.id === 'step-forward') {
 
                             if (self.environment.frontCellDefinition() === ' ') {
                                 self.currentPosition(self.environment.frontCell());
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
+                                onAttemptFailed('Your robot can\'t move there!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'pick-up-ball') {
+                        else if (currentInstruction.id === 'pick-up-ball') {
                             if (self.environment.frontCellDefinition() === 'e') {
                                 win = true;
                             }
                             else {
                                 doContinue = false;
 
-                                onAttemptFailed('No ball to pick up!', program, instruction);
+                                onAttemptFailed('No ball to pick up!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'shuffle-right') {
+                        else if (currentInstruction.id === 'shuffle-right') {
 
                             if (self.environment.rightCellDefinition() === ' ') {
                                 self.currentPosition(self.environment.rightCell());
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
+                                onAttemptFailed('Your robot can\'t move there!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'shuffle-left') {
+                        else if (currentInstruction.id === 'shuffle-left') {
 
                             if (self.environment.leftCellDefinition() === ' ') {
                                 self.currentPosition(self.environment.leftCell());
                             }
                             else {
                                 doContinue = false;
-                                onAttemptFailed('Your robot can\'t move there!', program, instruction);
+                                onAttemptFailed('Your robot can\'t move there!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'turn-left') {
+                        else if (currentInstruction.id === 'turn-left') {
                             switch (self.currentHeading()) {
                                 case 'up':
                                     self.currentHeading('left');
@@ -450,7 +391,7 @@ define(
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'turn-right') {
+                        else if (currentInstruction.id === 'turn-right') {
                             switch (self.currentHeading()) {
                                 case 'up':
                                     self.currentHeading('right');
@@ -467,32 +408,31 @@ define(
                             }
                             scopes[0].index++;
                         }
-                        else if (instruction.instruction_id === 'repeat') {
+                        else if (currentInstruction.id === 'repeat') {
                             if (typeof scopes[0].countRemaining === 'undefined') {
-                                scopes[0].countRemaining = instruction.count;
+                                scopes[0].countRemaining = currentInstruction.count;
                             }
 
                             if (scopes[0].countRemaining > 0) {
                                 scopes[0].countRemaining--;
-                                scopes.unshift({instructions: instruction.body, index: 0});
+                                scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
                             else {
                                 scopes[0].countRemaining = undefined;
                                 scopes[0].index++;
                             }
                         }
-                        else if (instruction.instruction_id === 'repeat-while') {
+                        else if (currentInstruction.id === 'repeat-while') {
                             if (typeof scopes[0].condition === 'undefined') {
-                                scopes[0].condition = instruction.condition;
+                                scopes[0].condition = currentInstruction.condition;
                             }
 
                             // check if we've satisfied the condition
 
-                            if((scopes[0].condition === 'wall-not-front' && self.environment.frontCellDefinition() !== 'x')
-                                || (scopes[0].condition === 'ball-not-front' && self.environment.frontCellDefinition() !== 'e'))
-                            {
+                            if ((scopes[0].condition === 'wall-not-front' && self.environment.frontCellDefinition() !== 'x')
+                                || (scopes[0].condition === 'ball-not-front' && self.environment.frontCellDefinition() !== 'e')) {
                                 scopes[0].countRemaining--;
-                                scopes.unshift({instructions: instruction.body, index: 0});
+                                scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
                             else {
                                 // we're done, move to the next instruction.
@@ -500,87 +440,75 @@ define(
                                 scopes[0].index++;
                             }
                         }
-                        else if (instruction.instruction_id.indexOf('custom-function-') === 0) {
+                        else if (currentInstruction.id.indexOf('custom-function-') === 0) {
 
                             if (typeof scopes[0].runningFunction === 'undefined') {
                                 scopes[0].runningFunction = true;
-                                scopes.unshift({instructions: instruction.definition.body, index: 0});
+                                scopes.unshift({instructions: currentInstruction.definition.body, index: 0});
                             }
-                            else
-                            {
+                            else {
                                 scopes[0].index++;
                                 scopes[0].runningFunction = undefined;
                             }
                         }
 
                         // update our status object to see what's going on ...
-                        self.status.currentInstruction(instruction);
+                        self.status.currentInstruction(currentInstruction);
                         self.status.direction(self.currentHeading());
                         self.status.hasBall(win);
                         self.status.wallInFront(self.environment.frontCellDefinition() === 'x');
                         self.status.ballInFront(self.environment.frontCellDefinition() === 'e');
                         self.status.countRemaining(typeof scopes[0].countRemaining === 'undefined' ? null : scopes[0].countRemaining);
                     }
-                    
-                    if (doContinue)
-                    {
+
+                    if (doContinue) {
                         nextIteration = callback;
                         setTimeout(callback, 250);
                     }
-                    else
-                    {
-                        if(!self.hasError()) {
+                    else {
+                        if (!self.hasError()) {
                             self.isExecuting(false);
                         }
                     }
                 };
-                
+
                 callback();
             };
 
             self.isExecuting = ko.observable(false);
             self.isPaused = ko.observable(false);
 
-            self.executeOnce = function(){
+            self.executeOnce = function () {
                 self.usedDebugger(true);
-                if(nextIteration)
-                {
+                if (nextIteration) {
                     self.isPaused(false);
                     nextIteration();
                     self.isPaused(true);
                 }
-                else
-                {
+                else {
                     self.execute();
                     self.isPaused(true);
                 }
             };
 
-            self.pause = function(){
+            self.pause = function () {
                 self.isPaused(!self.isPaused());
-                if(!self.isPaused() && nextIteration)
-                {
+                if (!self.isPaused() && nextIteration) {
                     nextIteration();
                 }
             };
 
             self.program = ko.observableArray();
 
-            var instructionConversion = function(element){
+            var instructionConversion = function (element) {
                 var data = element.data;
                 data.body = _.map(element.children, instructionConversion);
-                data.definition = _.find(self.instructions, function(def){
-                    return def.id === element.data.instruction_id;
+                data.definition = _.find(self.instructions, function (def) {
+                    return def.id === element.data.id;
                 });
                 data.elementID = element.li_attr.id;
                 return data;
             };
-
-            // these are the simplified program elements
-            self.programInstructions = ko.computed(function(){
-
-                return _.map(self.program(), instructionConversion);
-            });
 
             self.showDebug = ko.observable(false);
             self.debug = ko.computed(function () {
@@ -590,18 +518,18 @@ define(
                 return JSON.stringify(copy, null, 2);
             });
 
-            self.removeInstruction = function(instruction){
+            self.removeInstruction = function (instruction) {
                 self.program.remove(instruction);
             };
 
-            self.createFunction = function(){
+            self.createFunction = function () {
                 self.buildingFunction(true);
             };
 
             self.functionTree = ko.observableArray();
             self.functionName = ko.observable();
 
-            self.saveFunction = function(){
+            self.saveFunction = function () {
                 self.customFunctionCount++;
 
                 var definition = {
@@ -625,21 +553,21 @@ define(
             };
 
             // these are the simplified program elements
-            self.functionInstructions = ko.computed(function(){
+            self.functionInstructions = ko.computed(function () {
                 return _.map(self.functionTree(), instructionConversion);
             });
 
-            self.hasNoProgram = ko.computed(function(){
+            self.hasNoProgram = ko.computed(function () {
                 return self.program().length === 0;
             });
 
-            self.emptyFunction = ko.computed(function(){
+            self.emptyFunction = ko.computed(function () {
                 return self.functionTree().length === 0;
             });
 
-            self.loadHighScores = function(){
+            self.loadHighScores = function () {
                 self.loadingHighScores(true);
-                services.getHighScores(function(highScores){
+                services.getHighScores(function (highScores) {
                     self.loadingHighScores(false);
                     self.highScores(highScores);
                 });
