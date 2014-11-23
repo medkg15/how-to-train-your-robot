@@ -69,11 +69,17 @@ define([], function () {
             "id": "custom-function-999",
             "name": 'Go Right Around Obstacle',
             "description": "User defined custom function",
-            "type": "baseInstruction",
+            "type": "function",
             "points": 50,
-            "instructionBody": [
+            "body": [
                 "turn-right",
-                "turn-left"
+                "step-forward",
+                "turn-left",
+                "step-forward",
+                "step-forward",
+                "turn-left",
+                "step-forward",
+                "turn-right"
             ]
         }
     };

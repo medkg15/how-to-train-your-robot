@@ -159,24 +159,44 @@ define(
                 self.currentHeading(null);
             };
 
-            self.instructionInventory = ko.computed(function () {
+            self.userDefinedFunctions = ko.observableArray();
 
-                var level = self.currentLevel();
+            self.instructionInventory = ko.computed({
+                read: function () {
 
-                if (!level) {
-                    return [];
+                    var level = self.currentLevel();
+
+                    if (!level) {
+                        return [];
+                    }
+
+                    var levelInstructions = _.map(self.currentLevel().instructions, function (instruction) {
+                        var definition = allInstructionsLookup[instruction.id];
+
+                        return {
+                            id: instruction.id,
+                            definition: definition,
+                            name: definition.name,
+                            quantity: instruction.quantity,
+                            body: _.map(definition.body, function(inst){
+                                var definition = allInstructionsLookup[inst];
+
+                                return {
+                                    id: inst,
+                                    definition: definition,
+                                    name: definition.name
+                                };
+                            })
+                        };
+                    });
+
+                    return _.union(levelInstructions, self.userDefinedFunctions());
+                },
+                write: function (value) {
+                    self.userDefinedFunctions(_.filter(value, function(inst){
+                        return inst.isCustomFunction;
+                    }));
                 }
-
-                return _.map(self.currentLevel().instructions, function (instruction) {
-                    var definition = allInstructionsLookup[instruction.id];
-
-                    return {
-                        id: instruction.id,
-                        definition: definition,
-                        name: definition.name,
-                        quantity: instruction.quantity
-                    };
-                });
             });
 
             self.addInstruction = function (instruction) {
@@ -437,11 +457,11 @@ define(
                                 scopes[0].index++;
                             }
                         }
-                        else if (currentInstruction.id.indexOf('custom-function-') === 0) {
+                        else if (currentInstruction.id.indexOf('custom-function') === 0) {
 
                             if (typeof scopes[0].runningFunction === 'undefined') {
                                 scopes[0].runningFunction = true;
-                                scopes.unshift({instructions: currentInstruction.definition.body, index: 0});
+                                scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
                             else {
                                 scopes[0].index++;

@@ -40,12 +40,12 @@
 
     <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="!instruction.allowChildren"
         data-nodrop>
-        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}
+        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}"
             ng-include="'program_renderer.html'" >
         </li>
     </ol>
     <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="instruction.allowChildren">
-        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}
+        <li ng-repeat="instruction in instruction.body" ui-tree-node  ng-class="{current: instruction.currentlyExecuting}"
             ng-include="'program_renderer.html'" >
         </li>
     </ol>

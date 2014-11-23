@@ -75,7 +75,6 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
                     "quantity": instruction.quantity,
                     "isFunction": instruction.isFunction,
                     "isCustomFunction": instruction.isCustomFunction,
-                    "knockoutVersion": instruction.knockoutVersion,
                     "uniqueId": count++
                 }
             };
@@ -89,19 +88,29 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
             var options = instructionOptions();
 
             return {
+                callback: null,
                 instructions: [],
-                setInstructions: function (instructionSet) {
+                subscribe: function (callback) {
+                    this.callback = callback;
+                },
+                setInstructions: function (instructionSet, broadcast) {
 
                     for (var i = 0; i < instructionSet.length; i++) {
                         for (var j = 0; j < instructionSet[i].body.length; j++) {
-                            instructionSet[i].body[j] = helpers.copyInstruction(_.find(instructionSet, function (instruction) {
-                                return instruction.instructionId === instructionSet[i].body[j];
-                            }));
+                            var match = _.find(instructionSet, function (instruction) {
+                                return instruction.instructionId === instructionSet[i].body[j].instructionId;
+                            });
+                            instructionSet[i].body[j] = helpers.copyInstruction(match);
                         }
                     }
 
                     this.instructions = instructionSet;
-                    $rootScope.$broadcast('instructionSetAvailable', this.instructions);
+                    if (broadcast) {
+                        $rootScope.$broadcast('instructionSetAvailable', this.instructions);
+                    }
+                    else if (this.callback) {
+                        this.callback(this.instructions);
+                    }
                 }
             };
         }]);
