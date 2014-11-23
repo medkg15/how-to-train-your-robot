@@ -6171,9 +6171,10 @@ button.close {
   text-align: center;
   height: 50px;
 }
-#inventory li {
+#inventory li.inline {
   cursor: pointer;
   display: inline-block;
+  width: 25%;
 }
 #program .instruction {
   cursor: move;

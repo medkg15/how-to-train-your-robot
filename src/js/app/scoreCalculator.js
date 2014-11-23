@@ -1,4 +1,4 @@
-define(['data/instructions', 'underscore'], function(instructions, _){
+define(['data/allInstructionsLookup', 'underscore'], function(allInstructionsLookup, _){
 
     return function ScoreCalculator(level){
 
@@ -18,9 +18,7 @@ define(['data/instructions', 'underscore'], function(instructions, _){
                 var instruction = scope[i];
                 var instructionID = instruction.id;
 
-                var definition = _.find(instructions, function(inst){
-                    return inst.id === instructionID;
-                });
+                var definition = allInstructionsLookup[instructionID];
 
                 result.sum += definition.points;
                 result.count++;

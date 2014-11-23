@@ -13,6 +13,9 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                 $scope.inventory = inventory.instructions;
                 $scope.$on('instructionSetAvailable', function(event, instructions) {
                     $scope.inventory = instructions;
+                    if(!$scope.$$phase) {
+                        $scope.$apply();
+                    }
                 });
 
                 $scope.remove = function (scope) {
@@ -99,6 +102,9 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                 }, true);
                 $scope.$on('programChanged', function(event, program) {
                     $scope.program = program;
+                    if(!$scope.$$phase) {
+                        $scope.$apply();
+                    }
                 });
 
                 $scope.programOptions = {

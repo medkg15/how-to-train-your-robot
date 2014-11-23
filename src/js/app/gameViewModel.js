@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
+    ['knockout', 'underscore', 'data/levels', 'data/allInstructionsLookup', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers'],
+    function (ko, _, levels, allInstructionsLookup, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
 
         "use strict";
 
@@ -36,7 +36,6 @@ define(
             self.personaText = ko.observable();
             self.levelAttempts = ko.observable(0);
             self.buildingFunction = ko.observable(false);
-            self.instructionSet = ko.observableArray();
             self.customFunctionCount = 0;
             self.canAdvance = ko.observable(false);
             self.levelSessionID = ko.observable();
@@ -117,8 +116,6 @@ define(
 
             self.levels = levelViewModels;
 
-            self.instructions = instructions;
-
             self.selectLevel = function (level) {
 
                 services.startLevel(self.gameId(), level.id, function (response) {
@@ -134,7 +131,6 @@ define(
                     self.bodyClass(level.environment);
                     self.personaText(level.intro);
                     self.levelAttempts(0);
-                    self.instructionSet(level.instructions);
                     self.customFunctionCount = 0;
                     self.canAdvance(false);
                     self.usedHelp(false);
@@ -171,24 +167,15 @@ define(
                     return [];
                 }
 
-                var inventory = _.map(self.instructionSet(), function (instruction) {
-
-                    var definition = _.find(self.instructions, function (def) {
-                        return def.id === instruction.id;
-                    });
+                return _.map(self.currentLevel().instructions, function (instruction) {
+                    var definition = allInstructionsLookup[instruction.id];
 
                     return {
                         id: instruction.id,
                         definition: definition,
                         name: definition.name,
-                        description: definition.description,
                         quantity: instruction.quantity
                     };
-
-                });
-
-                return _.filter(inventory, function (inst) {
-                    return inst;
                 });
             });
 

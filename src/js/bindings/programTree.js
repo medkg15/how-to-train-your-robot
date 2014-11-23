@@ -41,9 +41,6 @@ define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstra
             var programService = injector.get('program');
 
             programService.setProgram(instructionConverter.knockoutToAngular(valueUnwrapped), true);
-            if(!elem.scope().$$phase) {
-                elem.scope().$apply();
-            }
         }
     };
 });
