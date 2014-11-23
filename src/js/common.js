@@ -8,10 +8,16 @@ requirejs.config({
         , "jsurl": "../vendor/jsul/url.min"
         , "moment": "../vendor/moment/moment"
         , "knockout-bootstrap": "../vendor/knockout-bootstrap/build/knockout-bootstrap.min"
+        , "angular": "../vendor/angular/angular"
+        , "angular-ui-tree": "../vendor/angular-ui-tree/dist/angular-ui-tree"
 	}
 	, shim: {
 		"bootstrap": ['jquery']
-		, "knockout": ['jquery']
+		, "knockout": ['jquery'],
+        "angular": {
+            exports: "angular"
+        },
+        "angular-ui-tree": ['angular']
 	}
     , urlArgs: "v=23"
 });

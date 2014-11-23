@@ -1,3 +1,4 @@
+@import "../../vendor/angular-ui-tree/dist/angular-ui-tree.min.css";
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6250,4 +6251,30 @@ h6 {
 }
 .popover {
   /* max-width:400px;*/
+}
+.tree-node {
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+  padding: 10px 0;
+}
+.tree-node-content {
+  margin: 10px;
+}
+.tree-handle {
+  padding: 10px;
+  background: #428bca;
+  color: #FFF;
+  margin-right: 10px;
+}
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
 }

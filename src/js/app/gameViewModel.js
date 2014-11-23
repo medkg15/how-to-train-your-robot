@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel'],
-    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel) {
+    ['knockout', 'underscore', 'data/levels', 'data/instructions', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers'],
+    function (ko, _, levels, instructions, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
 
         "use strict";
         

@@ -50,6 +50,7 @@
     <?php include "robot-story.php"; ?>
     <?php include "jump.php"; ?>
     <?php include "tutorial.php"; ?>
+    <?php include "tree-renderers.php"; ?>
 
     <label>
     <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
@@ -66,8 +67,8 @@
     });
 	require(['common'], function(common){
 		require(
-			['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap', 'bindings/introPersona'],
-			function($, ko, GameViewModel, jstree, knockoutBootstrap, introPersona){
+			['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap', 'bindings/introPersona', 'app/directives'],
+			function($, ko, GameViewModel, jstree, knockoutBootstrap, introPersona, directives){
 				
 				var viewModel = new GameViewModel();
 			
@@ -75,6 +76,8 @@
 
                 $('#loading-view').remove();
                 $('#knockout-view').show();
+
+                angular.bootstrap(document, ['robotTraining']);
 			}
 		);
 	});

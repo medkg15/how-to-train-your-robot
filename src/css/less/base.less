@@ -26,14 +26,15 @@
 }
 
 #program.empty .jstree {
-  padding:10px;
+  padding: 10px;
   border: 1px dashed #cccccc;
   border-radius: 5px;
   background-image: linear-gradient(45deg, rgba(200, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(200, 255, 255, 0.15) 50%, rgba(200, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
 #trash .jstree {
-  height:50px;
-  margin:20px 0;
+  height: 50px;
+  margin: 20px 0;
   border: 1px dashed #cccccc;
   border-radius: 5px;
   background-image: linear-gradient(45deg, rgba(255, 0, 0, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 0, 0, 0.15) 50%, rgba(255, 0, 0, 0.15) 75%, transparent 75%, transparent);
@@ -43,9 +44,10 @@
 #function.empty .jstree {
   border: 1px dashed #cccccc;
   border-radius: 5px;
-  padding:10px;
+  padding: 10px;
   background-image: linear-gradient(45deg, rgba(200, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(200, 255, 255, 0.15) 50%, rgba(200, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
 #function.empty .jstree:before {
   content: "Drag your function's instructions here!"
 }
@@ -55,26 +57,81 @@
   margin: 20px 0;
 }
 
-#persona { position:absolute; z-index:100; cursor:help; }
+#persona {
+  position: absolute;
+  z-index: 100;
+  cursor: help;
+}
 
-.current-instruction .jstree-anchor { border:2px solid black; }
+.current-instruction .jstree-anchor {
+  border: 2px solid black;
+}
 
-h1, h2, h3, h4, h5, h6 { margin:5px 0; }
-.well { padding:10px }
-.team .img-thumbnail { margin:0 5px 5px 0; }
+h1, h2, h3, h4, h5, h6 {
+  margin: 5px 0;
+}
+
+.well {
+  padding: 10px
+}
+
+.team .img-thumbnail {
+  margin: 0 5px 5px 0;
+}
+
 .jstree-bootstrap .jstree-anchor {
   background: none repeat scroll 0 0 lightblue;
   border-radius: 3px;
-  margin:2px;
+  margin: 2px;
 }
+
 .jstree-bootstrap .jstree-anchor.jstree-hovered:not(.jstree-clicked):not(.jstree-hovered) {
   background: none repeat scroll 0 0 lightblue;
-  border-color:#0000ff;
+  border-color: #0000ff;
 }
+
 .jstree-bootstrap .jstree-anchor.jstree-disabled {
   background: lightgrey;
 }
+
 .jstree-bootstrap .jstree-anchor.jstree-disabled.jstree-hovered {
   background: lightgrey;
 }
-.popover { /* max-width:400px;*/ }
+
+.popover {
+  /* max-width:400px;*/
+}
+
+.tree-node {
+  border: 1px solid #dae2ea;
+  background: #f8faff;
+  color: #7c9eb2;
+  padding: 10px 0;
+}
+
+.tree-node-content {
+  margin: 10px;
+}
+
+.tree-handle {
+  padding: 10px;
+  background: #428bca;
+  color: #FFF;
+  margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+}
+
+.angular-ui-tree-placeholder {
+  background: #f0f9ff;
+  border: 2px dashed #bed2db;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.group-title {
+  background-color: #687074 !important;
+  color: #FFF !important;
+}
