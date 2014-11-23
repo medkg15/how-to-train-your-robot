@@ -49,7 +49,7 @@ define(
             self.loadingHighScores = ko.observable(false);
             self.status = new StatusViewModel();
             self.environment = new EnvironmentViewModel(self);
-            self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
+            self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands.</p><p> In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
 
             self.advanceToNextLevel = function () {
                 var level = self.currentLevel();
