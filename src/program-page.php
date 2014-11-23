@@ -46,14 +46,16 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-success"
-                            data-bind="click: execute, disable: isExecuting() || canAdvance() || hasNoProgram()">
-                        Run
-                    </button>
-                    <button
-                        data-bind="click: stop, visible: isExecuting"
-                        class="btn btn-danger">Stop
-                    </button>
+                    <div data-bind="visible: runAvailable">
+                        <button class="btn btn-success"
+                                data-bind="click: execute, disable: isExecuting() || canAdvance() || hasNoProgram()">
+                            Run
+                        </button>
+                        <button
+                            data-bind="click: stop, visible: isExecuting"
+                            class="btn btn-danger">Stop
+                        </button>
+                    </div>
 
                     <div data-bind="if: debuggerAvailable">
 
@@ -99,21 +101,24 @@
                     </ol>
                 </div>
 
-                <ol class="angular-ui-tree-nodes">
-                    <li class="angular-ui-tree-node">
-                        <div class="group-title tree-handle">
-                            <form class="form-inline ng-pristine ng-valid" role="form">
-                                <div class="form-group">
-                                    <label class="sr-only" for="groupName">Group name</label>
-                                    <input type="text" class="form-control" ng-model="addFunctionName" id="groupName"
-                                           placeholder="Function name">
-                                </div>
-                                <button type="submit" class="btn btn-default" ng-click="addFunction()">Add Function
-                                </button>
-                            </form>
-                        </div>
-                    </li>
-                </ol>
+                <div data-bind="visible: customFunctionAvailable">
+                    <ol class="angular-ui-tree-nodes">
+                        <li class="angular-ui-tree-node">
+                            <div class="group-title tree-handle">
+                                <form class="form-inline ng-pristine ng-valid" role="form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="groupName">Group name</label>
+                                        <input type="text" class="form-control" ng-model="addFunctionName"
+                                               id="groupName"
+                                               placeholder="Function name">
+                                    </div>
+                                    <button type="submit" class="btn btn-default" ng-click="addFunction()">Add Function
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
                 <div data-bind="visible: showDebug">
                     <pre class="code">{{ inventory | json }}</pre>
                 </div>
