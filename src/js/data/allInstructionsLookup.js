@@ -23,10 +23,10 @@ define([], function () {
             "type": "baseInstruction",
             "points": 10
         },
-        "pick-up-ball": {
-            "id": "pick-up-ball",
-            "name": "Pick up Ball",
-            "description": "Tell your robot to pick up the ball.",
+        "pick-up-part": {
+            "id": "pick-up-part",
+            "name": "Pick up Park",
+            "description": "Tell your robot to pick up the part in front of it.",
             "type": "baseInstruction",
             "points": 10
         },

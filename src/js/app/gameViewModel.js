@@ -362,7 +362,7 @@ define(
                             }
                             scopes[0].index++;
                         }
-                        else if (currentInstruction.id === 'pick-up-ball') {
+                        else if (currentInstruction.id === 'pick-up-part') {
                             if (self.environment.frontCellDefinition() === 'e') {
                                 win = true;
                             }
@@ -451,7 +451,7 @@ define(
                             // check if we've satisfied the condition
 
                             if ((scopes[0].condition === 'Wall Not In Front' && self.environment.frontCellDefinition() !== 'x')
-                                || (scopes[0].condition === 'Ball Not In Front' && self.environment.frontCellDefinition() !== 'e')) {
+                                || (scopes[0].condition === 'Part Not In Front' && self.environment.frontCellDefinition() !== 'e')) {
                                 scopes[0].countRemaining--;
                                 scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
