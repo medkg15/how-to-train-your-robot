@@ -5,7 +5,7 @@
         <div style="position:relative;">
             <img src="/images/Persona.png" alt="Persona"
                  data-bind="introPersona: introStoryText" style="position:absolute; top:50px; left:10px;"/>
-            <img src="/images/starving-stunned-dizzy1.gif" style="position:absolute; left:700px; "/>
+            <img src="/images/starving-stunned-dizzy1.gif" style="position:absolute; left:850px; "/>
 
             <img class="img-thumbnail" src="images/explosion.png"/>
 
