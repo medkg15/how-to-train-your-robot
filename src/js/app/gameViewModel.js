@@ -204,7 +204,10 @@ define(
                 self.hasError(false);
                 self.status.reset();
 
-                currentInstruction.currentlyExecuting = false;
+                if(currentInstruction) {
+                    currentInstruction.currentlyExecuting = false;
+                    self.program.valueHasMutated();
+                }
             };
 
             var onAttemptFailed = function (message, program, instruction) {
@@ -213,6 +216,8 @@ define(
 
                 instruction.message = message;
                 instruction.status = 'error';
+                instruction.currentlyExecuting = true;
+                self.program.valueHasMutated();
 
                 services.failAttempt(self.levelSessionID(), {
                     program: program,
@@ -256,10 +261,6 @@ define(
 
                     if (self.isPaused()) {
                         return;
-                    }
-
-                    if(currentInstruction) {
-                        currentInstruction.currentlyExecuting = false;
                     }
 
                     // if we're done with this scope, move up to the next one.
@@ -308,6 +309,11 @@ define(
                         doContinue = false;
                     }
 
+                    if(currentInstruction && doContinue) {
+                        currentInstruction.currentlyExecuting = false;
+                        self.program.valueHasMutated();
+                    }
+
                     currentInstruction = scopes[0].instructions[scopes[0].index];
 
                     if (!currentInstruction) {
@@ -316,6 +322,7 @@ define(
                     else {
 
                         currentInstruction.currentlyExecuting = true;
+                        self.program.valueHasMutated();
 
                         if (currentInstruction.id === 'step-forward') {
 

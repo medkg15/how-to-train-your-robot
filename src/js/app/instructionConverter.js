@@ -1,7 +1,7 @@
 define(['underscore'], function(_){
 
     var convertAngularInstruction = function(angularInstruction){
-        return angularInstruction.knockoutVersion; // for now, will probably get more complicated : )
+        return angularInstruction.knockoutVersion;
     };
 
     var convertKnockoutInstruction = function(knockoutVersion){

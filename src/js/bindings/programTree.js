@@ -1,46 +1,59 @@
 define(['knockout', 'jstree', 'jquery', 'underscore', 'app/arraymove', 'bootstrap', 'angular', 'app/angularServices', 'app/angularSetup', 'app/instructionConverter'],
-    function(ko, jstree, $, _, arraymove, bootstrap, angular, angularServices, angularSetup, instructionConverter){
+    function (ko, jstree, $, _, arraymove, bootstrap, angular, angularServices, angularSetup, instructionConverter) {
 
-    ko.bindingHandlers.programTree = {
-        init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-            // This will be called when the binding is first applied to an element
-            // Set up any initial state, event handlers, etc. here
+        var programService;
+        var origin = null;
 
-            var value = valueAccessor();
-            var valueUnwrapped = ko.unwrap(value);
+        ko.bindingHandlers.programTree = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                // This will be called when the binding is first applied to an element
+                // Set up any initial state, event handlers, etc. here
 
-            var elem = angular.element(document.querySelector('[ng-controller=ProgramCtrl]'));
+                var value = valueAccessor();
+                var valueUnwrapped = ko.unwrap(value);
 
-            //get the injector.
-            var injector = elem.injector();
+                var elem = angular.element(document.querySelector('[ng-controller=ProgramCtrl]'));
 
-            //get the service.
-            var programService = injector.get('program');
+                //get the injector.
+                var injector = elem.injector();
 
-            programService.subscribe(function(angularProgram){
+                //get the service.
+                programService = injector.get('program');
 
-                var translatedInstructions = instructionConverter.angularToKnockout(angularProgram);
+                programService.subscribe(function (angularProgram) {
 
-                value(translatedInstructions);
-            });
-        },
-        update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-            // This will be called once when the binding is first applied to an element,
-            // and again whenever any observables/computeds that are accessed change
-            // Update the DOM element based on the supplied values here.
+                    if (!origin) {
+                        origin = 'angular';
 
-            var value = valueAccessor();
-            var valueUnwrapped = ko.unwrap(value);
+                        var translatedInstructions = instructionConverter.angularToKnockout(angularProgram);
 
-            var elem = angular.element(document.querySelector('[ng-controller=ProgramCtrl]'));
+                        value(translatedInstructions);
 
-            //get the injector.
-            var injector = elem.injector();
+                        origin = null;
+                    }
+                    else if (origin == 'knockout') {
+                        origin = null;
+                    }
+                });
+            },
+            update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                // This will be called once when the binding is first applied to an element,
+                // and again whenever any observables/computeds that are accessed change
+                // Update the DOM element based on the supplied values here.
 
-            //get the service.
-            var programService = injector.get('program');
+                var value = valueAccessor();
+                var valueUnwrapped = ko.unwrap(value);
 
-            programService.setProgram(instructionConverter.knockoutToAngular(valueUnwrapped), true);
-        }
-    };
-});
+                if (!origin) {
+                    origin = 'knockout';
+
+                    programService.setProgram(instructionConverter.knockoutToAngular(valueUnwrapped), true);
+
+                    origin = null;
+                }
+                else if (origin == 'angular') {
+                    origin = null;
+                }
+            }
+        };
+    });

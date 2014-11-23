@@ -44,21 +44,24 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
                 getCount: function (instructionId) {
                     return countUsages(instructionId, this.program);
                 },
-                subscribe: function(callback){
+                subscribe: function (callback) {
                     this.callback = callback;
                 },
-                setProgram: function(program, broadcast){
+                setProgram: function (program, broadcast) {
                     this.program = program;
-                    if(this.callback){
-                        this.callback(this.program);
-                    }
-                    if(broadcast) {
+
+                    if (broadcast) {
                         $rootScope.$broadcast('programChanged', this.program);
+                    }
+                    else if (this.callback) {
+                        this.callback(this.program);
                     }
                 }
             };
         }])
         .factory('helpers', [function () {
+
+            var count = 1;
 
             var copyInstruction = function (instruction) {
                 return {
@@ -72,7 +75,8 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
                     "quantity": instruction.quantity,
                     "isFunction": instruction.isFunction,
                     "isCustomFunction": instruction.isCustomFunction,
-                    "knockoutVersion": instruction.knockoutVersion
+                    "knockoutVersion": instruction.knockoutVersion,
+                    "uniqueId": count++
                 }
             };
 
@@ -80,13 +84,13 @@ define(['angular', 'underscore', 'app/angularSetup'], function (angular, _, angu
                 copyInstruction: copyInstruction
             };
         }])
-        .factory('inventory', ['$rootScope','instructionOptions', 'helpers', function ($rootScope, instructionOptions, helpers) {
+        .factory('inventory', ['$rootScope', 'instructionOptions', 'helpers', function ($rootScope, instructionOptions, helpers) {
 
             var options = instructionOptions();
 
             return {
                 instructions: [],
-                setInstructions: function(instructionSet){
+                setInstructions: function (instructionSet) {
 
                     for (var i = 0; i < instructionSet.length; i++) {
                         for (var j = 0; j < instructionSet[i].body.length; j++) {
