@@ -25,7 +25,7 @@ define([], function () {
         },
         "pick-up-part": {
             "id": "pick-up-part",
-            "name": "Pick up Park",
+            "name": "Pick up Part",
             "description": "Tell your robot to pick up the part in front of it.",
             "type": "baseInstruction",
             "points": 10
