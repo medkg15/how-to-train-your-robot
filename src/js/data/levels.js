@@ -20,7 +20,7 @@ define([], function(){
 					"quantity": "unlimited"
 				},
 				{
-					"id": "pick-up-ball",
+					"id": "pick-up-part",
 					"quantity": 1
 				}
 			],
@@ -67,7 +67,7 @@ define([], function(){
 					"quantity": "unlimited"
 				},
 				{
-					"id": "pick-up-ball",
+					"id": "pick-up-part",
 					"quantity": 1
 				}
 			],
@@ -114,7 +114,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -162,7 +162,7 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -213,7 +213,7 @@ define([], function(){
                     "quantity": 2
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -264,7 +264,7 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -315,7 +315,7 @@ define([], function(){
                     "quantity": 1
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -366,7 +366,7 @@ define([], function(){
                     "quantity": 5
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -421,7 +421,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 }
             ],
@@ -475,7 +475,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 },
                 {
@@ -533,7 +533,7 @@ define([], function(){
                     "quantity": "unlimited"
                 },
                 {
-                    "id": "pick-up-ball",
+                    "id": "pick-up-part",
                     "quantity": 1
                 },
                 {

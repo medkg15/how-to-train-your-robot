@@ -335,7 +335,7 @@ define(
                             }
                             scopes[0].index++;
                         }
-                        else if (currentInstruction.id === 'pick-up-ball') {
+                        else if (currentInstruction.id === 'pick-up-part') {
                             if (self.environment.frontCellDefinition() === 'e') {
                                 win = true;
                             }
