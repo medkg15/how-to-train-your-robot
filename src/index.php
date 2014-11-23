@@ -27,8 +27,10 @@
                 <a class="navbar-brand" href="#"
                    data-bind="visible: currentView() !== 'build-program', click: returnHome">Robot Training</a>
                 <a class="navbar-brand" href="#" data-bind="if: currentView() === 'build-program'">Level <span
-                        data-bind="text: currentLevel().number"></span> <span class="small"
-                                                                              data-bind="text: currentLevel().name"></span></a>
+                        data-bind="text: currentLevel().number"></span> <span
+                                                                              data-bind="text: currentLevel().name"></span>
+                    <span class="small">[Jump Code: <span data-bind="text: currentLevel().jumpCode"></span>]</span>
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
