@@ -568,9 +568,9 @@ define([], function(){
                 "column": 2,
                 "row": 3
             },
-            "intro": "<p>Now you can can apply what you have learned in the previous levels and test your understanding of the different programming concepts. </p><p>You have to make it down the mountain to get to the spaceship part</p>",
-            "exit": "<p>1. Try to use shuffle to optimize your code. </p><p> 2. Try to create your own function. </p><p> Take advantage of the loop instructions “Repeat” and “Repeat While”. </p>",
-            "help": "<H4> Genus! </H4> You have successfuly implemented what you have learned!<p></p>",
+            "intro": "<p> Now you can can apply what you have learned in the previous levels and test your understanding of the different programming concepts. </p><p> You have to make it down the mountain to get to the spaceship part. </p>",
+            "exit": "<H4> Stunning! </H4> You have successfuly implemented what you have learned!<p></p>",
+            "help": "<p>1. Try to use shuffle to optimize your code. </p><p> 2. Try to create your own functions. </p><p> Take advantage of the loop instructions “Repeat” and “Repeat While”. </p>",
             "jumpCode": 12,
             "instructions": [
                 {
