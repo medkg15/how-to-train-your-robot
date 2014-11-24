@@ -124,6 +124,12 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                             return false;
                         }
 
+                        // can't drag into a function.
+                        if(destNodesScope && destNodesScope.$nodeScope && destNodesScope.$nodeScope.$modelValue.isFunction)
+                        {
+                            return false;
+                        }
+
                         if (destNodesScope.nodrop) {
                             return false;
                         }
