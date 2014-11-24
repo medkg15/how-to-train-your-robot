@@ -8,13 +8,17 @@
         <h3>Writing a Program</h3>
         <p><img src="/images/level1steps_A.png" alt="level1 Tutorial Part1" style="width:100%;" width="800"
                 height="600" class="img-thumbnail"/></p>
-
+        <br/>
         <h3>Debugging a Program</h3>
         <p><img src="/images/level3part1.png" alt="level1 Tutorial Part2" style="width:100%;" width="800" height="600"
                 class="img-thumbnail"/></p>
-
+        <br/>
         <h3>Writing Loops</h3>
         <p><img src="/images/level6part1.png" alt="level1 Tutorial Part2" style="width:100%;" width="800" height="600"
+                class="img-thumbnail"/></p>
+<br/>
+        <h3>Writing Functions</h3>
+        <p><img src="/images/level10part1.png" alt="level1 Tutorial Part2" style="width:100%;" width="800" height="600"
                 class="img-thumbnail"/></p>
     </div>
 </div>
