@@ -27,14 +27,13 @@
                         Attempt #<span data-bind="text: levelAttempts"></span>
                     </div>
 
-                    <div ng-controller="ProgramCtrl">
+                    <div ng-controller="ProgramCtrl" class="robot-program">
                         <div ui-tree="programOptions">
                             <ol ui-tree-nodes ng-model="program">
                                 <li ng-repeat="instruction in program"
                                     ng-class="{current: instruction.currentlyExecuting}"
                                     ui-tree-node
-                                    ng-include="'program_renderer.html'"
-                                    popover-title="Error!" tooltip="{{instruction.message}}"></li>
+                                    ng-include="'program_renderer.html'"></li>
                             </ol>
                         </div>
 

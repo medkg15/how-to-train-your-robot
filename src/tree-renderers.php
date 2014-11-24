@@ -30,8 +30,16 @@
 </script>
 
 <script type="text/ng-template" id="program_renderer.html">
-    <div class="tree-node" ui-tree-handle ng-controller="InstructionCtrl">
-        <div class="tree-node-content" >
+    <div class="tree-node" ui-tree-handle ng-controller="InstructionCtrl" style="position:relative;">
+
+        <div style="display:block;position:absolute;left:-300px;top:-25px" class="popover left" ng-if="instruction.message">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Error!</h3>
+            <div class="popover-content">
+                <p>{{instruction.message}}</p>
+            </div>
+        </div>
+          <div class="tree-node-content">
             <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"
                ng-if="canRemove(this)"><span
                     class="glyphicon glyphicon-remove"></span></a>
@@ -57,15 +65,13 @@
             data-nodrop>
             <li ng-repeat="instruction in instruction.body" ui-tree-node
                 ng-class="{current: instruction.currentlyExecuting}"
-                ng-include="'program_renderer.html'"
-                popover-title="Error!" popover="{{instruction.message}}">
+                ng-include="'program_renderer.html'">
             </li>
         </ol>
         <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="instruction.allowChildren">
             <li ng-repeat="instruction in instruction.body" ui-tree-node
                 ng-class="{current: instruction.currentlyExecuting}"
-                ng-include="'program_renderer.html'"
-                popover-title="Error!" popover="{{instruction.message}}">
+                ng-include="'program_renderer.html'">
             </li>
         </ol>
     </div>

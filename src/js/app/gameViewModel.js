@@ -229,6 +229,7 @@ define(
                 self.status.reset();
 
                 if (currentInstruction) {
+                    currentInstruction.message = null;
                     currentInstruction.currentlyExecuting = false;
                     self.program.valueHasMutated();
                 }
@@ -330,7 +331,7 @@ define(
                         }
                         else {
                             currentInstruction = program[program.length - 1];
-                            onAttemptFailed('The robot failed to complete the goal!', program, currentInstruction);
+                            onAttemptFailed('Your robot failed to pick up the part!', program, currentInstruction);
                         }
                         doContinue = false;
                     }
@@ -370,7 +371,7 @@ define(
                             else {
                                 doContinue = false;
 
-                                onAttemptFailed('No ball to pick up!', program, currentInstruction);
+                                onAttemptFailed('There\'s no part to pick up here!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }

@@ -136,4 +136,5 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffd81', endColorstr='#918300', GradientType=0); /* IE6-9 */
 }
 
-#watch .image  { width:100px; height:100px; }
+#watch .image  { width:50px; height:50px; }
+.robot-program { margin:15px 0; }
