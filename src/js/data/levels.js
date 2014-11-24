@@ -484,7 +484,7 @@ define([], function(){
                     "quantity": "unlimited"
                 }
             ],
-            "perfectInstructionCount": 6,
+            "perfectInstructionCount": 21,
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ','x','x',' ',' ','x','x',' '],
