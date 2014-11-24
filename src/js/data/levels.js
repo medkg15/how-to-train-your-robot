@@ -560,7 +560,7 @@ define([], function(){
         {
             "id": "level-12",
             "name": "Make it down the mountain",
-            "number":11,
+            "number":12,
             "environment": "country-green",
             "defaultHeading": "right",
             "startPosition": {
