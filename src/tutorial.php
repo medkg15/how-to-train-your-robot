@@ -3,7 +3,7 @@
     <div class="well">
         <h1>Robot Training - Tutorial</h1>
 
-        <p>Robo needs your help!  His spaceship exploded while he was exploring the planet.  The spaceship parts are spread all over the world and he needs your guidance to collect them all.</p>
+        <p>Robo needs your help!  His spaceship exploded while he was exploring the planet.  The spaceship parts are spread all over the world and he needs your guidance to collect them!</p>
 
         <h3>Writing a Program</h3>
         <p><img src="/images/level1steps_A.png" alt="level1 Tutorial Part1" style="width:100%;" width="800"
