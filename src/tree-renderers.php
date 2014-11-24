@@ -42,6 +42,7 @@
                 </div>
             </div>
             <div ui-tree-handle class="tree-node-content">
+
                 <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"
                    ng-if="canRemove(this)"><span
                         class="glyphicon glyphicon-remove"></span></a>
@@ -50,17 +51,17 @@
                                                  ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
                 {{instruction.title}}
 
-                <select data-nodrag ng-model="instruction.condition" ng-if="instruction.condition" ng-click=""
+                <select data-nodrag ng-model="instruction.condition" ng-if="instruction.condition" ng-click="" ng-disabled="isRunning"
                         ng-options="conditionOption for conditionOption in instructionOptions.condition"></select>
 
 
             <span ng-if="hasCount(this)">
-    <input type="number" ng-model="instruction.count" ng-change="checkCount(this)"/>
+    <input type="number" ng-model="instruction.count" ng-change="checkCount(this)" ng-disabled="isRunning"/>
     {{ countLabel(this) }}
 </span>
 
                 <p style="float:right;" ng-if="(!instruction.isFunction && instruction.allowChildren) && instruction.body.length === 0"
-                   class="angular-ui-tree-placeholder">Place instructions here.</p>
+                   class="angular-ui-tree-placeholder">Place instructions here</p>
 
             </div>
             <ol ui-tree-nodes ng-model="instruction.body" ng-class="{hidden: collapsed}" ng-if="!instruction.allowChildren"

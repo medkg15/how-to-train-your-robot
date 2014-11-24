@@ -1,4 +1,4 @@
-define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular, angularServices, angularSetup) {
+define(['angular', 'app/angularServices', 'app/angularSetup', 'underscore'], function (angular, angularServices, angularSetup, _) {
 
     angular.module('robotTraining')
         .controller('InventoryCtrl', ['$scope', 'instructionOptions', 'inventory', 'program', 'helpers',
@@ -99,12 +99,23 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
 
                 $scope.instructionOptions = instructionOptions();
 
+                $scope.isRunning = false;
+
                 $scope.program = [];
                 $scope.$watch('program', function (newVal, oldVal) {
                     programService.setProgram($scope.program);
                 }, true);
                 $scope.$on('programChanged', function(event, program) {
                     $scope.program = program;
+
+                    var checkScopeActive = function(scope){
+                        return _.some(scope, function(inst){
+                            return inst.currentlyExecuting || checkScopeActive(inst.body);
+                        });
+                    };
+
+                    $scope.isRunning = checkScopeActive(program);
+
                     if(!$scope.$$phase) {
                         $scope.$apply();
                     }
@@ -114,6 +125,11 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                     /*dropped: function (e) {
                      }*/
                     accept: function (sourceNodeScope, destNodesScope, destIndex) {
+
+                        if($scope.isRunning)
+                        {
+                            return false;
+                        }
 
                         // don't allow child elements of functions to be dragged into the program tree.
                         // the full function needs to be dragged in.
@@ -137,6 +153,11 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                         return true;
                     },
                     beforeDrag: function (sourceNodeScope) {
+
+                        if($scope.isRunning)
+                        {
+                            return false;
+                        }
 
                         // don't allow functions to be changed while in the program tree
                         if (sourceNodeScope.$parentNodeScope
@@ -176,6 +197,10 @@ define(['angular', 'app/angularServices', 'app/angularSetup'], function (angular
                     return remaining;
                 };
                 $scope.canRemove = function (scope) {
+
+                    if(scope.isRunning){
+                        return false;
+                    }
 
                     return (scope.tree === 'program' && !(scope.$nodeScope.$parentNodeScope
                     && scope.$nodeScope.$parentNodeScope.$modelValue
