@@ -437,7 +437,8 @@ define([], function(){
                 [' ',' ',' ','x','x','x',' ',' ',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": false
+            "customFunctionAvailable": false,
+            "runAvailable": true
         },
         {
             "id": "level-10",
@@ -495,7 +496,8 @@ define([], function(){
                 [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": true
+            "customFunctionAvailable": true,
+            "runAvailable": true
         },
         {
             "id": "level-11",
@@ -553,7 +555,71 @@ define([], function(){
                 [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
             ],
             "debuggerAvailable": true,
-            "customFunctionAvailable": true
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-12",
+            "name": "Make it down the mountain",
+            "number":11,
+            "environment": "country-green",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 2,
+                "row": 3
+            },
+            "intro": "<p>You have to make it down the mountain to get to the spaceship part</p>",
+            "exit": "<p>stuff</p>",
+            "help": "<p>stuff</p>",
+            "jumpCode": 12,
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "repeat",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+            ],
+            "perfectInstructionCount": 6,
+            "map": [
+                [' ',' ',' ','x','x','x','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ','x',' ','x','x',' ',' ','x','x',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x','x',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ','x',' ',' ','x','x',' ',' ','x',' '],
+                [' ',' ',' ','x','x',' ',' ',' ',' ','e','x','x'],
+                [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
         }
 	];
 });

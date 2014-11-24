@@ -6285,3 +6285,10 @@ h6 {
 .popover {
   max-width: 450px!important;
 }
+.angular-ui-tree-empty {
+  background: none!important;
+  padding: 15px;
+}
+.angular-ui-tree-empty:before {
+  content: "Drag instructions here!";
+}

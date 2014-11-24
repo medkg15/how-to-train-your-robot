@@ -1,6 +1,6 @@
 define(
-    ['knockout', 'underscore', 'data/levels', 'data/allInstructionsLookup', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers'],
-    function (ko, _, levels, allInstructionsLookup, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers) {
+    ['knockout', 'underscore', 'data/levels', 'data/allInstructionsLookup', 'bindings/programTree', 'bindings/inventoryTree', 'app/services', 'bootstrap', 'app/scoreCalculator', 'bindings/personaDialog', 'app/statusViewModel', 'app/environmentViewModel', 'app/controllers', 'app/directives'],
+    function (ko, _, levels, allInstructionsLookup, programTree, inventoryTree, services, bootstrap, ScoreCalculator, personaDialog, StatusViewModel, EnvironmentViewModel, controllers, directives) {
 
         "use strict";
 
@@ -51,7 +51,7 @@ define(
             self.environment = new EnvironmentViewModel(self);
             self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
             self.endStoryText = ko.observable("<p>Thank you for helping Robo building the Spaceship to continue his journey.  </p><p>  We hope you leaned new things while playing this game. Feel free to play again and build more knowledge. We hope to see you soon!   </p> ");
-
+            self.completedLevels = ko.observableArray();
 
             self.advanceToNextLevel = function () {
                 var level = self.currentLevel();
@@ -161,24 +161,46 @@ define(
                 self.currentHeading(null);
             };
 
-            self.instructionInventory = ko.computed(function () {
+            self.userDefinedFunctions = ko.observableArray();
 
-                var level = self.currentLevel();
+            self.instructionInventory = ko.computed({
+                read: function () {
 
-                if (!level) {
-                    return [];
+                    var level = self.currentLevel();
+
+                    if (!level) {
+                        return [];
+                    }
+
+                    var levelInstructions = _.map(self.currentLevel().instructions, function (instruction) {
+                        var definition = allInstructionsLookup[instruction.id];
+
+                        return {
+                            id: instruction.id,
+                            definition: definition,
+                            name: definition.name,
+                            count: definition.count,
+                            condition: definition.condition,
+                            quantity: instruction.quantity,
+                            body: _.map(definition.body, function(inst){
+                                var definition = allInstructionsLookup[inst];
+
+                                return {
+                                    id: inst,
+                                    definition: definition,
+                                    name: definition.name
+                                };
+                            })
+                        };
+                    });
+
+                    return _.union(levelInstructions, self.userDefinedFunctions());
+                },
+                write: function (value) {
+                    self.userDefinedFunctions(_.filter(value, function(inst){
+                        return inst.isCustomFunction;
+                    }));
                 }
-
-                return _.map(self.currentLevel().instructions, function (instruction) {
-                    var definition = allInstructionsLookup[instruction.id];
-
-                    return {
-                        id: instruction.id,
-                        definition: definition,
-                        name: definition.name,
-                        quantity: instruction.quantity
-                    };
-                });
             });
 
             self.addInstruction = function (instruction) {
@@ -206,7 +228,8 @@ define(
                 self.hasError(false);
                 self.status.reset();
 
-                if(currentInstruction) {
+                if (currentInstruction) {
+                    currentInstruction.message = null;
                     currentInstruction.currentlyExecuting = false;
                     self.program.valueHasMutated();
                 }
@@ -279,6 +302,7 @@ define(
                             var score = scoreCalculator.calculate(program, self.levelAttempts(), self.usedHelp());
                             self.levelScore(score);
                             self.score(self.score() + score.finalScore);
+                            self.completedLevels.push({level: self.currentLevel(), score: score.finalScore});
 
                             services.completeLevel(self.levelSessionID(), {
                                 program: program,
@@ -306,19 +330,22 @@ define(
                             });
                         }
                         else {
-                            onAttemptFailed('The robot failed to complete the goal!', program, program[program.length - 1]);
+                            currentInstruction = program[program.length - 1];
+                            onAttemptFailed('Your robot failed to pick up the part!', program, currentInstruction);
                         }
                         doContinue = false;
                     }
 
-                    if(currentInstruction && doContinue) {
-                        currentInstruction.currentlyExecuting = false;
-                        self.program.valueHasMutated();
+                    if (doContinue) {
+                        if (currentInstruction) {
+                            currentInstruction.currentlyExecuting = false;
+                            self.program.valueHasMutated();
+                        }
+                        currentInstruction = scopes[0].instructions[scopes[0].index];
                     }
 
-                    currentInstruction = scopes[0].instructions[scopes[0].index];
 
-                    if (!currentInstruction) {
+                    if (!currentInstruction || !doContinue) {
                         doContinue = false;
                     }
                     else {
@@ -337,14 +364,14 @@ define(
                             }
                             scopes[0].index++;
                         }
-                        else if (currentInstruction.id === 'pick-up-ball') {
+                        else if (currentInstruction.id === 'pick-up-part') {
                             if (self.environment.frontCellDefinition() === 'e') {
                                 win = true;
                             }
                             else {
                                 doContinue = false;
 
-                                onAttemptFailed('No ball to pick up!', program, currentInstruction);
+                                onAttemptFailed('There\'s no part to pick up here!', program, currentInstruction);
                             }
                             scopes[0].index++;
                         }
@@ -425,8 +452,8 @@ define(
 
                             // check if we've satisfied the condition
 
-                            if ((scopes[0].condition === 'wall-not-front' && self.environment.frontCellDefinition() !== 'x')
-                                || (scopes[0].condition === 'ball-not-front' && self.environment.frontCellDefinition() !== 'e')) {
+                            if ((scopes[0].condition === 'Wall Not In Front' && self.environment.frontCellDefinition() !== 'x')
+                                || (scopes[0].condition === 'Part Not In Front' && self.environment.frontCellDefinition() !== 'e')) {
                                 scopes[0].countRemaining--;
                                 scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
@@ -436,11 +463,11 @@ define(
                                 scopes[0].index++;
                             }
                         }
-                        else if (currentInstruction.id.indexOf('custom-function-') === 0) {
+                        else if (currentInstruction.id.indexOf('custom-function') === 0) {
 
                             if (typeof scopes[0].runningFunction === 'undefined') {
                                 scopes[0].runningFunction = true;
-                                scopes.unshift({instructions: currentInstruction.definition.body, index: 0});
+                                scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
                             else {
                                 scopes[0].index++;
