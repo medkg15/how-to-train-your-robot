@@ -8,7 +8,6 @@
 <body>
 
 <div id="loading-view" class="container white">
-
     <h1>Loading Robot Training...</h1>
 
     <div class="progress">
@@ -19,7 +18,6 @@
     </div>
 </div>
 <div id="knockout-view" class="container" data-bind="css: bodyClass" style="display:none;">
-
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
 
@@ -84,8 +82,8 @@
     });
     require(['common'], function (common) {
         require(
-            ['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap', 'bindings/introPersona', 'app/directives'],
-            function ($, ko, GameViewModel, jstree, knockoutBootstrap, introPersona, directives) {
+            ['jquery', 'knockout', 'app/gameViewModel', 'jstree', 'knockout-bootstrap', 'bindings/introPersona', 'app/directives', 'bindings/exitPersona'],
+            function ($, ko, GameViewModel, jstree, knockoutBootstrap, introPersona, directives, exitPersona) {
 
                 var viewModel = new GameViewModel();
 

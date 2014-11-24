@@ -50,6 +50,7 @@ define(
             self.status = new StatusViewModel();
             self.environment = new EnvironmentViewModel(self);
             self.introStoryText = ko.observable("<p>One day Robo was discovering the world with his spaceship.     </p><p>      Unfortunately, the spaceship exploded in space and tore apart in many lands. In this game you will be introduced to different programming concepts as you help Robo collect the parts of his spaceship from the different environments.</p> ");
+            self.endStoryText = ko.observable("<p>Thank you for helping Robo building the Spaceship to continue his journey.  </p><p>  We hope you leaned new things while playing this game. Feel free to play again and build more knowledge. We hope to see you soon!   </p> ");
             self.completedLevels = ko.observableArray();
 
             self.advanceToNextLevel = function () {
