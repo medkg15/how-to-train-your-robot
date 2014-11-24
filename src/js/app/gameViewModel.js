@@ -142,6 +142,9 @@ define(
                     self.gameOver(false);
                     self.debuggerAvailable(level.debuggerAvailable);
                     self.status.reset();
+                    currentInstruction = null;
+                    self.isPaused(false);
+                    self.isExecuting(false);
                 });
             };
 

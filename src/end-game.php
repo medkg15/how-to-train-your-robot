@@ -6,7 +6,7 @@
         <div style="position:relative;">
             <img src="/images/Persona.png" alt="Persona"
                  data-bind="exitPersona: endStoryText" style="position:absolute; top:50px; left:10px;"/>
-            <img src="/images/games.gif" style="position:absolute; left:850px; top:100px;"/>
+            <img src="/images/games.gif" style="position:absolute; right:100px; top:100px;"/>
 
             <img class="img-thumbnail" src="images/bgEndGame.png"/>
 

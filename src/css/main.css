@@ -6174,7 +6174,8 @@ button.close {
 #inventory li.inline {
   cursor: pointer;
   display: inline-block;
-  width: 25%;
+  width: 23%;
+  margin: 1% 1%;
 }
 #program .instruction {
   cursor: move;
@@ -6291,4 +6292,7 @@ h6 {
 }
 .angular-ui-tree-empty:before {
   content: "Drag instructions here!";
+}
+input[type=number] {
+  width: 100px;
 }
