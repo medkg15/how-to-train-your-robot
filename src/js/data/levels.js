@@ -567,45 +567,45 @@ define([], function(){
                 "column": 2,
                 "row": 3
             },
-            "intro": "<p>You have to make it down the mountain to get to the spaceship part</p>",
-            "exit": "<p>stuff</p>",
-            "help": "<p>stuff</p>",
+            "intro": "<p>You have to make it down the mountain to get to the spaceship part.</p>",
+            "exit": "<h4>Great job!</h4><p>You collected the spaceship part!</p>",
+            "help": "<p>Use what you've learned to collect the part!</p>",
             "jumpCode": 12,
             "instructions": [
                 {
                     "id": "step-forward",
-                    "quantity": "unlimited"
+                    "quantity": 12
                 },
                 {
                     "id": "turn-left",
-                    "quantity": "unlimited"
+                    "quantity": 8
                 },
                 {
                     "id": "turn-right",
-                    "quantity": "unlimited"
+                    "quantity": 8
                 },
                 {
                     "id": "repeat-while",
-                    "quantity": "unlimited"
+                    "quantity": 4
                 },
                 {
                     "id": "repeat",
-                    "quantity": "unlimited"
+                    "quantity": 4
                 },
                 {
                     "id": "shuffle-left",
-                    "quantity": "unlimited"
+                    "quantity": 6
                 },
                 {
                     "id": "shuffle-right",
-                    "quantity": "unlimited"
+                    "quantity": 6
                 },
                 {
                     "id": "pick-up-part",
                     "quantity": 1
                 },
             ],
-            "perfectInstructionCount": 6,
+            "perfectInstructionCount": 9,
             "map": [
                 [' ',' ',' ','x','x','x','x',' ',' ',' ',' ',' '],
                 [' ',' ',' ','x',' ','x','x',' ',' ','x','x',' '],
