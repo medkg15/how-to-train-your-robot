@@ -268,7 +268,7 @@ define([], function(){
                     "quantity": 1
                 }
             ],
-            "perfectInstructionCount": 3,
+            "perfectInstructionCount": 6,
             "map": [
                 ['x',' ',' ',' ',' ',' ',' ',' ','x','x',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ','x','e','x',' ',' '],
@@ -452,7 +452,7 @@ define([], function(){
             },
             "intro": "<p>Check your Toolbox! </p><p> We have created a function for you called “Go Right Around Obstacle“.</p><p> As you will see, the function has many instructions inside it. </p><p> Try to drag the function to execute the instructions grouped inside it instead of writing this whole list in your program. </p><p> Try to use this function as needed to make your program faster to reuse. </p>",
             "exit": "<H4> Fantastic! </H4><p>Functions are reusable set of instructions that helped you to include the repeated tasks you needed Robo to perform in one group instead of repeating the same set of instructions again and again.</p>",
-            "help": "<p> Let me help:<br>  <br>  </p>",
+            "help": "<p> Let me help:<br>  <br> 1. Remember that you can use the “Debugger” and watch Robo executing each instruction slowly by clicking “Next” button to find out any error in your program.</p><p> 2. Drag “Go Right Around Obstacle“ function.  </p>",
             "jumpCode": 10,
             "instructions": [
                 {
@@ -543,7 +543,7 @@ define([], function(){
                     "quantity": "unlimited"
                 }
             ],
-            "perfectInstructionCount": 6,
+            "perfectInstructionCount": 27,
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ','x','x',' ',' ','x','x',' '],
@@ -561,16 +561,16 @@ define([], function(){
         {
             "id": "level-12",
             "name": "Make it down the mountain",
-            "number":11,
+            "number":12,
             "environment": "country-green",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 2,
                 "row": 3
             },
-            "intro": "<p>You have to make it down the mountain to get to the spaceship part</p>",
-            "exit": "<p>stuff</p>",
-            "help": "<p>stuff</p>",
+            "intro": "<p>Now you can can apply what you have learned in the previous levels and test your understanding of the different programming concepts. </p><p>You have to make it down the mountain to get to the spaceship part</p>",
+            "exit": "<p>1. Try to use shuffle to optimize your code. </p><p> 2. Try to create your own function. </p><p> Take advantage of the loop instructions “Repeat” and “Repeat While”. </p>",
+            "help": "<H4> Genus! </H4> You have successfuly implemented what you have learned!<p></p>",
             "jumpCode": 12,
             "instructions": [
                 {
@@ -606,7 +606,7 @@ define([], function(){
                     "quantity": 1
                 },
             ],
-            "perfectInstructionCount": 6,
+            "perfectInstructionCount": 11,
             "map": [
                 [' ',' ',' ','x','x','x','x',' ',' ',' ',' ',' '],
                 [' ',' ',' ','x',' ','x','x',' ',' ','x','x',' '],
