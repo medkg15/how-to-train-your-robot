@@ -33,7 +33,8 @@
                                 <li ng-repeat="instruction in program"
                                     ng-class="{current: instruction.currentlyExecuting}"
                                     ui-tree-node
-                                    ng-include="'program_renderer.html'"></li>
+                                    ng-include="'program_renderer.html'"
+                                    popover-title="Error!" tooltip="{{instruction.message}}"></li>
                             </ol>
                         </div>
 
