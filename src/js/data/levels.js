@@ -508,9 +508,9 @@ define([], function(){
                 "column": 2,
                 "row": 5
             },
-            "intro": "<p>In this level you can create your own function by clicking on the “Create Function” button below the “Toolbox”. </p><p> Type a descriptive name for the function, and drag instructions inside.</p> You can create as many functions as you like!</p>",
+            "intro": "<p>In this level you can create your own function by clicking on the “Add Function” button below the “Toolbox”. </p><p> Type a descriptive name for the function, and drag instructions inside.</p> You can create as many functions as you like!</p>",
             "exit": "<H4> Well Done! </H4><p> Functions helped you to include the repeated tasks you needed Robo to perform in one group instead of repeating the same set of instructions again and again.</p><p>Although functions can make programming easier, they are not always the fastest solution.  Can you see how to complete this level using fewer instructions? </p>",
-            "help": "<p> Having trouble? Here are some guidelines:</p><p> 1. Type a name for your function and click “Create Function”. Then drag instructions from the “Toolbox” into your function.</p> <p> 2.  Your function should mirror the &quot;Go Right Around Obstacle&quot; function, but should instead go left.</p>",
+            "help": "<p> Having trouble? Here are some guidelines:</p><p> 1. Type a name for your function and click “Add Function”. Then drag instructions from the “Toolbox” into your function.</p> <p> 2.  Your function should mirror the &quot;Go Right Around Obstacle&quot; function, but should instead go left.</p>",
             "jumpCode": "93GB",
             "instructions": [
                 {
