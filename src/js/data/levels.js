@@ -483,7 +483,7 @@ define([], function(){
                     "quantity": "unlimited"
                 }
             ],
-            "perfectInstructionCount": 11,
+            "perfectInstructionCount": 13,
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ','x','x',' ',' ','x','x',' '],
@@ -502,7 +502,7 @@ define([], function(){
             "id": "level-11",
             "name": "Make Your Own Function",
             "number":11,
-            "environment": "orange-fall",
+            "environment": "winter",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 2,
@@ -561,7 +561,7 @@ define([], function(){
             "id": "level-12",
             "name": "Make it down the mountain",
             "number":12,
-            "environment": "country-green",
+            "environment": "dark-mountain",
             "defaultHeading": "right",
             "startPosition": {
                 "column": 2,

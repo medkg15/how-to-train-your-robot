@@ -59,7 +59,7 @@
 
                     <div data-bind="if: debuggerAvailable">
 
-                        <h3 data-bind="tooltip: {title: 'You can use the debugger to watch the program one instruction at a time to see where your robot is having a problem.', placement: 'left'}">
+                        <h3 data-bind="tooltip: {title: 'You can use the debugger to watch the program one instruction at a time to see if your robot is having a problem.', placement: 'left'}">
                             Debugger</h3>
 
                         <button class="btn btn-success"
