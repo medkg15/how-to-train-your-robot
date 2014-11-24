@@ -574,10 +574,6 @@ define([], function(){
             "jumpCode": 12,
             "instructions": [
                 {
-                    "id": "repeat-while",
-                    "quantity": "unlimited"
-                },
-                {
                     "id": "step-forward",
                     "quantity": "unlimited"
                 },
@@ -587,6 +583,14 @@ define([], function(){
                 },
                 {
                     "id": "turn-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "repeat",
                     "quantity": "unlimited"
                 },
                 {
@@ -601,10 +605,6 @@ define([], function(){
                     "id": "pick-up-part",
                     "quantity": 1
                 },
-                {
-                    "id": "custom-function-999",
-                    "quantity": "unlimited"
-                }
             ],
             "perfectInstructionCount": 6,
             "map": [
