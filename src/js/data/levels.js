@@ -619,6 +619,65 @@ define([], function(){
             "debuggerAvailable": true,
             "customFunctionAvailable": true,
             "runAvailable": true
+        },
+        {
+            "id": "level-13",
+            "name": "Limited Instructions",
+            "number":13,
+            "environment": "orange-fall",
+            "defaultHeading": "down",
+            "startPosition": {
+                "column": 3,
+                "row": 2
+            },
+            "intro": "<p>You have a limited set of instructions.  Lets see if you can get to the spaceship part</p>",
+            "exit": "<p>Great! You were able to retrieve the spaceship part!</p>",
+            "help": "<p>I am sure you can figure this out.</p>",
+            "jumpCode": "DB4E",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 3
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 4
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 11,
+            "map": [
+                [' ',' ',' ',' ','x','x','x','x','x',' ',' ',' '],
+                [' ',' ',' ','x','x',' ',' ',' ',' ','x','x',' '],
+                [' ',' ',' ',' ','x','e',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x','x','x',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ',' ',' ','x',' ','x',' '],
+                [' ',' ',' ','x',' ',' ','x','x',' ',' ','x',' '],
+                [' ',' ',' ','x','x',' ',' ',' ',' ',' ','x','x'],
+                [' ','x','x','x','x','x','x','x',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
         }
 	];
 });
