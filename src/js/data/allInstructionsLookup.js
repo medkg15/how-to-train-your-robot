@@ -74,14 +74,10 @@ define([], function () {
             "type": "function",
             "points": 50,
             "body": [
-                "turn-right",
-                "step-forward",
-                "turn-left",
+                "shuffle-right",
                 "step-forward",
                 "step-forward",
-                "turn-left",
-                "step-forward",
-                "turn-right"
+                "shuffle-left",
             ]
         }
     };
