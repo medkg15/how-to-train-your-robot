@@ -242,9 +242,9 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>Stuff</p>",
-            "exit": "<H4> Amazing work! </H4><p> </p>",
-            "help": "<p>Stuff</p>",
+            "intro": "<p>Robo can repeat several instructions at a time.  Try adding several instructions to a Repeat loop in order to go around corners! </p>",
+            "exit": "<H4> Great job! </H4><p> You set up a Repeat loop with several instructions inside of it, helping you get around corners. </p>",
+            "help": "<p>A Repeat loop can have several instructions inside of it.  Try using Step Forward, Turn, Step Forward, and Turn inside of a Repeat loop to go around the corners.</p>",
             "jumpCode": 6,
             "instructions": [
                 {
@@ -268,7 +268,7 @@ define([], function(){
                     "quantity": 1
                 }
             ],
-            "perfectInstructionCount": 3,
+            "perfectInstructionCount": 6,
             "map": [
                 ['x',' ',' ',' ',' ',' ',' ',' ','x','x',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ','x','e','x',' ',' '],
