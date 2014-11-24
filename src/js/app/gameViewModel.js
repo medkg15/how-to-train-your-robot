@@ -102,10 +102,11 @@ define(
             self.levelJump = function () {
 
                 var level = _.find(levelViewModels, function (level) {
-                    return level.jumpCode == self.jumpCode();
+                    return level.jumpCode.toLowerCase() == self.jumpCode().toLowerCase();
                 });
 
                 if (!level) {
+                    alert('Sorry, that isn\'t a correct level code.  Try again!');
                     return;
                 }
 
