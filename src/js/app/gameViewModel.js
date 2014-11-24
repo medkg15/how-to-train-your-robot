@@ -536,13 +536,13 @@ define(
                 return data;
             };
 
-            self.showDebug = ko.observable(false);
+         /*   self.showDebug = ko.observable(false);
             self.debug = ko.computed(function () {
 
                 var copy = ko.toJS(self);
                 delete copy.debug;
                 return JSON.stringify(copy, null, 2);
-            });
+            });*/
 
             self.removeInstruction = function (instruction) {
                 self.program.remove(instruction);

@@ -37,9 +37,9 @@
                             </ol>
                         </div>
 
-                        <div data-bind="visible: showDebug">
+                    <?php /*    <div data-bind="visible: showDebug">
                             <pre class="code">{{ program | json }}</pre>
-                        </div>
+                        </div>*/?>
                     </div>
                     <div data-bind="if: currentView() === 'build-program'">
                         <div data-bind="programTree: program" class="jstree-bootstrap">
@@ -119,9 +119,9 @@
                         </li>
                     </ol>
                 </div>
-                <div data-bind="visible: showDebug">
+               <?php /* <div data-bind="visible: showDebug">
                     <pre class="code">{{ inventory | json }}</pre>
-                </div>
+                </div>*/?>
             </div>
 
             <div data-bind="if: currentView() === 'build-program'">

@@ -65,13 +65,13 @@
     <?php include "tree-renderers.php"; ?>
     <?php include "end-game.php"; ?>
 
-    <label>
+  <?php /*  <label>
         <input type="checkbox" data-bind="checked: showDebug"/> INTERNAL Show Debug
     </label>
 
     <div data-bind="if: showDebug">
         <pre data-bind="text: debug"></pre>
-    </div>
+    </div>*/ ?>
 
 </div>
 <!-- /.container -->
