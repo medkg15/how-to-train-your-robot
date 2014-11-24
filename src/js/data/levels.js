@@ -396,7 +396,7 @@ define([], function(){
             },
             "intro": "<p> Hurray! You have new tools in your Toolbox “Shuffle Right” and “Shuffle Left”. </p><p> In this level you will be introduced to the “Optimization“ concept. </p><p> Try to reduce the number of steps by replacing some instructions.</p>",
             "exit": "<p> Awesome! <br> <br> Optimization allowed you to use different instructions to reduce the amount of instructions needed to automate Robo to turn every time he faces an obstacle during the path to the part. </p>",
-            "help": "<p> Let me help:<br>  <br> 1. Use “Shuffle Right” to turn right faster instead of “Turn Right” then “Step Forward”.</p><p> 2. Continue using shuffle until you reach the part to reduce the amount of instructions in your program. </p>",
+            "help": "<p> Let me help:<br>  <br> 1. Use “Shuffle Right” instead of using “Turn Right” and “Step Forward”to turn right faster.</p><p> 2. Continue using shuffle until you reach the part to reduce the amount of instructions in your program. </p>",
     "jumpCode": 9,
             "instructions": [
                 {
@@ -449,9 +449,9 @@ define([], function(){
                 "column": 2,
                 "row": 5
             },
-            "intro": "<p>stuff</p>",
-            "exit": "<p>stuff</p>",
-            "help": "<p>stuff</p>",
+            "intro": "<p>Check your Toolbox! </p><p> We have created a function for you called “Go Right Around Obstacle“.</p><p> As you will see, the function has many instructions inside it. </p><p> Try to drag the function to execute the instructions grouped inside it instead of writing this whole list in your program. </p><p> Try to use this function as needed to make your program faster to reuse. </p>",
+            "exit": "<H4> Fantastic! </H4><p>Functions are reusable set of instructions that helped you to include the repeated tasks you needed Robo to perform in one group instead of repeating the same set of instructions again and again.</p>",
+            "help": "<p> Let me help:<br>  <br>  </p>",
             "jumpCode": 10,
             "instructions": [
                 {
@@ -483,7 +483,7 @@ define([], function(){
                     "quantity": "unlimited"
                 }
             ],
-            "perfectInstructionCount": 6,
+            "perfectInstructionCount": 21,
             "map": [
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ','x','x',' ',' ','x','x',' '],
@@ -508,9 +508,9 @@ define([], function(){
                 "column": 2,
                 "row": 5
             },
-            "intro": "<p>stuff</p>",
-            "exit": "<p>stuff</p>",
-            "help": "<p>stuff</p>",
+            "intro": "<p>In this level you can create your own function by clicking on “Create Function” button below “Tool box”. </p><p> write the name you want for the function (try to make the function’s name as much related to its job as possible so you don’t forget what it does),</p><p> drag the instructions you want Robo to execute in order inside your function.</p><p> Try to choose the instructions you think that can be grouped in one function so you use the function in your program instead of writing the same set of instructions every time you need to repeat them on the same order.</p> You can create more than one function and use them in your program which will increase your scores!! </p>",
+            "exit": "<H4> Well Done! </H4><p> Functions helped you to include the repeated tasks you needed Robo to perform in one group instead of repeating the same set of instructions again and again.</p>",
+            "help": "<p> Having trouble? Here are some guidelines:<br>  <br> 1.	Click “Create Function” button; give your function a name, then drag at least 2 instructions from the “Tool box” inside your function.</p> 2. You can see your Function now inside “Tool box”; drag it to “Your Program” box to automate Robo executing the instructions inside the function. </p> 3. Robo has to step forward, turn right, and step forward to reach the part. So you can create a function e.g. “Diagonal” that group these 3 instructions instead of writing them many times.</p>",
             "jumpCode": 11,
             "instructions": [
                 {
