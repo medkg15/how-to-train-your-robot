@@ -457,7 +457,6 @@ define(
 
                             if ((scopes[0].condition === 'Wall Not In Front' && self.environment.frontCellDefinition() !== 'x')
                                 || (scopes[0].condition === 'Part Not In Front' && self.environment.frontCellDefinition() !== 'e')) {
-                                scopes[0].countRemaining--;
                                 scopes.unshift({instructions: currentInstruction.body, index: 0});
                             }
                             else {
