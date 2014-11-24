@@ -226,6 +226,7 @@ define(
                 self.currentPosition(self.currentLevel().startPosition);
                 self.currentHeading(self.currentLevel().defaultHeading);
 
+                cancel = true;
                 nextIteration = undefined;
                 self.isPaused(false);
                 self.isExecuting(false);
@@ -237,6 +238,7 @@ define(
                     currentInstruction.currentlyExecuting = false;
                     self.program.valueHasMutated();
                 }
+
             };
 
             var onAttemptFailed = function (message, program, instruction) {
@@ -265,7 +267,10 @@ define(
 
             };
 
+            var cancel = false;
             self.execute = function (instruction) {
+                cancel = false;
+
                 self.levelAttempts(self.levelAttempts() + 1);
                 self.isExecuting(true);
                 // reset everything
@@ -285,10 +290,9 @@ define(
                 var win = false;
                 var doContinue = true;
 
-                var callback;
-                callback = function () {
+                nextIteration = function () {
 
-                    if (self.isPaused()) {
+                    if (cancel || self.isPaused()) {
                         return;
                     }
 
@@ -488,8 +492,7 @@ define(
                     }
 
                     if (doContinue) {
-                        nextIteration = callback;
-                        setTimeout(callback, 250);
+                        setTimeout(nextIteration, 250);
                     }
                     else {
                         if (!self.hasError()) {
@@ -498,13 +501,15 @@ define(
                     }
                 };
 
-                callback();
+                nextIteration();
             };
 
             self.isExecuting = ko.observable(false);
             self.isPaused = ko.observable(false);
 
             self.executeOnce = function () {
+
+                cancel = false;
                 self.usedDebugger(true);
                 if (nextIteration) {
                     self.isPaused(false);
