@@ -343,7 +343,7 @@ define(
                     }
 
 
-                    if (!currentInstruction) {
+                    if (!currentInstruction || !doContinue) {
                         doContinue = false;
                     }
                     else {
