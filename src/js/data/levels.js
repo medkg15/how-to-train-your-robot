@@ -10,9 +10,9 @@ define([], function(){
                 "column": 8,
                 "row": 5
             },
-            "intro": "<p>In this level you will be introduced to the “Automation” concept by using two Computer Instructions “Step Forward” and “Pick Up Part”.</p><p>  In order for Robo to reach the 1st spaceship part, he must walk step by step following your instructions.</p><p> Drag the instructions from the “Toolbox” at the bottom and drop them inside “Your Program” on the right side. </p><p> After creating a whole list in your program, you can click “Run” and wait for Robo to execute the instructions in your program. </p><p> “Ask me for help at anytime by a click on my picture and follow my tips”.</p>",
-            "exit": "<h4>You got it good job! <h4/><p> Using Automation you were able to write a program using the computer instructions “Step Forward” and “Pick Up Part” to execute Robo to find the first part of his spaceship. </p>",
-            "help": "<p>Having trouble?  Here are some tips:</p><p> 1. Robo has to walk 2 steps forward then pick up the part. </p><p> 2. Robo cannot step on the spaceship part. </p><p> 3. You can clear your program and start over at any time by clicking “Start Over” button.</p>",
+            "intro": "<p>In this level you will be introduced to the “Automation” concept by using two Computer Instructions “Step Forward” and “Pick Up Part”.</p><p>  In order for Robo to reach the 1st spaceship part, he must walk step by step following your instructions.</p><p> Drag the instructions from the “Toolbox” at the bottom and drop them inside “Your Program” on the right side. </p><p> After creating your program, you can click “Run” and watch Robo follow your instructions. </p><p> &quot;Ask me for help at any time by clicking on my picture.&quot;</p>",
+            "exit": "<h4>You got it, good job! <h4/><p>You helped Robo find the first part of his spaceship by writing a program using the computer instructions “Step Forward” and “Pick Up Part”. </p>",
+            "help": "<p>Having trouble?  Here are some tips:</p><p> 1. Robo has to walk 2 steps forward and then pick up the part. </p><p> 2. Robo cannot step on the spaceship part. </p><p> 3. You can clear your program and start over at any time by clicking “Start Over” button.</p>",
             "jumpCode": 1,
 			"instructions": [
 				{
@@ -49,8 +49,8 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p> Hurray! You have new tools in your Toolbox “Turn Left” and “Turn Right”. </p><p> In this level you will be able to apply the Automation concept you learned in level 1 by using more Computer Instructions.</p><p> You can give Robo different instructions as needed to reach the part. </p>",
-            "exit": "<H4>Fantastic! </H4> <p> By using different types of computer instructions you were able to Automate Robo during the path to the part.</p><p> Computers are programmed by putting together groups of computer instructions to accomplish a task. </p>",
+            "intro": "<p> Hurray! You have new tools in your Toolbox: “Turn Left” and “Turn Right”. </p><p> In this level you will be able to apply the Automation concept you learned in level 1 by using more Computer Instructions.</p><p> You can use the new instructions to help Robo reach the part. </p>",
+            "exit": "<H4>Fantastic! </H4> <p> Using the new computer instructions you were able to direction Robo reach to the part.</p><p> Computers are programmed by putting together groups of instructions to accomplish a task. </p>",
             "help": "<p> Having trouble? Let me help: </p><p> 1. You have different options to reach the part in this level. </p><p> 2. The shortest path for Robo would be to step forward 2 times, turn right, and then pick up the part.</p>",
             "jumpCode": 2,
 			"instructions": [
@@ -96,9 +96,9 @@ define([], function(){
                 "column": 5,
                 "row": 5
             },
-            "intro": "<p>In this level you will be introduced to the “Debugger”.</p><p> You are going to play the previous level but use the “Debugger” this time. </p><p> “Debugger” is a helpful tool that helps find coding errors if you have them in your program.</p><p> After creating a whole list in your program, instead of using “Run” and wait for Robo to execute the whole program you can use “Debugger” to watch Robo executing one instruction at a time by clicking on the “Next” button.</p>",
-            "exit": "<H4> Perfect! </H4><p> A problem in a computer program is called a bug. </p><p> The process of finding bugs (errors) when writing a computer program is called “debugging”.</p><p> Now you know how to use “Debugger” to watch your program if you find errors.</p>",
-            "help": "<p> Having trouble? Follow my guidelines: </p><p> 1. You have different options to reach the part in this level. </p><p> 2. The shortest path for Robo would be to step forward 2 times, turn right, and then pick up the part.</p><p> 3. Click “Next” button to execute one instruction at a time. </p>",
+            "intro": "<p>In this level you will be introduced to the “Debugger”.</p><p> You are going to play the previous level but use the “Debugger” this time. </p><p>The “Debugger” is a tool that helps find coding errors in your program.</p><p> After creating your program, use &quot;Next&quot; to run your program one instruction at a time.  You can see the status of your program at the bottom of the screen.</p>",
+            "exit": "<H4> Perfect! </H4><p> Now you know how to use the “Debugger” to help you find errors in your program.</p><p> An error in a computer program is called a bug.  The process of finding bugs is called “debugging”.</p>",
+            "help": "<p> Having trouble? Follow my guidelines: </p><p> 1. You have different options to reach the part in this level. </p><p> 2. The shortest path for Robo would be to step forward 2 times, turn right, and then pick up the part.</p><p> 3. Click “Next” button to execute one instruction at a time. </p><p>4. You can &quot;Continue&quot; to finish running the program without stopping.</p>",
             "jumpCode": 3,
             "instructions": [
                 {
@@ -133,7 +133,6 @@ define([], function(){
             "customFunctionAvailable": false,
             "runAvailable": false
         },
-
         {
             "id": "level-4",
             "name": "Limited Number of Instructions",
@@ -144,14 +143,14 @@ define([], function(){
                 "column": 7,
                 "row": 5
             },
-            "intro": "<p> In this level you will have a limited number of instructions. </p><p> Robo could use many paths to reach the part; however, only one path would allow him to do so. </p><p> You will see the remaining number near some instructions in your “Toolbox”.</p><p> After the number reaches 0 you can no more use those instructions. </p>",
-            "exit": "<H4> Brilliant job! </H4><p> Although it is always a good habit to have a few instructions in your program, sometimes with real programming you might have limited number of resources (instructions) to use. </p><p> By completing this level you successfully used the other path to the part as you had few instructions if choosing the shortest path. </p>",
+            "intro": "<p> In this level you will have a limited number of each instruction. </p><p> Robo could use any path to reach the part but you only have enough instructions for one.  Can you figure out which path you can take?</p><p> The remaining number of each instruction is shown in your Toolbox.</p>",
+            "exit": "<H4> Brilliant job! </H4><p> In this level you successfully found the only possible path using the limited instructions available.  </p><p> Sometimes when programming you have a limited number of resources (instructions) available to you.  You may need to explore other solutions to a problem. </p>",
             "help": "<p> Let me help: </p><p> 1. Robo can only take the path to the right in order to reach the part. </p><p> 2.	Robo has to start by stepping forward 2 times. </p>",
             "jumpCode": 4,
             "instructions": [
                 {
                     "id": "step-forward",
-                    "quantity": "unlimited"
+                    "quantity": 7
                 },
                 {
                     "id": "turn-left",
@@ -191,9 +190,9 @@ define([], function(){
                 "column": 5,
                 "row": 3
             },
-            "intro": "<p> Hint! You have a new tool in your Toolbox “Repeat”. </p><p> In this level you will be introduced to the programming concept “Loop”! </p><p> You will create a task to automate Robo, but use the required instruction one time only by taking advantage of the “Repeat” instruction.</p><p> Drag the “Repeat” instruction from your “Toolbox” and drop it into “Your Program”.</p><p> Drag the instruction you need Robo to repeat many times inside the “Repeat” instruction.</p><p> Give the “Repeat” instruction a parameter “the number of times you need Robo to repeat its branch instruction” by writing the number inside the “Repeat” box. </p>",
-            "exit": "<p> Well Done! <br> <br> By using “Loops” you were able to repeat the instruction you needed Robo to execute many times by writing less code in your program instead of writing the same instruction over and over.  </p>",
-            "help": "<p> Here are some guidelines to help you:<br>  <br> 1. The instruction you want to repeat should appear in your program as if it’s inside “Repeat”, its branch, not under it.</p><p> 2. You can automate Robo to repeat stepping forward 4 times instead of writing the same instruction 4 times by using the loop instruction “Repeat“.</p>",
+            "intro": "<p> You have a new tool in your Toolbox called “Repeat”. </p><p> You can program Robo to &quot;Repeat&quot; an instruction multiple times while only using one of your remaining instructions.</p><p> Drag the “Repeat” instruction from your “Toolbox” and drop it into “Your Program”.</p><p> Drag the instruction you need Robo to repeat inside the “Repeat” instruction.</p><p> Tell the “Repeat” instruction how many times to run by entering a number.</p>",
+            "exit": "<h4> Well Done!</h4><p> By using “Repeat” you were able to run the instructions you needed many times while using fewer instructions in your program.  </p>",
+            "help": "<p> Here are some guidelines to help you:<br>  <br> 1. The instruction you want to repeat should appear in your program as if it’s inside “Repeat”, not under it.</p><p> 2. You can tell Robo to repeat &quot;Step Forward&quot; four times instead of dragging the instruction four times.</p>",
             "jumpCode": 5,
             "instructions": [
                 {
