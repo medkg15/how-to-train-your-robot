@@ -153,10 +153,10 @@
                     <div class="image goal"></div>
                     <p><strong>Part In Front?</strong>: <span data-bind="text: ballInFront() ? 'Yes' : 'No'"></span></p>
                 </div>
-                <div class="col-md-2" data-bind="visible: (countRemaining() !== null)">
+            <!---    <div class="col-md-2" data-bind="visible: (countRemaining() !== null)">
                     <p><strong>Repeat Count Remaining</strong>: <span
                             data-bind="text: countRemaining"></span></p>
-                </div>
+                </div> -->
                 <div class="col-md-2">
                     <div class="image goal"></div>
                     <p><strong>Picked Up Part?</strong>: <span data-bind="text: hasBall() ? 'Yes' : 'No'"></span></p>
