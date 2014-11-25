@@ -929,7 +929,7 @@ define([], function(){
                 "column": 7,
                 "row": 5
             },
-            "intro": "<p>Challenge #4.  Good luck!</p>",
+            "intro": "<p>Challenge #5.  Good luck!</p>",
             "exit": "<p>Great job completing the challenge!</p>",
             "help": "<p>Good luck!</p>",
             "jumpCode": "AV3M",
@@ -977,6 +977,132 @@ define([], function(){
                 ['x',' ',' ',' ',' ',' ','x',' ',' ','x',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ','x','x',' ',' ',' ','x',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-18",
+            "name": "Challenge #6",
+            "number": 18,
+            "environment": "winter",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 9,
+                "row": 5
+            },
+            "intro": "<p>Challenge #6.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "AMD1",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 5
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 8
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 6
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 3
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 4
+                }
+            ],
+            "perfectInstructionCount": 8,
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ','x','x','x','x','x','x','x',' ',' ',' '],
+                [' ',' ','x','e',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ','x','x','x',' ','x',' ','x','x','x',' '],
+                [' ',' ',' ',' ','x',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ','x','x','x',' '],
+                [' ',' ',' ',' ','x','x','x','x','x',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-19",
+            "name": "Challenge #7",
+            "number":18,
+            "environment": "dark-mountain",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 2,
+                "row": 6
+            },
+            "intro": "<p>Challenge #7.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "AL90",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 2
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 4
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 3
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 2
+                }
+            ],
+            "perfectInstructionCount": 11,
+            "map": [
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ','x'],
+                [' ',' ',' ',' ',' ','x',' ',' ',' ','x',' ','x'],
+                [' ',' ',' ',' ',' ','x',' ',' ',' ','x',' ','e'],
+                ['x','x','x','x','x','x','x','x','x','x','x','x']
             ],
             "debuggerAvailable": true,
             "customFunctionAvailable": true,
