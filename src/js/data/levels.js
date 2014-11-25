@@ -1107,6 +1107,510 @@ define([], function(){
             "debuggerAvailable": true,
             "customFunctionAvailable": true,
             "runAvailable": true
+        },
+        {
+            "id": "level-20",
+            "name": "Challenge #8",
+            "number":20,
+            "environment": "space",
+            "defaultHeading": "left",
+            "startPosition": {
+                "column": 10,
+                "row": 2
+            },
+            "intro": "<p>Challenge #8.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "INT1",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 3
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 3
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 4
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 8,
+            "map": [
+                [' ',' ',' ','x','x','x','x','x','x',' ',' ',' '],
+                [' ',' ',' ','x',' ','x','x','x','x','x','x',' '],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ','x','x',' ',' ',' ',' ','x',' ','x','x'],
+                [' ',' ',' ','x',' ',' ','x','x','x',' ','x',' '],
+                [' ',' ',' ','x','x','e',' ',' ',' ',' ','x','x'],
+                [' ','x','x','x','x','x','x','x',' ','x',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-21",
+            "name": "Challenge #9",
+            "number":21,
+            "environment": "winter",
+            "defaultHeading": "down",
+            "startPosition": {
+                "column": 9,
+                "row": 2
+            },
+            "intro": "<p>Challenge #9.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "TIN2",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 3
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 3
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 8,
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x','e','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x','x','x','x','x','x',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-22",
+            "name": "Challenge #10",
+            "number":22,
+            "environment": "space",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 8,
+                "row": 5
+            },
+            "intro": "<p>Challenge #10.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "M3PH",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 4
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 4
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 4
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 7,
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ','e',' ','x',' ','x',' ','x','x','x',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x',' ','x','x','x',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-23",
+            "name": "Challenge #11",
+            "number":23,
+            "environment": "wild-west",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 8,
+                "row": 6
+            },
+            "intro": "<p>Challenge #11.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "3NIT",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 6
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 6
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 6
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 6
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 10,
+            "map": [
+                [' ',' ',' ',' ',' ','x',' ',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ','x','x','x',' ',' ',' ',' ','x'],
+                [' ',' ','x',' ','x','e','x',' ',' ',' ','x',' '],
+                [' ','x','x',' ','x',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ','x','x','x','x','x',' ',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-24",
+            "name": "Challenge #12",
+            "number":24,
+            "environment": "country-green",
+            "defaultHeading": "left",
+            "startPosition": {
+                "column": 9,
+                "row": 5
+            },
+            "intro": "<p>Challenge #12.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "TIM2",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 6
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 1
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 6
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 6
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 6
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 9,
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','e',' '],
+                [' ',' ','x',' ',' ',' ','x',' ',' ',' ',' ','x'],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x'],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' '],
+                [' ','x',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-25",
+            "name": "Challenge #13",
+            "number":25,
+            "environment": "dark-mountain",
+            "defaultHeading": "left",
+            "startPosition": {
+                "column": 9,
+                "row": 2
+            },
+            "intro": "<p>Challenge #13.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "PI32",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 8
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 1
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 8
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 9,
+            "map": [
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ','x','x','x','x','x',' ',' ',' ',' ',' ',' '],
+                [' ','x',' ',' ',' ','x',' ','x',' ',' ',' ','x'],
+                [' ','x',' ','x',' ','x',' ','x',' ',' ','x',' '],
+                [' ','x',' ','x',' ','x',' ','x',' ',' ',' ',' '],
+                [' ',' ','e',' ',' ',' ',' ','x',' ',' ',' ',' '],
+                [' ',' ','x',' ','x','x','x','x',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-26",
+            "name": "Challenge #14",
+            "number":26,
+            "environment": "winter",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 5,
+                "row": 5
+            },
+            "intro": "<p>Challenge #14.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "N64P",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 8
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 8
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 8
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 12,
+            "map": [
+                [' ',' ',' ',' ',' ',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ','x',' ',' ','x',' ',' '],
+                [' ','x','x','x','x','x',' ',' ',' ',' ',' ','x'],
+                [' ','x',' ',' ',' ','x',' ','x','x','x',' ','x'],
+                [' ','x',' ','x',' ','x',' ','x',' ','x',' ','x'],
+                [' ','x',' ','x',' ',' ',' ','x',' ','x',' ','x'],
+                [' ',' ',' ','x',' ',' ',' ','x','e',' ',' ','x'],
+                [' ',' ',' ',' ',' ','x','x','x','x','x','x','x']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-27",
+            "name": "Challenge #15",
+            "number":27,
+            "environment": "space",
+            "defaultHeading": "left",
+            "startPosition": {
+                "column": 10,
+                "row": 6
+            },
+            "intro": "<p>Challenge #15.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "N6PP",
+            "instructions": [
+                {
+                    "id": "repeat-while",
+                    "quantity": 8
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 8
+                },
+                {
+                    "id": "step-forward",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 8
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 8
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": "unlimited"
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 12,
+            "map": [
+                [' ',' ',' ',' ',' ',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' ',' '],
+                [' ','x','x','x','x','x',' ','x',' ','x',' ',' '],
+                [' ','x','e',' ',' ','x',' ','x',' ','x',' ','x'],
+                [' ','x',' ','x',' ','x',' ','x',' ','x',' ','x'],
+                [' ','x',' ','x',' ',' ',' ',' ',' ','x',' ','x'],
+                [' ',' ',' ','x',' ',' ',' ','x',' ',' ',' ','x'],
+                [' ',' ',' ',' ',' ','x','x','x',' ','x',' ','x']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
         }
 	];
 });
