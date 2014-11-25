@@ -865,9 +865,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-16",
+            "id": "level-17",
             "name": "Challenge #4",
-            "number":16,
+            "number":17,
             "environment": "orange-fall",
             "defaultHeading": "left",
             "startPosition": {
@@ -920,9 +920,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-17",
+            "id": "level-18",
             "name": "Challenge #5",
-            "number":17,
+            "number":18,
             "environment": "winter",
             "defaultHeading": "up",
             "startPosition": {
@@ -983,9 +983,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-18",
+            "id": "level-19",
             "name": "Challenge #6",
-            "number": 18,
+            "number": 19,
             "environment": "winter",
             "defaultHeading": "up",
             "startPosition": {
@@ -1046,9 +1046,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-19",
+            "id": "level-20",
             "name": "Challenge #7",
-            "number":18,
+            "number":20,
             "environment": "dark-mountain",
             "defaultHeading": "up",
             "startPosition": {
@@ -1109,9 +1109,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-20",
+            "id": "level-21",
             "name": "Challenge #8",
-            "number":20,
+            "number":21,
             "environment": "space",
             "defaultHeading": "left",
             "startPosition": {
@@ -1172,9 +1172,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-21",
+            "id": "level-22",
             "name": "Challenge #9",
-            "number":21,
+            "number":22,
             "environment": "winter",
             "defaultHeading": "down",
             "startPosition": {
@@ -1235,9 +1235,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-22",
+            "id": "level-23",
             "name": "Challenge #10",
-            "number":22,
+            "number":23,
             "environment": "space",
             "defaultHeading": "up",
             "startPosition": {
@@ -1298,9 +1298,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-23",
+            "id": "level-24",
             "name": "Challenge #11",
-            "number":23,
+            "number":24,
             "environment": "wild-west",
             "defaultHeading": "up",
             "startPosition": {
@@ -1361,9 +1361,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-24",
+            "id": "level-25",
             "name": "Challenge #12",
-            "number":24,
+            "number":25,
             "environment": "country-green",
             "defaultHeading": "left",
             "startPosition": {
@@ -1424,9 +1424,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-25",
+            "id": "level-26",
             "name": "Challenge #13",
-            "number":25,
+            "number":26,
             "environment": "dark-mountain",
             "defaultHeading": "left",
             "startPosition": {
@@ -1487,9 +1487,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-26",
+            "id": "level-27",
             "name": "Challenge #14",
-            "number":26,
+            "number":27,
             "environment": "winter",
             "defaultHeading": "right",
             "startPosition": {
@@ -1550,9 +1550,9 @@ define([], function(){
             "runAvailable": true
         },
         {
-            "id": "level-27",
+            "id": "level-28",
             "name": "Challenge #15",
-            "number":27,
+            "number":28,
             "environment": "space",
             "defaultHeading": "left",
             "startPosition": {
