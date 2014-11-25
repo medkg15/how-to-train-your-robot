@@ -10,6 +10,8 @@
 
             <button class="btn-lg btn-block" data-bind="click: startGame">Play! </button>
 
+            <button class="btn-lg btn-block" data-bind="click: startChallenges">Start Challenges!</button>
+
             <button class="btn-lg btn-block" data-bind="click: function(){ changeView('tutorial'); }">Learn</button>
 
             <button class="btn-lg btn-block" data-bind="click: function(){ changeView('about'); }">About   </button>

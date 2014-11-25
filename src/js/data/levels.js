@@ -678,6 +678,309 @@ define([], function(){
             "debuggerAvailable": true,
             "customFunctionAvailable": true,
             "runAvailable": true
+        },
+        {
+            "id": "level-14",
+            "name": "Challenge #1",
+            "number":14,
+            "environment": "space",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 6,
+                "row": 3
+            },
+            "intro": "<p>Challenge #1.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Think about how you can use the Repeat While instruction to complete this level.</p>",
+            "jumpCode": "NOA3",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 3
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 1
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 9,
+            "map": [
+                [' ',' ',' ','x',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ','e','x',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x',' ','x',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x',' ','x',' ',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ','x',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-15",
+            "name": "Challenge #2",
+            "number":15,
+            "environment": "wild-west",
+            "defaultHeading": "right",
+            "startPosition": {
+                "column": 3,
+                "row": 3
+            },
+            "intro": "<p>Challenge #2.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "AVC3",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 3
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 1
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 1
+                }
+            ],
+            "perfectInstructionCount": 7,
+            "map": [
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ','x',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x',' ','e',' ',' ',' ',' '],
+                [' ',' ','x',' ',' ','x',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-16",
+            "name": "Challenge #3",
+            "number":16,
+            "environment": "wild-west",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 4,
+                "row": 5
+            },
+            "intro": "<p>Challenge #3.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "BD32",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 3
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 3
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 4
+                }
+            ],
+            "perfectInstructionCount": 8,
+            "map": [
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ','x',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' '],
+                [' ',' ','x',' ',' ',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ',' ','x',' ',' ','x','e',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ','x',' ',' ',' ',' ','x',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-16",
+            "name": "Challenge #4",
+            "number":16,
+            "environment": "orange-fall",
+            "defaultHeading": "left",
+            "startPosition": {
+                "column": 3,
+                "row": 1
+            },
+            "intro": "<p>Challenge #4.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "BU4L",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 3
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+            ],
+            "perfectInstructionCount": 12,
+            "map": [
+                [' ',' ',' ','x','x',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ',' ','e','x',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ','x',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ','x',' ',' ',' ',' ',' ','x',' '],
+                [' ',' ','x',' ','x',' ','x',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x','x',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ','x','x',' ',' ',' ','x',' ',' ',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
+        },
+        {
+            "id": "level-17",
+            "name": "Challenge #5",
+            "number":17,
+            "environment": "winter",
+            "defaultHeading": "up",
+            "startPosition": {
+                "column": 7,
+                "row": 5
+            },
+            "intro": "<p>Challenge #4.  Good luck!</p>",
+            "exit": "<p>Great job completing the challenge!</p>",
+            "help": "<p>Good luck!</p>",
+            "jumpCode": "AV3M",
+            "instructions": [
+                {
+                    "id": "step-forward",
+                    "quantity": 3
+                },
+                {
+                    "id": "turn-left",
+                    "quantity": 2
+                },
+                {
+                    "id": "turn-right",
+                    "quantity": 0
+                },
+                {
+                    "id": "pick-up-part",
+                    "quantity": 1
+                },
+                {
+                    "id": "repeat-while",
+                    "quantity": 2
+                },
+                {
+                    "id": "repeat",
+                    "quantity": 2
+                },
+                {
+                    "id": "shuffle-left",
+                    "quantity": 3
+                },
+                {
+                    "id": "shuffle-right",
+                    "quantity": 4
+                }
+            ],
+            "perfectInstructionCount": 10,
+            "map": [
+                [' ',' ',' ','x','x',' ',' ',' ','x',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ','x',' ','x',' ','x',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','x',' '],
+                [' ',' ',' ',' ','x','x','x','x','e',' ',' ',' '],
+                ['x',' ',' ',' ',' ',' ',' ',' ','x',' ',' ',' '],
+                ['x',' ',' ',' ',' ',' ','x',' ',' ','x',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ','x','x',' ',' ',' ','x',' ']
+            ],
+            "debuggerAvailable": true,
+            "customFunctionAvailable": true,
+            "runAvailable": true
         }
 	];
 });

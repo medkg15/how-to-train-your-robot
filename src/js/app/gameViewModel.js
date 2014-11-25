@@ -117,6 +117,16 @@ define(
                 });
             };
 
+            self.startChallenges = function(){
+                var level = levelViewModels[13];
+
+                services.startGame(function (response) {
+                    self.gameId(response.id);
+
+                    self.selectLevel(level);
+                });
+            };
+
             self.levels = levelViewModels;
 
             self.selectLevel = function (level) {
